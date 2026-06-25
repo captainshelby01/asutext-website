@@ -485,65 +485,342 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
   <!--  PORTFOLIO / GALLERY                                       -->
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <section id="portfolio" class="py-24 bg-brand-dark">
+  <section id="portfolio" class="py-24 bg-brand-dark overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <!-- Header — BLUE label -->
+      <!-- Header — RED label -->
       <div class="mb-16 reveal">
         <p class="section-label section-label--red mb-3">Our Work</p>
         <h2 class="font-display text-3xl sm:text-4xl font-black text-white">
           See What We Deliver
         </h2>
         <p class="text-gray-400 mt-3 max-w-xl text-base leading-relaxed">
-          Real projects. Real results. A glimpse of the quality Asutext brings to every client, every time.
+          Real projects. Real results. Click on any division below to view our gallery of works and learn more about our projects.
         </p>
       </div>
 
-      <!-- Gallery grid — bento-style -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-[240px]">
+      <!-- Categories grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
 
-        <!-- Large card (spans 2 rows on large screens) -->
-        <div class="portfolio-item lg:row-span-2 reveal">
-          <img src="assets/images/work-cleaning.png" alt="Professional commercial cleaning team at work in Lagos" style="height:100%;" />
-          <div class="portfolio-overlay"></div>
-          <div class="portfolio-caption">
-            <span class="portfolio-tag" style="background:var(--brand-red);">Cleaning</span>
-            <p class="portfolio-caption-title">Commercial Cleaning<br/>Lagos &amp; Island</p>
+        <!-- Card 1: Cleaning & Fumigation -->
+        <div class="portfolio-card" data-panel="cleaning">
+          <img src="assets/images/work-cleaning.png" alt="Asutext professional cleaning services in Lagos" />
+          <div class="portfolio-card-overlay"></div>
+          <div class="portfolio-card-content">
+            <span class="portfolio-card-tag" style="background:var(--brand-red);">Cleaning &amp; Pest</span>
+            <p class="portfolio-card-title">Cleaning &amp;<br/>Fumigation</p>
+            <span class="portfolio-card-action">
+              Explore Gallery
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+            </span>
           </div>
         </div>
 
-        <div class="portfolio-item reveal reveal-delay-1">
-          <img src="assets/images/work-caps.png" alt="Custom branded caps produced by Asutext" style="height:100%;" />
-          <div class="portfolio-overlay"></div>
-          <div class="portfolio-caption">
-            <span class="portfolio-tag" style="background:var(--brand-blue);">Branding</span>
-            <p class="portfolio-caption-title">Custom Branded Caps</p>
+        <!-- Card 2: Branding & Fashion -->
+        <div class="portfolio-card" data-panel="branding">
+          <img src="assets/images/work-caps.png" alt="Asutext custom apparel, embroidery, and printing" />
+          <div class="portfolio-card-overlay"></div>
+          <div class="portfolio-card-content">
+            <span class="portfolio-card-tag" style="background:var(--brand-blue);">Branding &amp; Style</span>
+            <p class="portfolio-card-title">Branding, Printing<br/>&amp; Fashion</p>
+            <span class="portfolio-card-action">
+              Explore Gallery
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+            </span>
           </div>
         </div>
 
-        <div class="portfolio-item reveal reveal-delay-2">
-          <img src="assets/images/work-restaurant.png" alt="Asutext Fresh Food restaurant build-out" style="height:100%;" />
-          <div class="portfolio-overlay"></div>
-          <div class="portfolio-caption">
-            <span class="portfolio-tag" style="background:var(--brand-green);">Fast Food</span>
-            <p class="portfolio-caption-title">Asutext Fresh Food<br/>Restaurant</p>
+        <!-- Card 3: Fast Food & Catering -->
+        <div class="portfolio-card" data-panel="catering">
+          <img src="assets/images/work-restaurant.png" alt="Asutext Fresh Food catering and restaurant" />
+          <div class="portfolio-card-overlay"></div>
+          <div class="portfolio-card-content">
+            <span class="portfolio-card-tag" style="background:var(--brand-green);">Fresh Food</span>
+            <p class="portfolio-card-title">Fast Food &amp;<br/>Catering</p>
+            <span class="portfolio-card-action">
+              Explore Gallery
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+            </span>
           </div>
         </div>
 
-        <div class="portfolio-item reveal reveal-delay-3">
-          <img src="assets/images/work-transport.png" alt="Asutext transport fleet operations" style="height:100%;" />
-          <div class="portfolio-overlay"></div>
-          <div class="portfolio-caption">
-            <span class="portfolio-tag" style="background:#d97706;">Transport</span>
-            <p class="portfolio-caption-title">Fleet &amp; Logistics<br/>Operations</p>
+        <!-- Card 4: Transport & Logistics -->
+        <div class="portfolio-card" data-panel="transport">
+          <img src="assets/images/work-transport.png" alt="Asutext transport fleet and logistics operations" />
+          <div class="portfolio-card-overlay"></div>
+          <div class="portfolio-card-content">
+            <span class="portfolio-card-tag" style="background:#d97706;">Logistics</span>
+            <p class="portfolio-card-title">Transport &amp;<br/>Logistics</p>
+            <span class="portfolio-card-action">
+              Explore Gallery
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+            </span>
           </div>
         </div>
 
       </div>
 
-      <!-- CTA under gallery -->
-      <div class="mt-12 text-center reveal">
-        <p class="text-gray-400 mb-5 text-sm">Have a project in mind? Let's discuss it on WhatsApp.</p>
+      <!-- Expandable panels container -->
+      <div class="portfolio-panels mt-6">
+
+        <!-- Panel 1: Cleaning & Fumigation -->
+        <div class="portfolio-panel" id="panel-cleaning">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-gray-800 pb-6 mb-6">
+            <div>
+              <h3 class="portfolio-panel-title">Cleaning &amp; Fumigation Division</h3>
+              <p class="portfolio-panel-desc">
+                From corporate headquarters and retail stores to residential estates on Lagos Island, our professional teams deliver cleaning excellence. We utilize advanced industrial cleaning machines, premium detergents, and safe, government-approved, non-toxic fumigation and pest control techniques.
+              </p>
+            </div>
+            <a
+              href="https://wa.me/2349037666399?text=Hi%2C%20I%20enquired%20from%20your%20website%20and%20I%27d%20like%20to%20book%20a%20Cleaning%2FFumigation%20job."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-whatsapp self-start lg:self-center"
+            >
+              Enquire on WhatsApp
+            </a>
+          </div>
+          <div class="portfolio-gallery-grid-uniform grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 mt-8">
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-22-06.jpg" alt="Asutext professional cleaning team cleaning a salon floor with scrubber machine" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Floor Polishing &amp; Cleaning</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-22-06(1).jpg" alt="Asutext staff dusting shelves and vacuuming salon" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Corporate Dusting &amp; Vacuuming</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-22-06(2).jpg" alt="Cleaning team polishing and wiping mirrors at commercial premises" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Detail Cleaning &amp; Janitorial</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-22-07.jpg" alt="Fumigation specialist in full PPE spraying disinfectant mist in office" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Office Fumigation &amp; Pest Control</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <video src="Images/VIDEO-2026-06-22-15-23-02.mp4" autoplay loop muted playsinline class="w-full h-full object-cover"></video>
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Outdoor Deck Cleaning (Video)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Branding & Fashion -->
+        <div class="portfolio-panel" id="panel-branding">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-gray-800 pb-6 mb-6">
+            <div>
+              <h3 class="portfolio-panel-title">Branding, Printing &amp; Fashion Division</h3>
+              <p class="portfolio-panel-desc">
+                We bring brands to life. From custom apparel, premium headwear (like our signature Jackson 5 caps), and corporate merchandise to bespoke tailoring, custom-made dresses, and sports apparel. Everything is printed and stitched with premium materials to guarantee durability and color vibrancy.
+              </p>
+            </div>
+            <a
+              href="https://wa.me/2349037666399?text=Hi%2C%20I%20enquired%20from%20your%20website%20and%20I%27d%20like%20to%20discuss%20a%20Branding%2FApparel%20project."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-whatsapp self-start lg:self-center"
+            >
+              Enquire on WhatsApp
+            </a>
+          </div>
+          <div class="portfolio-gallery-masonry">
+            <div class="portfolio-gallery-item">
+              <img src="Images/WhatsApp Image 2026-06-22 at 15.19.25.jpeg" alt="Asutext apparel snapback caps neatly stacked in boxes in warehouse" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Custom Caps Production</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/WhatsApp Image 2026-06-22 at 15.19.26.jpeg" alt="ASUTEXT Apparel MFG box with custom branded snapback caps" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Quality Merchandise Boxed</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/WhatsApp Image 2026-06-22 at 15.18.59.jpeg" alt="Multiple designs of custom embroidered caps on table" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Embroidery &amp; Patch Design</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/WhatsApp Image 2026-06-22 at 15.19.17.jpeg" alt="Asutext black cap packaged inside branded carton" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Premium Box Packaging</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-21-45.jpg" alt="Premium Pool Wear T-shirt with Asutext wolf logo next to swimming pool" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Branded Pool Wear T-Shirts</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-21-46(1).jpg" alt="Grey scarf with ASUTEXT wolf logo embroidery and brand tag" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Scarves &amp; Accessories</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-21-46.jpg" alt="Grey boxer briefs with embroidered logo and metallic plate label" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Bespoke Underwear &amp; Apparel</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-21-48.jpg" alt="Silver sneakers with embossed wolf logo and custom soles" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Sneakers &amp; Footwear</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-21-47.jpg" alt="Silver necklace pendant with the ASUTEXT wolf emblem" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Custom Jewelry &amp; Badges</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: Fast Food & Catering -->
+        <div class="portfolio-panel" id="panel-catering">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-gray-800 pb-6 mb-6">
+            <div>
+              <h3 class="portfolio-panel-title">Fast Food &amp; Catering Division</h3>
+              <p class="portfolio-panel-desc">
+                Delicious meals made from fresh, high-quality ingredients. The Asutext Fresh Food division caters to restaurants, corporate lunch packages, events, weddings, and small gatherings. We ensure top-tier hygiene, prompt delivery, and amazing flavors in every dish.
+              </p>
+            </div>
+            <a
+              href="https://wa.me/2349037666399?text=Hi%2C%20I%20enquired%20from%20your%20website%20and%20I%27d%20like%20to%20book%20a%20Catering%2FFood%20order."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-whatsapp self-start lg:self-center"
+            >
+              Enquire on WhatsApp
+            </a>
+          </div>
+          <div class="portfolio-gallery-masonry">
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-23-07.jpg" alt="Asutext Fresh Food modern restaurant building exterior" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Restaurant Frontage</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-23-06.jpg" alt="Asutext Fresh Food restaurant interior with dining customers and servers" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Interior Dining Area</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-23-05.jpg" alt="Asutext logo on compartmentalized plastic lunch tray" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Food Packaging &amp; Trays</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-23-07(1).jpg" alt="Delicious catering buffet and food dishes" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Event Food Catering</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-23-07(2).jpg" alt="Freshly baked pastries and snacks prepared by catering team" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Gourmet Small Chops &amp; Snacks</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-23-07(3).jpg" alt="Plated Nigerian gourmet meal service" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Premium Dish Plating</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 4: Transport & Logistics -->
+        <div class="portfolio-panel" id="panel-transport">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-gray-800 pb-6 mb-6">
+            <div>
+              <h3 class="portfolio-panel-title">Transport &amp; Logistics Division</h3>
+              <p class="portfolio-panel-desc">
+                Connecting cities and moving cargo across Nigeria. Our fleet handles interstate haulage, domestic home/office relocations, local courier services, and corporate travel logistics. With real-time tracking and professional drivers, we guarantee safe journeys and on-time arrivals.
+              </p>
+            </div>
+            <a
+              href="https://wa.me/2349037666399?text=Hi%2C%20I%20enquired%20from%20your%20website%20and%20I%27d%20like%20to%20book%20a%20Transport%2FLogistics%20enquiry."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-whatsapp self-start lg:self-center"
+            >
+              Enquire on WhatsApp
+            </a>
+          </div>
+          <div class="portfolio-gallery-grid-uniform grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-21-50.jpg" alt="Collage of Asutext Transportation including commercial buses, cargo container ship, airplanes, and vehicles" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Multi-Modal Logistics</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-21-50(1).jpg" alt="Asutext Transportation services with buses, airplanes, shipping containers" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Freight &amp; Cargo Shipping</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-21-51.jpg" alt="Illustration of a modern Asutext Transport terminal hub with buses and passengers" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Interstate Transit Hubs</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/PHOTO-2026-06-22-15-21-50(2).jpg" alt="Asutext transport passenger ticketing queue and bus park logistics" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Fleet Dispatch &amp; Management</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Lightbox Modal -->
+      <div class="portfolio-lightbox" id="portfolio-lightbox">
+        <button class="portfolio-lightbox-close" id="lightbox-close" aria-label="Close image preview">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <div class="portfolio-lightbox-content">
+          <img id="lightbox-img" src="" alt="Portfolio Image Preview" class="hidden" />
+          <video id="lightbox-video" src="" controls autoplay class="hidden" style="max-height:80vh; max-width:100%; object-fit:contain;"></video>
+        </div>
+      </div>
+
+      <!-- General CTA under gallery -->
+      <div class="mt-16 text-center reveal">
+        <p class="text-gray-400 mb-5 text-sm">Have a unique project in mind? We're ready to make it happen.</p>
         <a
           href="https://wa.me/2349037666399?text=Hi%2C%20I%20visited%20your%20website%20and%20I%27d%20like%20to%20discuss%20a%20project."
           target="_blank"
@@ -1017,7 +1294,7 @@
 
       <!-- Footer bottom bar -->
       <div class="footer-bottom mt-16">
-        <p class="footer-copy">© 2025 Asutext Group Nigeria Limited. All rights reserved.</p>
+        <p class="footer-copy">© 2026 Asutext Group Nigeria Limited. All rights reserved.</p>
       </div>
 
     </div>
