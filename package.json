@@ -1,0 +1,12 @@
+{
+  "name": "asutext-website",
+  "version": "1.0.0",
+  "description": "Asutext website production setup",
+  "main": "js/main.js",
+  "scripts": {
+    "build": "tailwindcss -i css/style.css -o css/dist.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
