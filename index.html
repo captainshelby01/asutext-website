@@ -26,33 +26,37 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- ═══ TAILWIND CSS ═══ -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              red:   '#CC0000',
-              blue:  '#003580',
-              green: '#1A6B2F',
-              dark:  '#0D0D0D',
-              mid:   '#1A1A1A',
-              light: '#F6F6F6',
-            }
-          },
-          fontFamily: {
-            display: ['Montserrat', 'sans-serif'],
-            body:    ['Inter', 'sans-serif'],
-          },
-        }
-      }
-    }
-  </script>
+  <!-- ═══ TAILWIND CSS & CUSTOM CSS (COMPILED PRODUCTION BUNDLE) ═══ -->
+  <link rel="stylesheet" href="css/dist.css" />
 
-  <!-- ═══ CUSTOM CSS ═══ -->
-  <link rel="stylesheet" href="css/style.css" />
+  <!-- ═══ STRUCTURED DATA (JSON-LD) ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Asutext Group Nigeria Limited",
+    "image": "https://asutext.com.ng/Images/logo.jpeg",
+    "telephone": "+2349037666399",
+    "email": "asutextgnigltd@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "2nd Avenue, 216 Close, Movamo Court, Banana Island",
+      "addressLocality": "Lagos",
+      "addressCountry": "NG"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "6.4549",
+      "longitude": "3.4244"
+    },
+    "url": "https://asutext.com.ng/",
+    "sameAs": [
+      "https://www.facebook.com/asutext",
+      "https://www.youtube.com/@asutext",
+      "https://twitter.com/asutext"
+    ]
+  }
+  </script>
 </head>
 <body class="font-body bg-white text-brand-dark antialiased">
 
@@ -67,9 +71,9 @@
         <!-- Logo -->
         <a href="#home" class="flex items-center flex-shrink-0" aria-label="Asutext Group Nigeria Limited — Home">
           <img
-            src="assets/images/logo.jpg"
+            src="Images/logo.jpeg"
             alt="Asutext Group Nigeria Limited Logo"
-            class="h-12 w-auto object-contain"
+            class="h-12 w-auto object-contain mix-blend-multiply"
           />
         </a>
 
@@ -78,6 +82,7 @@
           <a href="#home"         class="nav-link">Home</a>
           <a href="#services"     class="nav-link">Services</a>
           <a href="#about"        class="nav-link">About Us</a>
+          <a href="#leadership"   class="nav-link">Team</a>
           <a href="#portfolio"    class="nav-link">Our Work</a>
           <a href="#areas"        class="nav-link">Coverage</a>
           <a href="#testimonials" class="nav-link">Clients</a>
@@ -121,6 +126,7 @@
         <a href="#home"         class="nav-link text-brand-dark py-1.5 text-base">Home</a>
         <a href="#services"     class="nav-link text-brand-dark py-1.5 text-base">Services</a>
         <a href="#about"        class="nav-link text-brand-dark py-1.5 text-base">About Us</a>
+        <a href="#leadership"   class="nav-link text-brand-dark py-1.5 text-base">Team</a>
         <a href="#portfolio"    class="nav-link text-brand-dark py-1.5 text-base">Our Work</a>
         <a href="#areas"        class="nav-link text-brand-dark py-1.5 text-base">Coverage</a>
         <a href="#testimonials" class="nav-link text-brand-dark py-1.5 text-base">Clients</a>
@@ -154,43 +160,43 @@
     <div class="hero-accent-line"></div>
 
     <!-- Background image -->
-    <img
-      src="assets/images/work-cleaning.png"
-      alt=""
-      class="hero-bg-img"
-      aria-hidden="true"
-    />
-
+    <!-- Background slideshow -->
+    <div class="hero-slider">
+      <div class="hero-slide" style="background-image: url('Images/cleaning-estate-exterior-1.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('Images/branding-custom-caps.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('Images/catering-restaurant-interior.jpg');"></div>
+    </div>
+ 
     <!-- Gradient overlay -->
     <div class="hero-overlay"></div>
-
+ 
     <!-- Content -->
     <div class="hero-content w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 lg:py-36">
       <div class="max-w-3xl">
-
+ 
         <!-- Animated badge -->
         <div class="hero-badge mb-8 reveal">
           Nationwide Service &nbsp;·&nbsp; Est. 2023 &nbsp;·&nbsp; CAC Incorporated
         </div>
-
+ 
         <!-- Headline -->
         <h1 class="font-display text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-6 reveal reveal-delay-1">
           One Company.<br/>
           <span class="text-brand-red">Eight Services.</span><br/>
           Total Reliability.
         </h1>
-
+ 
         <!-- Subtext -->
         <p class="text-gray-300 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl reveal reveal-delay-2">
           From professional cleaning and laundry to transport, fast food, branding, and fashion.
           Asutext Group Nigeria Limited delivers quality you can count on, across Lagos,
           Cross-River State, and nationwide.
         </p>
-
+ 
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row gap-4 reveal reveal-delay-3">
           <a
-            href="https://wa.me/2349037666399?text=Hi%2C%20I%20visited%20your%20website%20and%20I%27d%20like%20to%20get%20a%20free%20quote."
+            href="https://wa.me/2349037666399?text=Hi%2C%20I%27visited%20your%20website%20and%20I%27d%20like%20to%20get%20a%20free%20quote."
             target="_blank"
             rel="noopener noreferrer"
             class="btn-whatsapp text-base"
@@ -209,7 +215,7 @@
             </svg>
           </a>
         </div>
-
+ 
         <!-- Trust bar / Stats -->
         <div class="mt-16 flex flex-wrap gap-x-8 gap-y-6 sm:gap-x-12 reveal reveal-delay-4">
           <div class="hero-stat">
@@ -232,8 +238,14 @@
             <p class="hero-stat-label">CAC Incorporated</p>
           </div>
         </div>
-
+ 
       </div>
+    </div>
+
+    <!-- Mouse Scroll Indicator -->
+    <div class="scroll-indicator hidden lg:flex">
+      <span class="mouse-wheel"></span>
+      <span>Scroll Down</span>
     </div>
   </section>
 
@@ -420,10 +432,16 @@
 
         <!-- Image side -->
         <div class="about-image-frame reveal-left" style="padding-bottom:16px; padding-right:16px;">
-          <img
-            src="assets/images/work-cleaning.png"
-            alt="Asutext cleaning team delivering professional service"
-          />
+          <picture>
+            <source srcset="assets/images/work-cleaning.webp" type="image/webp" />
+            <img
+              src="assets/images/work-cleaning.png"
+              alt="Asutext cleaning team delivering professional service"
+              loading="lazy"
+              width="800"
+              height="600"
+            />
+          </picture>
           <div class="about-badge">
             <div class="about-badge-number">2023</div>
             <div class="about-badge-label">CAC Registered</div>
@@ -481,6 +499,93 @@
     </div>
   </section>
 
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!--  LEADERSHIP TEAM                                           -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="leadership" class="py-24 bg-brand-dark border-t border-white/5 relative overflow-hidden">
+    <!-- Decorative background elements -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-red/5 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-blue/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-20 reveal-up">
+        <p class="section-label mb-4 mx-auto text-brand-red">Leadership</p>
+        <h2 class="font-display text-3xl sm:text-4xl font-black text-white leading-tight">
+          Executive Board
+        </h2>
+        <div class="w-12 h-1 bg-brand-red mx-auto mt-6"></div>
+      </div>
+
+      <!-- Team Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        
+        <!-- Member 1: Jackson -->
+        <div class="bg-brand-mid rounded-2xl border border-white/5 p-8 flex flex-col items-center text-center hover:border-brand-red/35 transition-all duration-300 group shadow-lg hover:-translate-y-1 reveal-up">
+          <div class="w-40 h-40 mb-6 rounded-full overflow-hidden border-4 border-white/5 shadow-inner relative">
+            <img src="Images/team-jackson-iwara.jpeg" alt="Jackson Jackson Iwara" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" loading="lazy">
+          </div>
+          <h3 class="text-white text-xl font-bold mb-1 transition-colors group-hover:text-brand-red">Jackson Jackson Iwara</h3>
+          <p class="text-xs font-bold text-red-500 uppercase tracking-wider mb-6">Founder &amp; MD/CEO</p>
+          <div class="space-y-3 text-gray-400 text-sm leading-relaxed">
+            <p>
+              Jackson is the Founder and MD/CEO of ASUTEXT GROUP, leading a team of Directors, Secretary, and Staff across multiple industries.
+            </p>
+            <p>
+              With 10+ years of leadership experience in events, manufacturing, government, and insurance, he built the company on a foundation of resilience, integrity, and excellence.
+            </p>
+            <p class="text-gray-300 font-medium pt-4 border-t border-white/5">
+              His mission: to build ASUTEXT GROUP into a brand that delivers value, innovation, and impact without excuses.
+            </p>
+          </div>
+        </div>
+
+        <!-- Member 2: Maryann -->
+        <div class="bg-brand-mid rounded-2xl border border-white/5 p-8 flex flex-col items-center text-center hover:border-brand-blue/35 transition-all duration-300 group shadow-lg hover:-translate-y-1 reveal-up" style="transition-delay: 100ms;">
+          <div class="w-40 h-40 mb-6 rounded-full overflow-hidden border-4 border-white/5 shadow-inner relative">
+            <img src="Images/team-maryann-iwara.jpeg" alt="Maryann Jackson Iwara" class="w-full h-full object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-500" loading="lazy">
+          </div>
+          <h3 class="text-white text-xl font-bold mb-1 transition-colors group-hover:text-brand-blue">Maryann Jackson Iwara</h3>
+          <p class="text-xs font-bold text-blue-400 uppercase tracking-wider mb-6">Company Secretary</p>
+          <div class="space-y-3 text-gray-400 text-sm leading-relaxed">
+            <p>
+              Maryann is the Company Secretary of ASUTEXT GROUP, responsible for corporate governance, regulatory compliance, and board administration.
+            </p>
+            <p>
+              A skilled Fashion Designer by profession, she brings creativity, organization, and attention to detail to the company’s administrative and compliance functions.
+            </p>
+            <p class="text-gray-300 font-medium pt-4 border-t border-white/5">
+              Hailing from Biase, Cross River State, Maryann is committed to ensuring ASUTEXT GROUP operates with transparency, integrity, and in line with all statutory requirements.
+            </p>
+          </div>
+        </div>
+
+        <!-- Member 3: Wilcox -->
+        <div class="bg-brand-mid rounded-2xl border border-white/5 p-8 flex flex-col items-center text-center hover:border-brand-green/35 transition-all duration-300 group shadow-lg hover:-translate-y-1 reveal-up" style="transition-delay: 200ms;">
+          <div class="w-40 h-40 mb-6 rounded-full overflow-hidden border-4 border-white/5 shadow-inner relative">
+            <img src="Images/team-wilcox-wilson.jpeg" alt="Wilcox Okon Wilson" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy">
+          </div>
+          <h3 class="text-white text-xl font-bold mb-1 transition-colors group-hover:text-brand-green">Wilcox Okon Wilson</h3>
+          <p class="text-xs font-bold text-green-400 uppercase tracking-wider mb-6">Shareholder &amp; Director</p>
+          <div class="space-y-3 text-gray-400 text-sm leading-relaxed">
+            <p>
+              Wilcox Okon Wilson is a Shareholder and Director of ASUTEXT GROUP, holding a 25% stake in the company.
+            </p>
+            <p>
+              As a Trader by profession, he brings strong business acumen, strategic insight, and market experience to the board.
+            </p>
+            <p class="text-gray-300 font-medium pt-4 border-t border-white/5">
+              Hailing from Uruan, Akwa Ibom State, Wilcox is committed to supporting ASUTEXT GROUP’s growth, governance, and long-term value creation.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
 
   <!-- ═══════════════════════════════════════════════════════════ -->
   <!--  PORTFOLIO / GALLERY                                       -->
@@ -494,7 +599,7 @@
         <h2 class="font-display text-3xl sm:text-4xl font-black text-white">
           See What We Deliver
         </h2>
-        <p class="text-gray-400 mt-3 max-w-xl text-base leading-relaxed">
+        <p class="text-gray-300 mt-3 max-w-xl text-base leading-relaxed">
           Real projects. Real results. Click on any division below to view our gallery of works and learn more about our projects.
         </p>
       </div>
@@ -504,7 +609,10 @@
 
         <!-- Card 1: Cleaning & Fumigation -->
         <div class="portfolio-card" data-panel="cleaning">
-          <img src="assets/images/work-cleaning.png" alt="Asutext professional cleaning services in Lagos" />
+          <picture>
+            <source srcset="assets/images/work-cleaning.webp" type="image/webp" />
+            <img src="assets/images/work-cleaning.png" alt="Asutext professional cleaning services in Lagos" loading="lazy" />
+          </picture>
           <div class="portfolio-card-overlay"></div>
           <div class="portfolio-card-content">
             <span class="portfolio-card-tag" style="background:var(--brand-red);">Cleaning &amp; Pest</span>
@@ -520,7 +628,10 @@
 
         <!-- Card 2: Branding & Fashion -->
         <div class="portfolio-card" data-panel="branding">
-          <img src="assets/images/work-caps.png" alt="Asutext custom apparel, embroidery, and printing" />
+          <picture>
+            <source srcset="assets/images/work-caps.webp" type="image/webp" />
+            <img src="assets/images/work-caps.png" alt="Asutext custom apparel, embroidery, and printing" loading="lazy" />
+          </picture>
           <div class="portfolio-card-overlay"></div>
           <div class="portfolio-card-content">
             <span class="portfolio-card-tag" style="background:var(--brand-blue);">Branding &amp; Style</span>
@@ -536,7 +647,10 @@
 
         <!-- Card 3: Fast Food & Catering -->
         <div class="portfolio-card" data-panel="catering">
-          <img src="assets/images/work-restaurant.png" alt="Asutext Fresh Food catering and restaurant" />
+          <picture>
+            <source srcset="assets/images/work-restaurant.webp" type="image/webp" />
+            <img src="assets/images/work-restaurant.png" alt="Asutext Fresh Food catering and restaurant" loading="lazy" />
+          </picture>
           <div class="portfolio-card-overlay"></div>
           <div class="portfolio-card-content">
             <span class="portfolio-card-tag" style="background:var(--brand-green);">Fresh Food</span>
@@ -552,7 +666,10 @@
 
         <!-- Card 4: Transport & Logistics -->
         <div class="portfolio-card" data-panel="transport">
-          <img src="assets/images/work-transport.png" alt="Asutext transport fleet and logistics operations" />
+          <picture>
+            <source srcset="assets/images/work-transport.webp" type="image/webp" />
+            <img src="assets/images/work-transport.png" alt="Asutext transport fleet and logistics operations" loading="lazy" />
+          </picture>
           <div class="portfolio-card-overlay"></div>
           <div class="portfolio-card-content">
             <span class="portfolio-card-tag" style="background:#d97706;">Logistics</span>
@@ -591,33 +708,111 @@
           </div>
           <div class="portfolio-gallery-grid-uniform grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 mt-8">
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-22-06.jpg" alt="Asutext professional cleaning team cleaning a salon floor with scrubber machine" />
+              <img src="Images/cleaning-floor-polishing.jpg" alt="Asutext professional cleaning team cleaning a salon floor with scrubber machine" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Floor Polishing &amp; Cleaning</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-22-06(1).jpg" alt="Asutext staff dusting shelves and vacuuming salon" />
+              <img src="Images/cleaning-dusting-vacuuming.jpg" alt="Asutext staff dusting shelves and vacuuming salon" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Corporate Dusting &amp; Vacuuming</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-22-06(2).jpg" alt="Cleaning team polishing and wiping mirrors at commercial premises" />
+              <img src="Images/cleaning-detail-janitorial.jpg" alt="Cleaning team polishing and wiping mirrors at commercial premises" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Detail Cleaning &amp; Janitorial</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-22-07.jpg" alt="Fumigation specialist in full PPE spraying disinfectant mist in office" />
+              <img src="Images/cleaning-fumigation-pest-control.jpg" alt="Fumigation specialist in full PPE spraying disinfectant mist in office" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Office Fumigation &amp; Pest Control</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <video src="Images/VIDEO-2026-06-22-15-23-02.mp4" autoplay loop muted playsinline class="w-full h-full object-cover"></video>
+              <video src="Images/cleaning-outdoor-deck-video.mp4" autoplay loop muted playsinline preload="none" class="w-full h-full object-cover"></video>
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Outdoor Deck Cleaning (Video)</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/cleaning-deck-refurbishing.jpg" alt="Asutext team refurbishing and cleaning outdoor wooden deck" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Deck Refurbishing</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/cleaning-luxury-interior.jpg" alt="Thoroughly cleaned modern luxury house interior living room" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Luxury Interior Cleaning</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/cleaning-estate-exterior-1.jpg" alt="Cleaned modern residential building estate frontage and pavement" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Estate Frontage Cleaning</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/cleaning-janitorial-sink.jpg" alt="Spotless clean bathroom sink faucet and counter" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Janitorial Sink Detail</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/cleaning-estate-exterior-2.jpg" alt="Cleaned modern residential building estate walkway and yard" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Estate Walkway Cleaning</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/cleaning-highrise-windows.jpg" alt="Asutext professional window cleaning team washing glass facade of high-rise building" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">High-Rise Window Washing</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/cleaning-garden-landscaping.jpg" alt="Beautifully manicured garden lawn and landscaping" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Garden Landscaping</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/cleaning-garden-spraying.jpg" alt="Gardener spraying lawn and pathways" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Garden Maintenance</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/cleaning-disinfection-fogging.jpg" alt="Fumigator disinfecting commercial building exterior" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Disinfection Fogging</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/cleaning-office-mopping.jpg" alt="Janitorial staff mopping tiled office floor" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Office Floor Mopping</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/cleaning-fumigation-equipment-1.jpg" alt="Professional fumigation sprayer machine on pavement" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Fumigation Equipment 1</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/cleaning-yard-fumigation.jpg" alt="Fumigation staff spraying outdoor garden area" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Outdoor Yard Fumigation</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/cleaning-fumigation-equipment-2.jpg" alt="Fumigation disinfection equipment" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Fumigation Equipment 2</span>
               </div>
             </div>
           </div>
@@ -643,57 +838,153 @@
           </div>
           <div class="portfolio-gallery-masonry">
             <div class="portfolio-gallery-item">
-              <img src="Images/WhatsApp Image 2026-06-22 at 15.19.25.jpeg" alt="Asutext apparel snapback caps neatly stacked in boxes in warehouse" />
+              <img src="Images/branding-custom-caps.jpg" alt="Asutext apparel snapback caps neatly stacked in boxes in warehouse" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Custom Caps Production</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/WhatsApp Image 2026-06-22 at 15.19.26.jpeg" alt="ASUTEXT Apparel MFG box with custom branded snapback caps" />
+              <img src="Images/branding-merchandise-boxed.jpg" alt="ASUTEXT Apparel MFG box with custom branded snapback caps" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Quality Merchandise Boxed</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/WhatsApp Image 2026-06-22 at 15.18.59.jpeg" alt="Multiple designs of custom embroidered caps on table" />
+              <img src="Images/branding-embroidery-patch.jpg" alt="Multiple designs of custom embroidered caps on table" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Embroidery &amp; Patch Design</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/WhatsApp Image 2026-06-22 at 15.19.17.jpeg" alt="Asutext black cap packaged inside branded carton" />
+              <img src="Images/branding-box-packaging.jpg" alt="Asutext black cap packaged inside branded carton" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Premium Box Packaging</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-21-45.jpg" alt="Premium Pool Wear T-shirt with Asutext wolf logo next to swimming pool" />
+              <img src="Images/branding-pool-wear-tshirts.jpg" alt="Premium Pool Wear T-shirt with Asutext wolf logo next to swimming pool" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Branded Pool Wear T-Shirts</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-21-46(1).jpg" alt="Grey scarf with ASUTEXT wolf logo embroidery and brand tag" />
+              <img src="Images/branding-scarves-accessories.jpg" alt="Grey scarf with ASUTEXT wolf logo embroidery and brand tag" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Scarves &amp; Accessories</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-21-46.jpg" alt="Grey boxer briefs with embroidered logo and metallic plate label" />
+              <img src="Images/branding-bespoke-underwear.jpg" alt="Grey boxer briefs with embroidered logo and metallic plate label" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Bespoke Underwear &amp; Apparel</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-21-48.jpg" alt="Silver sneakers with embossed wolf logo and custom soles" />
+              <img src="Images/branding-sneakers-footwear.jpg" alt="Silver sneakers with embossed wolf logo and custom soles" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Sneakers &amp; Footwear</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-21-47.jpg" alt="Silver necklace pendant with the ASUTEXT wolf emblem" />
+              <img src="Images/branding-jewelry-badges.jpg" alt="Silver necklace pendant with the ASUTEXT wolf emblem" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Custom Jewelry &amp; Badges</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/branding-cap-j5-red.jpg" alt="Signature Jackson 5 snapback cap in red/white with custom embroidery" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Jackson 5 Red Cap</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/branding-tshirt-green-back.jpg" alt="Custom green T-shirt showing back print detailing logo" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">The Wolf Within Green Tee</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/branding-tshirt-blue-flat.jpg" alt="Custom blue crewneck T-shirt with graphic print" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Custom Blue Tee Flat</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/branding-tshirt-black-flat.jpg" alt="Custom black crewneck T-shirt with graphic print" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Custom Black Tee Flat</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/branding-tshirt-grey-flat.jpg" alt="Custom grey crewneck T-shirt with graphic print" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Custom Grey Tee Flat</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/branding-wolf-pendant-necklace.jpg" alt="Close-up of a silver wolf pendant necklace on display" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Wolf Pendant Necklace</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/branding-wolf-badge-silver.jpg" alt="Silver wolf badge engraving detail" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Wolf Silver Badge</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/branding-cap-j5-blue-white.jpg" alt="Signature Jackson 5 snapback cap in blue/white with embroidery" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Jackson 5 Blue/White Cap</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/branding-caps-boxed-black.jpg" alt="Neatly packaged black caps inside Asutext boxes" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Boxed Black Caps</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/branding-cap-black-side.jpg" alt="Side profile of a premium black snapback cap with embroidery details" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Black Cap Side View</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/branding-caps-boxed-j5.jpg" alt="Neatly packaged Jackson 5 snapbacks inside boxes" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Boxed Jackson 5 Caps</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/branding-cap-box-open.jpg" alt="Open Asutext apparel carton containing branded caps" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Branded Cap Packaging Open</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/branding-caps-stack-packaged.jpg" alt="Stack of packaged snapbacks inside boxes" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Packaged Caps Stack</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/branding-tshirt-bibleless.jpg" alt="Blue sports T-shirt printed for Run for the Bibleless event" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Bibleless Run Sportswear</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/branding-tshirt-asutext-white.jpg" alt="Custom white crewneck T-shirt with logo print" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Asutext White Tee</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/branding-tshirts-mockup.jpg" alt="Mockup of custom printed T-shirts" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Branded Tees Mockup</span>
               </div>
             </div>
           </div>
@@ -719,39 +1010,45 @@
           </div>
           <div class="portfolio-gallery-masonry">
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-23-07.jpg" alt="Asutext Fresh Food modern restaurant building exterior" />
+              <img src="Images/catering-restaurant-frontage.jpg" alt="Asutext Fresh Food modern restaurant building exterior" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Restaurant Frontage</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-23-06.jpg" alt="Asutext Fresh Food restaurant interior with dining customers and servers" />
+              <img src="Images/catering-interior-dining.jpg" alt="Asutext Fresh Food restaurant interior with dining customers and servers" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Interior Dining Area</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-23-05.jpg" alt="Asutext logo on compartmentalized plastic lunch tray" />
+              <img src="Images/catering-food-packaging.jpg" alt="Asutext logo on compartmentalized plastic lunch tray" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Food Packaging &amp; Trays</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-23-07(1).jpg" alt="Delicious catering buffet and food dishes" />
+              <img src="Images/catering-event-food.jpg" alt="Delicious catering buffet and food dishes" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Event Food Catering</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-23-07(2).jpg" alt="Freshly baked pastries and snacks prepared by catering team" />
+              <img src="Images/catering-small-chops.jpg" alt="Freshly baked pastries and snacks prepared by catering team" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Gourmet Small Chops &amp; Snacks</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-23-07(3).jpg" alt="Plated Nigerian gourmet meal service" />
+              <img src="Images/catering-premium-plating.jpg" alt="Plated Nigerian gourmet meal service" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Premium Dish Plating</span>
+              </div>
+            </div>
+            <div class="portfolio-gallery-item">
+              <img src="Images/catering-restaurant-interior.jpg" alt="Asutext restaurant dining area interior with clients and servers" loading="lazy" />
+              <div class="portfolio-gallery-overlay">
+                <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Restaurant Dining Interior</span>
               </div>
             </div>
           </div>
@@ -777,25 +1074,25 @@
           </div>
           <div class="portfolio-gallery-grid-uniform grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-21-50.jpg" alt="Collage of Asutext Transportation including commercial buses, cargo container ship, airplanes, and vehicles" />
+              <img src="Images/transport-multimodal-logistics.jpg" alt="Collage of Asutext Transportation including commercial buses, cargo container ship, airplanes, and vehicles" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Multi-Modal Logistics</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-21-50(1).jpg" alt="Asutext Transportation services with buses, airplanes, shipping containers" />
+              <img src="Images/transport-freight-cargo.jpg" alt="Asutext Transportation services with buses, airplanes, shipping containers" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Freight &amp; Cargo Shipping</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-21-51.jpg" alt="Illustration of a modern Asutext Transport terminal hub with buses and passengers" />
+              <img src="Images/transport-transit-hubs.jpg" alt="Illustration of a modern Asutext Transport terminal hub with buses and passengers" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Interstate Transit Hubs</span>
               </div>
             </div>
             <div class="portfolio-gallery-item">
-              <img src="Images/PHOTO-2026-06-22-15-21-50(2).jpg" alt="Asutext transport passenger ticketing queue and bus park logistics" />
+              <img src="Images/transport-fleet-dispatch.jpg" alt="Asutext transport passenger ticketing queue and bus park logistics" loading="lazy" />
               <div class="portfolio-gallery-overlay">
                 <span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Fleet Dispatch &amp; Management</span>
               </div>
@@ -820,7 +1117,7 @@
 
       <!-- General CTA under gallery -->
       <div class="mt-16 text-center reveal">
-        <p class="text-gray-400 mb-5 text-sm">Have a unique project in mind? We're ready to make it happen.</p>
+        <p class="text-gray-300 mb-5 text-sm">Have a unique project in mind? We're ready to make it happen.</p>
         <a
           href="https://wa.me/2349037666399?text=Hi%2C%20I%20visited%20your%20website%20and%20I%27d%20like%20to%20discuss%20a%20project."
           target="_blank"
@@ -838,10 +1135,171 @@
 
     </div>
   </section>
-
-
+      <!-- ═══════════════════════════════════════════════════════════ -->
+  <!--  VIDEO GALLERY                                             -->
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <!--  SERVICE AREAS                                             -->
+  <section id="videos" class="py-24 bg-brand-dark border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
+        <h2 class="font-display text-3xl sm:text-4xl font-black text-white leading-tight mb-4">
+          See Us In Action
+        </h2>
+        <div class="w-16 h-1 bg-brand-red mx-auto mb-6"></div>
+        <p class="text-gray-300 text-base">
+          Watch short clips of our services and projects across different industries.
+        </p>
+      </div>
+
+      <!-- Video Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 reveal-up delay-100">
+        <!-- Video 1 -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-800 relative group aspect-[9/16] cursor-pointer video-card">
+          <video class="w-full h-full object-cover bg-gray-900" preload="metadata" muted playsinline loop>
+            <source src="Images/videos/service-video-1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!-- Custom Play Button Overlay -->
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors duration-300 play-overlay">
+            <div class="w-14 h-14 rounded-full bg-brand-red flex items-center justify-center text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <!-- Video 2 -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-800 relative group aspect-[9/16] cursor-pointer video-card">
+          <video class="w-full h-full object-cover bg-gray-900" preload="metadata" muted playsinline loop>
+            <source src="Images/videos/service-video-2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!-- Custom Play Button Overlay -->
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors duration-300 play-overlay">
+            <div class="w-14 h-14 rounded-full bg-brand-red flex items-center justify-center text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <!-- Video 3 -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-800 relative group aspect-[9/16] cursor-pointer video-card">
+          <video class="w-full h-full object-cover bg-gray-900" preload="metadata" muted playsinline loop>
+            <source src="Images/videos/service-video-3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!-- Custom Play Button Overlay -->
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors duration-300 play-overlay">
+            <div class="w-14 h-14 rounded-full bg-brand-red flex items-center justify-center text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <!-- Video 4 -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-800 relative group aspect-[9/16] cursor-pointer video-card">
+          <video class="w-full h-full object-cover bg-gray-900" preload="metadata" muted playsinline loop>
+            <source src="Images/videos/service-video-4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!-- Custom Play Button Overlay -->
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors duration-300 play-overlay">
+            <div class="w-14 h-14 rounded-full bg-brand-red flex items-center justify-center text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <!-- Video 5 -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-800 relative group aspect-[9/16] cursor-pointer video-card">
+          <video class="w-full h-full object-cover bg-gray-900" preload="metadata" muted playsinline loop>
+            <source src="Images/videos/service-video-5.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!-- Custom Play Button Overlay -->
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors duration-300 play-overlay">
+            <div class="w-14 h-14 rounded-full bg-brand-red flex items-center justify-center text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <!-- Video 6 -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-800 relative group aspect-[9/16] cursor-pointer video-card">
+          <video class="w-full h-full object-cover bg-gray-900" preload="metadata" muted playsinline loop>
+            <source src="Images/videos/service-video-6.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!-- Custom Play Button Overlay -->
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors duration-300 play-overlay">
+            <div class="w-14 h-14 rounded-full bg-brand-red flex items-center justify-center text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <!-- Video 7 -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-800 relative group aspect-[9/16] cursor-pointer video-card">
+          <video class="w-full h-full object-cover bg-gray-900" preload="metadata" muted playsinline loop>
+            <source src="Images/videos/service-video-7.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!-- Custom Play Button Overlay -->
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors duration-300 play-overlay">
+            <div class="w-14 h-14 rounded-full bg-brand-red flex items-center justify-center text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <!-- Video 8 -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-800 relative group aspect-[9/16] cursor-pointer video-card">
+          <video class="w-full h-full object-cover bg-gray-900" preload="metadata" muted playsinline loop>
+            <source src="Images/videos/service-video-8.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!-- Custom Play Button Overlay -->
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors duration-300 play-overlay">
+            <div class="w-14 h-14 rounded-full bg-brand-red flex items-center justify-center text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <!-- Video 9 -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-800 relative group aspect-[9/16] cursor-pointer video-card">
+          <video class="w-full h-full object-cover bg-gray-900" preload="metadata" muted playsinline loop>
+            <source src="Images/videos/service-video-9.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!-- Custom Play Button Overlay -->
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors duration-300 play-overlay">
+            <div class="w-14 h-14 rounded-full bg-brand-red flex items-center justify-center text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <!-- Video 10 -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-800 relative group aspect-[9/16] cursor-pointer video-card">
+          <video class="w-full h-full object-cover bg-gray-900" preload="metadata" muted playsinline loop>
+            <source src="Images/videos/service-video-10.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!-- Custom Play Button Overlay -->
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors duration-300 play-overlay">
+            <div class="w-14 h-14 rounded-full bg-brand-red flex items-center justify-center text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <!-- Video 11 -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-800 relative group aspect-[9/16] cursor-pointer video-card">
+          <video class="w-full h-full object-cover bg-gray-900" preload="metadata" muted playsinline loop>
+            <source src="Images/videos/service-video-11.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!-- Custom Play Button Overlay -->
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors duration-300 play-overlay">
+            <div class="w-14 h-14 rounded-full bg-brand-red flex items-center justify-center text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- ═══════════════════════════════════════════════════════════ -->
   <section id="areas" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -928,33 +1386,7 @@
   </section>
 
 
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!--  CTA BAND                                                  -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <section class="cta-band py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-      <p class="section-label mb-4 justify-center" style="color:rgba(255,255,255,0.7);">Ready to Get Started?</p>
-      <h2 class="font-display text-3xl sm:text-4xl font-black text-white mb-5 leading-tight">
-        Need a Cleaning, Laundry, or Fumigation Service in Lagos?
-      </h2>
-      <p class="text-white/75 text-base mb-8 max-w-2xl mx-auto">
-        Most of our clients in Lagos prefer to get started via WhatsApp. It's fast, simple, and we respond within a few hours.
-      </p>
-      <a
-        href="https://wa.me/2349037666399?text=Hi%2C%20I%20visited%20your%20website%20and%20I%27d%20like%20to%20enquire%20about%20your%20services."
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn-whatsapp text-base"
-        id="cta-wa-btn"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.843L.057 23.569a.75.75 0 0 0 .974.906l5.878-1.938A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.726 9.726 0 0 1-4.951-1.354l-.355-.212-3.686 1.215 1.165-3.585-.231-.368A9.715 9.715 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/>
-        </svg>
-        Chat with Us on WhatsApp
-      </a>
-    </div>
-  </section>
+
 
 
   <!-- ═══════════════════════════════════════════════════════════ -->
@@ -1163,7 +1595,7 @@
           <h2 class="font-display text-3xl sm:text-4xl font-black text-white mb-4 leading-tight">
             Ready to Work<br/>With Us?
           </h2>
-          <p class="text-gray-400 mb-8 max-w-md leading-relaxed text-base">
+          <p class="text-gray-300 mb-8 max-w-md leading-relaxed text-base">
             Whether you need a one-off service or a long-term partnership, we are ready to help.
             Reach out on WhatsApp for the fastest response. Most enquiries answered within hours.
           </p>
@@ -1278,13 +1710,13 @@
           <div class="bg-white/5 border border-white/08 rounded-2xl p-5" style="border-color:rgba(255,255,255,0.08);">
             <p class="nap-label mb-4">Quick Enquiry Links</p>
             <div class="grid grid-cols-2 gap-2">
-              <a href="https://wa.me/2349037666399?text=Hi%2C%20I%27m%20interested%20in%20Cleaning%20Services." target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-red text-sm font-medium transition-colors py-1">→ Cleaning</a>
+              <a href="https://wa.me/2349037666399?text=Hi%2C%20I%27m%20interested%20in%20Cleaning%20Services." target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-brand-red text-sm font-medium transition-colors py-1">→ Cleaning</a>
               <a href="https://wa.me/2349037666399?text=Hi%2C%20I%27m%20interested%20in%20Fumigation." target="_blank" rel="noopener noreferrer" class="text-sm font-medium transition-colors py-1" style="color:#6fa8dc;">→ Fumigation</a>
-              <a href="https://wa.me/2349037666399?text=Hi%2C%20I%27m%20interested%20in%20Laundry." target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-red text-sm font-medium transition-colors py-1">→ Laundry</a>
+              <a href="https://wa.me/2349037666399?text=Hi%2C%20I%27m%20interested%20in%20Laundry." target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-brand-red text-sm font-medium transition-colors py-1">→ Laundry</a>
               <a href="https://wa.me/2349037666399?text=Hi%2C%20I%27m%20interested%20in%20Gardening." target="_blank" rel="noopener noreferrer" class="text-sm font-medium transition-colors py-1" style="color:#6fa8dc;">→ Gardening</a>
-              <a href="https://wa.me/2349037666399?text=Hi%2C%20I%27m%20interested%20in%20Transport." target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-red text-sm font-medium transition-colors py-1">→ Transport</a>
+              <a href="https://wa.me/2349037666399?text=Hi%2C%20I%27m%20interested%20in%20Transport." target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-brand-red text-sm font-medium transition-colors py-1">→ Transport</a>
               <a href="https://wa.me/2349037666399?text=Hi%2C%20I%27m%20interested%20in%20Catering." target="_blank" rel="noopener noreferrer" class="text-sm font-medium transition-colors py-1" style="color:#6fa8dc;">→ Catering</a>
-              <a href="https://wa.me/2349037666399?text=Hi%2C%20I%27m%20interested%20in%20Branding." target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-red text-sm font-medium transition-colors py-1">→ Branding</a>
+              <a href="https://wa.me/2349037666399?text=Hi%2C%20I%27m%20interested%20in%20Branding." target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-brand-red text-sm font-medium transition-colors py-1">→ Branding</a>
               <a href="https://wa.me/2349037666399?text=Hi%2C%20I%27m%20interested%20in%20Fashion%20Design." target="_blank" rel="noopener noreferrer" class="text-sm font-medium transition-colors py-1" style="color:#6fa8dc;">→ Fashion</a>
             </div>
           </div>
@@ -1295,6 +1727,23 @@
       <!-- Footer bottom bar -->
       <div class="footer-bottom mt-16">
         <p class="footer-copy">© 2026 Asutext Group Nigeria Limited. All rights reserved.</p>
+
+        <!-- Signature Divider -->
+        <div class="flex items-center justify-center gap-3">
+            <span class="w-8 h-px bg-slate-700"></span>
+            <span class="text-xs uppercase tracking-widest text-slate-500">
+                Crafted with precision
+            </span>
+            <span class="w-8 h-px bg-slate-700"></span>
+        </div>
+
+        <!-- ImpactDev Signature -->
+        <p class="text-xs text-slate-500 tracking-wide">
+            Website by
+            <span class="font-serif text-slate-300 tracking-normal ml-1">
+                ImpactDev
+            </span>
+        </p>
       </div>
 
     </div>

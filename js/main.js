@@ -272,3 +272,24 @@ if (scrollTopBtn) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
+
+// ─── Video Gallery Lazy Player ───────────────────────────────
+document.querySelectorAll('.video-card').forEach(card => {
+  const video = card.querySelector('video');
+  const overlay = card.querySelector('.play-overlay');
+
+  if (video && overlay) {
+    card.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (video.paused) {
+        video.setAttribute('controls', 'true');
+        video.play();
+        overlay.classList.add('hidden');
+      } else {
+        video.pause();
+        video.removeAttribute('controls');
+        overlay.classList.remove('hidden');
+      }
+    });
+  }
+});
