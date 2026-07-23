@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+
+@source "../views/**/*.blade.php";
+@source "../views";
+@source "../js/**/*.js";
+
+@theme {
+  --color-brand-red: #CC0000;
+  --color-brand-red-dk: #a80000;
+  --color-brand-blue: #003580;
+  --color-brand-blue-dk: #002a66;
+  --color-brand-green: #1A6B2F;
+  --color-brand-dark: #0D0D0D;
+  --color-brand-mid: #1A1A1A;
+  --color-brand-light: #F6F6F6;
+  --color-brand-white: #FFFFFF;
+  --color-wa-green: #25D366;
+  --color-wa-green-dk: #1da851;
+
+  --font-display: 'Montserrat', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+@import "./style.css";
+
+
