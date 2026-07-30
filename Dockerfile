@@ -16,7 +16,7 @@ RUN apk add --no-cache \
     npm
 
 # Install PHP extensions required by Laravel & Filament
-RUN docker-php-ext-install pdo_sqlite mbstring zip gd intl opcache
+RUN docker-php-ext-install pdo_sqlite mbstring zip gd intl bcmath exif opcache
 
 # Install Composer globally
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -26,8 +26,12 @@ WORKDIR /var/www/html
 # Copy repository source files
 COPY . .
 
-# Install PHP production dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# Create database directory and sqlite file prior to composer build
+RUN mkdir -p database storage/framework/views storage/framework/sessions storage/framework/cache && \
+    touch database/database.sqlite
+
+# Install PHP production dependencies without running artisan scripts during build
+RUN composer install --no-dev --no-scripts --optimize-autoloader --no-interaction
 
 # Install NPM dependencies & build frontend assets
 RUN npm ci && npm run build
