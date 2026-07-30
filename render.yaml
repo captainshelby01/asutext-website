@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: asutext-website
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_KEY
+        value: base64:DLrWsIbtHkkFF8bY4mncwGdv/teuCivQweskcLMkmlU=
+      - key: DB_CONNECTION
+        value: sqlite
