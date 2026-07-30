@@ -19,7 +19,7 @@
   <meta property="og:title" content="@yield('title', $globalSettings['seo_title'] ?? 'Asutext Group Nigeria Limited')" />
   <meta property="og:description" content="@yield('meta_description', $globalSettings['seo_description'] ?? 'Professional services across Lagos and Nigeria.')" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="{{ asset('Images/logo.jpeg') }}" />
+  <meta property="og:image" content="{{ asset('Images/logo-transparent.png') }}" />
   <meta property="og:locale" content="en_NG" />
 
   <!-- ═══ FONTS ═══ -->
@@ -33,7 +33,7 @@
     "@@context": "https://schema.org",
     "@@type": "LocalBusiness",
     "name": "Asutext Group Nigeria Limited",
-    "image": "{{ asset('Images/logo.jpeg') }}",
+    "image": "{{ asset('Images/logo-transparent.png') }}",
     "@@id": "{{ route('home') }}",
     "url": "{{ route('home') }}",
     "telephone": "{{ $globalSettings['phone'] ?? '+234 903 766 6399' }}",
@@ -91,9 +91,9 @@
         <!-- Logo -->
         <a href="{{ route('home') }}" class="flex items-center flex-shrink-0" aria-label="Asutext Group Nigeria Limited - Home">
           <img
-            src="/Images/logo.jpeg"
+            src="/Images/logo-transparent.png"
             alt="Asutext Group Nigeria Limited Logo"
-            class="h-12 w-auto object-contain mix-blend-multiply"
+            class="h-13 sm:h-16 w-auto object-contain transition-all duration-300 hover:scale-105 filter drop-shadow-sm"
           />
         </a>
 
@@ -263,7 +263,7 @@
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
               </svg>
             </a>
-            <a href="{{ $globalSettings['youtube_url'] ?? 'https://www.youtube.com/@asutext' }}" target="_blank" rel="noopener noreferrer" aria-label="Asutext on YouTube" class="social-link">
+            <a href="{{ $globalSettings['youtube_url'] ?? 'https://www.youtube.com/@@asutext' }}" target="_blank" rel="noopener noreferrer" aria-label="Asutext on YouTube" class="social-link">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
               </svg>
