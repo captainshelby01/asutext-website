@@ -10,6 +10,7 @@ Route::get('/services', [PageController::class, 'services'])->name('services');
 Route::get('/portfolio', [PageController::class, 'portfolio'])->name('portfolio');
 Route::get('/team', [PageController::class, 'team'])->name('team');
 Route::get('/coverage', [PageController::class, 'coverage'])->name('coverage');
+Route::get('/products', [PageController::class, 'products'])->name('products');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::post('/contact/inquiry', [InquiryController::class, 'store'])->name('inquiry.store');
 

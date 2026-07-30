@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Us - Get a Free Quote | Asutext Group Nigeria Limited')
+@section('title', 'Contact Us & Coverage Areas | Asutext Group Nigeria Limited')
 
 @section('content')
   <!-- ═══════════════════════════════════════════════════════════ -->
@@ -8,12 +8,12 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
   <section class="py-20 bg-brand-dark text-white relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <p class="section-label section-label--red mb-3">Support</p>
+      <p class="section-label section-label--red mb-3">Support & Reach</p>
       <h1 class="font-display text-4xl sm:text-5xl font-black leading-tight">
-        Contact Our Offices
+        Contact & Service Coverage
       </h1>
       <p class="text-gray-300 mt-4 max-w-xl text-base leading-relaxed">
-        Get in touch with us today. For the fastest response, send us an enquiry directly on WhatsApp.
+        Get in touch with us today, send an instant WhatsApp enquiry, or explore our operational locations across Nigeria.
       </p>
     </div>
     <div class="absolute inset-0 bg-gradient-to-r from-brand-dark to-black opacity-90 z-0"></div>
@@ -146,6 +146,92 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!--  SERVICE COVERAGE AREAS                                    -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="coverage" class="py-16 sm:py-24 bg-slate-50 border-t border-slate-200/60 scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <p class="section-label section-label--red mb-3">Reach & Operations</p>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-brand-dark leading-tight">
+          Service Coverage Areas
+        </h2>
+        <p class="text-gray-600 mt-4 text-base sm:text-lg leading-relaxed">
+          Based in Lagos and Calabar, we operate across major municipal areas and provide logistics services nationwide.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 max-w-6xl mx-auto">
+
+        <div class="area-card bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-start gap-4 transition-all duration-300 hover:shadow-md">
+          <div class="area-pin text-2xl flex-shrink-0">📍</div>
+          <div>
+            <p class="area-name font-display font-bold text-brand-dark text-lg mb-1">Banana Island &amp; Ikoyi</p>
+            <p class="area-desc text-gray-500 text-sm leading-relaxed">Premium residential estates &amp; corporate offices, Lagos</p>
+          </div>
+        </div>
+
+        <div class="area-card bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-start gap-4 transition-all duration-300 hover:shadow-md">
+          <div class="area-pin text-2xl flex-shrink-0">📍</div>
+          <div>
+            <p class="area-name font-display font-bold text-brand-dark text-lg mb-1">Lagos Island &amp; Victoria Island</p>
+            <p class="area-desc text-gray-500 text-sm leading-relaxed">CBD, Marina, commercial &amp; hospitality zones, Lagos</p>
+          </div>
+        </div>
+
+        <div class="area-card bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-start gap-4 transition-all duration-300 hover:shadow-md">
+          <div class="area-pin text-2xl flex-shrink-0">📍</div>
+          <div>
+            <p class="area-name font-display font-bold text-brand-dark text-lg mb-1">Lagos Mainland &amp; Surulere</p>
+            <p class="area-desc text-gray-500 text-sm leading-relaxed">Residential, industrial &amp; business districts, Lagos</p>
+          </div>
+        </div>
+
+        <div class="area-card bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-start gap-4 transition-all duration-300 hover:shadow-md">
+          <div class="area-pin text-2xl flex-shrink-0">📍</div>
+          <div>
+            <p class="area-name font-display font-bold text-brand-dark text-lg mb-1">Lekki &amp; Ajah</p>
+            <p class="area-desc text-gray-500 text-sm leading-relaxed">Growing residential &amp; commercial corridors, Lagos</p>
+          </div>
+        </div>
+
+        <div class="area-card bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-start gap-4 transition-all duration-300 hover:shadow-md">
+          <div class="area-pin text-2xl flex-shrink-0">📍</div>
+          <div>
+            <p class="area-name font-display font-bold text-brand-dark text-lg mb-1">Calabar, Cross-River State</p>
+            <p class="area-desc text-gray-500 text-sm leading-relaxed">Home operational base, full service coverage</p>
+          </div>
+        </div>
+
+        <div class="area-card bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-start gap-4 transition-all duration-300 hover:shadow-md">
+          <div class="area-pin text-2xl flex-shrink-0">🌍</div>
+          <div>
+            <p class="area-name font-display font-bold text-brand-dark text-lg mb-1">Nationwide Nigeria</p>
+            <p class="area-desc text-gray-500 text-sm leading-relaxed">Transport, haulage, logistics &amp; specialist branding projects delivered nationally</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Out-of-area Banner -->
+      <div class="mt-12 p-8 rounded-2xl bg-white border border-gray-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6 max-w-6xl mx-auto">
+        <div>
+          <h3 class="font-display font-bold text-brand-dark text-lg sm:text-xl">Not in the list above?</h3>
+          <p class="text-gray-500 text-sm mt-1">We serve clients nationwide. For transport and logistics we reach all 36 states.</p>
+        </div>
+        <a
+          href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%27d%20like%20to%20know%20if%20you%20cover%20my%20area."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary flex-shrink-0"
+        >Check Your Area</a>
+      </div>
+
     </div>
   </section>
 

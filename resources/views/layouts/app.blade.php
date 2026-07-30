@@ -101,10 +101,9 @@
         <nav class="hidden lg:flex items-center gap-8" aria-label="Main navigation">
           <a href="{{ route('home') }}"      class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
           <a href="{{ route('services') }}"  class="nav-link {{ request()->routeIs('services') ? 'active' : '' }}">Services</a>
+          <a href="{{ route('products') }}"  class="nav-link {{ request()->routeIs('products') ? 'active' : '' }}">Products</a>
           <a href="{{ route('about') }}"     class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}">About Us</a>
-          <a href="{{ route('team') }}"      class="nav-link {{ request()->routeIs('team') ? 'active' : '' }}">Team</a>
           <a href="{{ route('portfolio') }}" class="nav-link {{ request()->routeIs('portfolio') ? 'active' : '' }}">Gallery</a>
-          <a href="{{ route('coverage') }}"  class="nav-link {{ request()->routeIs('coverage') ? 'active' : '' }}">Coverage</a>
           <a href="{{ route('contact') }}"   class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
         </nav>
 
@@ -144,10 +143,9 @@
       <div class="border-t border-gray-100 bg-white px-5 py-5 flex flex-col gap-3">
         <a href="{{ route('home') }}"      class="nav-link text-brand-dark py-1.5 text-base {{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
         <a href="{{ route('services') }}"  class="nav-link text-brand-dark py-1.5 text-base {{ request()->routeIs('services') ? 'active' : '' }}">Services</a>
+        <a href="{{ route('products') }}"  class="nav-link text-brand-dark py-1.5 text-base {{ request()->routeIs('products') ? 'active' : '' }}">Products</a>
         <a href="{{ route('about') }}"     class="nav-link text-brand-dark py-1.5 text-base {{ request()->routeIs('about') ? 'active' : '' }}">About Us</a>
-        <a href="{{ route('team') }}"      class="nav-link text-brand-dark py-1.5 text-base {{ request()->routeIs('team') ? 'active' : '' }}">Team</a>
         <a href="{{ route('portfolio') }}" class="nav-link text-brand-dark py-1.5 text-base {{ request()->routeIs('portfolio') ? 'active' : '' }}">Gallery</a>
-        <a href="{{ route('coverage') }}"  class="nav-link text-brand-dark py-1.5 text-base {{ request()->routeIs('coverage') ? 'active' : '' }}">Coverage</a>
         <a href="{{ route('contact') }}"   class="nav-link text-brand-dark py-1.5 text-base {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
         <a
           href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20visited%20your%20website%20and%20I%27d%20like%20to%20enquire%20about%20your%20services."
@@ -300,10 +298,11 @@
             <p class="nap-label mb-4">Quick Service Links</p>
             <div class="grid grid-cols-2 gap-2">
               <a href="{{ route('services') }}" class="footer-link footer-link-red">→ Services Overview</a>
-              <a href="{{ route('portfolio') }}" class="footer-link footer-link-blue">→ Work Gallery</a>
+              <a href="{{ route('products') }}" class="footer-link footer-link-blue">→ Products Catalogue</a>
+              <a href="{{ route('portfolio') }}" class="footer-link footer-link-red">→ Work Gallery</a>
               <a href="{{ route('about') }}" class="footer-link footer-link-red">→ About Company</a>
-              <a href="{{ route('team') }}" class="footer-link footer-link-blue">→ Leadership Team</a>
-              <a href="{{ route('coverage') }}" class="footer-link footer-link-red">→ Coverage Areas</a>
+              <a href="{{ route('about') }}#team" class="footer-link footer-link-blue">→ Leadership Team</a>
+              <a href="{{ route('contact') }}#coverage" class="footer-link footer-link-red">→ Coverage Areas</a>
               <a href="{{ route('contact') }}" class="footer-link footer-link-blue">→ Contact Support</a>
             </div>
           </div>

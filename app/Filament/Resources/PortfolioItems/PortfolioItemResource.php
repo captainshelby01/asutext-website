@@ -24,6 +24,12 @@ class PortfolioItemResource extends Resource
 
     protected static ?int $navigationSort = 2;
 
+    protected static ?string $navigationLabel = 'Work Gallery';
+
+    protected static ?string $modelLabel = 'Gallery Item';
+
+    protected static ?string $pluralModelLabel = 'Gallery Items';
+
     protected static ?string $recordTitleAttribute = 'title';
 
     public static function form(Schema $schema): Schema

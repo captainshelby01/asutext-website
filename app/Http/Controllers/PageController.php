@@ -6,6 +6,7 @@ use App\Models\Service;
 use App\Models\PortfolioItem;
 use App\Models\TeamMember;
 use App\Models\Testimonial;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -23,7 +24,8 @@ class PageController extends Controller
 
     public function about()
     {
-        return view('pages.about');
+        $teamMembers = TeamMember::orderBy('sort_order')->get();
+        return view('pages.about', compact('teamMembers'));
     }
 
     public function services()
@@ -41,17 +43,48 @@ class PageController extends Controller
 
     public function team()
     {
-        $teamMembers = TeamMember::orderBy('sort_order')->get();
-        return view('pages.team', compact('teamMembers'));
+        return redirect()->to(route('about') . '#team');
     }
 
     public function coverage()
     {
-        return view('pages.coverage');
+        return redirect()->to(route('contact') . '#coverage');
     }
 
     public function contact()
     {
         return view('pages.contact');
+    }
+
+    public function products(Request $request)
+    {
+        $selectedCategory = $request->query('category');
+        
+        $preferredOrder = [
+            'Branding & Printing',
+            'Mobile Accessories & Gadgets',
+            'Fashion & Bespoke Wear',
+            'Fast Food & Catering',
+        ];
+
+        $existingCategories = Product::where('is_active', true)
+            ->pluck('category')
+            ->unique()
+            ->toArray();
+
+        $categories = array_values(array_unique(array_merge(
+            array_intersect($preferredOrder, $existingCategories),
+            array_diff($existingCategories, $preferredOrder)
+        )));
+
+        $query = Product::where('is_active', true)->orderBy('sort_order', 'asc');
+
+        if ($selectedCategory) {
+            $query->where('category', $selectedCategory);
+        }
+
+        $products = $query->get();
+
+        return view('pages.products', compact('products', 'categories', 'selectedCategory'));
     }
 }
