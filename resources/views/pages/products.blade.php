@@ -86,7 +86,7 @@
               <div>
                 <div class="relative h-64 sm:h-72 overflow-hidden bg-gray-900">
                   <img 
-                    src="{{ asset('storage/' . $product->image_path) }}" 
+                    src="{{ $product->image_url }}" 
                     alt="{{ $product->name }}" 
                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />

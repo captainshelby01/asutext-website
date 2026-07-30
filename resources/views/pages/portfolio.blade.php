@@ -40,11 +40,11 @@
       <!-- Works Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
         @forelse($portfolioItems as $item)
-          <div class="portfolio-card portfolio-item-element" data-category="service-{{ $item->service_id }}" data-src="{{ asset('storage/' . $item->media_path) }}" data-type="{{ $item->media_type }}">
+          <div class="portfolio-card portfolio-item-element" data-category="service-{{ $item->service_id }}" data-src="{{ $item->media_url }}" data-type="{{ $item->media_type }}">
             @if($item->media_type === 'image')
-              <img src="{{ asset('storage/' . $item->media_path) }}" alt="{{ $item->title }}" loading="lazy" />
+              <img src="{{ $item->media_url }}" alt="{{ $item->title }}" loading="lazy" />
             @else
-              <video src="{{ asset('storage/' . $item->media_path) }}" muted preload="metadata" class="w-full h-full object-cover opacity-60"></video>
+              <video src="{{ $item->media_url }}" muted preload="metadata" class="w-full h-full object-cover opacity-60"></video>
             @endif
             <div class="portfolio-card-overlay"></div>
             <div class="portfolio-card-content">

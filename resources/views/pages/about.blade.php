@@ -125,7 +125,7 @@
             <!-- Uniform Height Portrait Container -->
             <div class="relative h-72 sm:h-80 w-full overflow-hidden bg-black flex-shrink-0 flex items-center justify-center">
               <img 
-                src="{{ asset('storage/' . $member->image_path) }}" 
+                src="{{ $member->image_url }}" 
                 alt="{{ $member->name }}" 
                 class="w-full h-full object-cover {{ $objectPos }} transition-transform duration-500 group-hover:scale-105" 
               />

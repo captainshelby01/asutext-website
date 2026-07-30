@@ -25,4 +25,21 @@ class Product extends Model
         'is_featured' => 'boolean',
         'is_active' => 'boolean',
     ];
+
+    public function getImageUrlAttribute(): string
+    {
+        if (empty($this->image_path)) {
+            return asset('Images/logo.jpeg');
+        }
+
+        if (file_exists(public_path('storage/' . $this->image_path))) {
+            return asset('storage/' . $this->image_path);
+        }
+
+        if (file_exists(public_path('Images/' . $this->image_path))) {
+            return asset('Images/' . $this->image_path);
+        }
+
+        return asset('storage/' . $this->image_path);
+    }
 }
