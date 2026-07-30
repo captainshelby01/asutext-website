@@ -12,5 +12,9 @@ services:
         value: false
       - key: APP_KEY
         value: base64:DLrWsIbtHkkFF8bY4mncwGdv/teuCivQweskcLMkmlU=
+      - key: APP_URL
+        value: https://asutext-website.onrender.com
+      - key: ASSET_URL
+        value: https://asutext-website.onrender.com
       - key: DB_CONNECTION
         value: sqlite
