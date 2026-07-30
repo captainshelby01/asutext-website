@@ -33,8 +33,8 @@
           Asutext Group Nigeria Limited delivers quality you can count on, across Lagos,
           Cross-River State, and nationwide.
         </p>
- 
-        <div class="flex flex-col sm:flex-row gap-4 reveal reveal-delay-3">
+
+        <div class="hero-cta-buttons flex flex-col sm:flex-row gap-4 reveal reveal-delay-3">
           <a
             href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%27m%20visiting%20your%20website%20and%20I%27d%20like%20to%20get%20a%20free%20quote."
             target="_blank"
@@ -55,8 +55,8 @@
             </svg>
           </a>
         </div>
- 
-        <div class="mt-16 flex flex-wrap gap-x-8 gap-y-6 sm:gap-x-12 reveal reveal-delay-4">
+
+        <div class="hero-stats-container mt-10 sm:mt-16 reveal reveal-delay-4">
           <div class="hero-stat">
             <p class="hero-stat-number"><span class="count-up" data-target="8">0</span>+</p>
             <p class="hero-stat-label">Service Divisions</p>

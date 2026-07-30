@@ -294,16 +294,37 @@
           </div>
 
           <!-- Quick service links -->
-          <div class="bg-white/5 border border-white/08 rounded-2xl p-5" style="border-color:rgba(255,255,255,0.08);">
-            <p class="nap-label mb-4">Quick Service Links</p>
-            <div class="grid grid-cols-2 gap-2">
-              <a href="{{ route('services') }}" class="footer-link footer-link-red">→ Services Overview</a>
-              <a href="{{ route('products') }}" class="footer-link footer-link-blue">→ Products Catalogue</a>
-              <a href="{{ route('portfolio') }}" class="footer-link footer-link-red">→ Work Gallery</a>
-              <a href="{{ route('about') }}" class="footer-link footer-link-red">→ About Company</a>
-              <a href="{{ route('about') }}#team" class="footer-link footer-link-blue">→ Leadership Team</a>
-              <a href="{{ route('contact') }}#coverage" class="footer-link footer-link-red">→ Coverage Areas</a>
-              <a href="{{ route('contact') }}" class="footer-link footer-link-blue">→ Contact Support</a>
+          <div class="bg-white/5 border border-white/08 rounded-2xl p-4 sm:p-5" style="border-color:rgba(255,255,255,0.08);">
+            <p class="nap-label mb-3.5">Quick Service Links</p>
+            <div class="grid grid-cols-1 min-[400px]:grid-cols-2 gap-2">
+              <a href="{{ route('services') }}" class="footer-link footer-link-red">
+                <svg class="footer-link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                <span>Services Overview</span>
+              </a>
+              <a href="{{ route('products') }}" class="footer-link footer-link-blue">
+                <svg class="footer-link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                <span>Products Catalogue</span>
+              </a>
+              <a href="{{ route('portfolio') }}" class="footer-link footer-link-red">
+                <svg class="footer-link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                <span>Work Gallery</span>
+              </a>
+              <a href="{{ route('about') }}" class="footer-link footer-link-red">
+                <svg class="footer-link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                <span>About Company</span>
+              </a>
+              <a href="{{ route('about') }}#team" class="footer-link footer-link-blue">
+                <svg class="footer-link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                <span>Leadership Team</span>
+              </a>
+              <a href="{{ route('contact') }}#coverage" class="footer-link footer-link-red">
+                <svg class="footer-link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                <span>Coverage Areas</span>
+              </a>
+              <a href="{{ route('contact') }}" class="footer-link footer-link-blue">
+                <svg class="footer-link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                <span>Contact Support</span>
+              </a>
             </div>
           </div>
         </div>
