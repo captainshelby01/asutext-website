@@ -16,7 +16,7 @@
     </div>
     <div class="hero-overlay"></div>
  
-    <div class="hero-content w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 lg:py-36">
+    <div class="hero-content w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-32">
       <div class="max-w-3xl">
         <div class="hero-badge mb-8 reveal">
           Nationwide Service &nbsp;·&nbsp; Est. 2023 &nbsp;·&nbsp; CAC Incorporated
