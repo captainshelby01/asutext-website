@@ -164,6 +164,30 @@ class DatabaseSeeder extends Seeder
         // 3. Seed Testimonials
         $testimonials = [
             [
+                'client_name' => 'UAC Nigeria',
+                'client_role' => 'Corporate Client',
+                'feedback' => 'Asutext Group has consistently delivered high-standard corporate services and facility management. Highly dependable team with total commitment to quality.',
+                'stars' => 5,
+            ],
+            [
+                'client_name' => 'Ministry of Justice',
+                'client_role' => 'Government Institution',
+                'feedback' => 'Professional, efficient, and reliable service delivery. Asutext has proven to be a trusted corporate partner for institutional facility operations.',
+                'stars' => 5,
+            ],
+            [
+                'client_name' => 'Febol & G Nig Ltd',
+                'client_role' => 'Corporate Client',
+                'feedback' => 'Outstanding quality of work and prompt execution across our service contracts. Asutext is our go-to multi-service provider.',
+                'stars' => 5,
+            ],
+            [
+                'client_name' => 'Wow Detergent',
+                'client_role' => 'FMCG Corporate Client',
+                'feedback' => 'Exceptional branding and logistics support. Working with Asutext Group has brought immense value to our operational distribution.',
+                'stars' => 5,
+            ],
+            [
                 'client_name' => 'Wokcity',
                 'client_role' => 'Corporate Client, Lagos',
                 'feedback' => 'Asutext delivered an exceptionally thorough cleaning job at our facility. Professional, punctual, and the results spoke for themselves. We continue to use them regularly.',

@@ -93,7 +93,7 @@
           <img
             src="/Images/logo-transparent.png"
             alt="Asutext Group Nigeria Limited Logo"
-            class="h-13 sm:h-16 w-auto object-contain transition-all duration-300 hover:scale-105 filter drop-shadow-sm"
+            class="h-10 sm:h-12 w-auto object-contain transition-all duration-300 hover:scale-105"
           />
         </a>
 

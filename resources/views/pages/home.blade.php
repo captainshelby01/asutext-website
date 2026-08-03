@@ -63,13 +63,13 @@
           </div>
           <div class="hero-divider hidden sm:block"></div>
           <div class="hero-stat">
-            <p class="hero-stat-number"><span class="count-up" data-target="6">0</span>+</p>
+            <p class="hero-stat-number"><span class="count-up" data-target="5000">0</span>+</p>
             <p class="hero-stat-label">Corporate Clients</p>
           </div>
           <div class="hero-divider hidden sm:block"></div>
           <div class="hero-stat">
-            <p class="hero-stat-number"><span class="count-up" data-target="2">0</span>+</p>
-            <p class="hero-stat-label">States Covered</p>
+            <p class="hero-stat-number"><span class="count-up" data-target="36">0</span> States</p>
+            <p class="hero-stat-label">Covered, &amp; Nations in West Africa</p>
           </div>
           <div class="hero-divider hidden sm:block"></div>
           <div class="hero-stat">
@@ -579,6 +579,18 @@
 
       <!-- Client logo strip -->
       <div class="client-logo-strip reveal">
+        <span class="client-logo-text">UAC</span>
+        <span class="text-gray-300 hidden sm:inline">·</span>
+        <span class="client-logo-text">Nital</span>
+        <span class="text-gray-300 hidden sm:inline">·</span>
+        <span class="client-logo-text">Ministry of Justice</span>
+        <span class="text-gray-300 hidden sm:inline">·</span>
+        <span class="client-logo-text">Post Office</span>
+        <span class="text-gray-300 hidden sm:inline">·</span>
+        <span class="client-logo-text">Febol &amp; G Nig Ltd</span>
+        <span class="text-gray-300 hidden sm:inline">·</span>
+        <span class="client-logo-text">Wow Detergent</span>
+        <span class="text-gray-300 hidden sm:inline">·</span>
         <span class="client-logo-text">Wokcity</span>
         <span class="text-gray-300 hidden sm:inline">·</span>
         <span class="client-logo-text">Lamb Court</span>
