@@ -27,48 +27,60 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
-        <div class="area-card reveal reveal-delay-1">
-          <div class="area-pin">📍</div>
+        <div class="area-card reveal reveal-delay-1 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-lg flex-shrink-0">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
           <div>
             <p class="area-name">Banana Island &amp; Ikoyi</p>
             <p class="area-desc">Premium residential estates &amp; corporate offices, Lagos</p>
           </div>
         </div>
 
-        <div class="area-card reveal reveal-delay-2">
-          <div class="area-pin">📍</div>
+        <div class="area-card reveal reveal-delay-2 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-lg flex-shrink-0">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
           <div>
             <p class="area-name">Lagos Island &amp; Victoria Island</p>
             <p class="area-desc">CBD, Marina, commercial &amp; hospitality zones, Lagos</p>
           </div>
         </div>
 
-        <div class="area-card reveal reveal-delay-3">
-          <div class="area-pin">📍</div>
+        <div class="area-card reveal reveal-delay-3 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-lg flex-shrink-0">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
           <div>
             <p class="area-name">Lagos Mainland &amp; Surulere</p>
             <p class="area-desc">Residential, industrial &amp; business districts, Lagos</p>
           </div>
         </div>
 
-        <div class="area-card reveal reveal-delay-4">
-          <div class="area-pin">📍</div>
+        <div class="area-card reveal reveal-delay-4 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-lg flex-shrink-0">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
           <div>
             <p class="area-name">Lekki &amp; Ajah</p>
             <p class="area-desc">Growing residential &amp; commercial corridors, Lagos</p>
           </div>
         </div>
 
-        <div class="area-card reveal reveal-delay-5">
-          <div class="area-pin">📍</div>
+        <div class="area-card reveal reveal-delay-5 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-lg flex-shrink-0">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
           <div>
             <p class="area-name">Calabar, Cross-River State</p>
             <p class="area-desc">Home operational base, full service coverage</p>
           </div>
         </div>
 
-        <div class="area-card reveal reveal-delay-6">
-          <div class="area-pin" style="font-size:1.1rem;">🌍</div>
+        <div class="area-card reveal reveal-delay-6 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-brand-blue flex items-center justify-center text-lg flex-shrink-0">
+            <i class="bi bi-globe2"></i>
+          </div>
           <div>
             <p class="area-name">Nationwide Nigeria</p>
             <p class="area-desc">Transport, haulage, logistics &amp; specialist branding projects delivered nationally</p>

@@ -52,9 +52,7 @@
               <p class="portfolio-card-title">{{ $item->title }}</p>
               <span class="portfolio-card-action">
                 View Full {{ ucfirst($item->media_type) }}
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" class="w-3.5 h-3.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                </svg>
+                <i class="bi bi-chevron-down text-xs"></i>
               </span>
             </div>
           </div>
@@ -75,9 +73,7 @@
       <!-- Lightbox Modal -->
       <div class="portfolio-lightbox" id="portfolio-lightbox">
         <button class="portfolio-lightbox-close" id="lightbox-close" aria-label="Close image preview">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <i class="bi bi-x-lg text-lg"></i>
         </button>
         <div class="portfolio-lightbox-content">
           <img id="lightbox-img" src="" alt="Portfolio Image Preview" class="hidden" />

@@ -42,17 +42,12 @@
             class="btn-whatsapp text-base"
             id="hero-wa-btn"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.843L.057 23.569a.75.75 0 0 0 .974.906l5.878-1.938A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.726 9.726 0 0 1-4.951-1.354l-.355-.212-3.686 1.215 1.165-3.585-.231-.368A9.715 9.715 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/>
-            </svg>
+            <i class="bi bi-whatsapp text-lg flex-shrink-0" aria-hidden="true"></i>
             Get a Free Quote
           </a>
           <a href="{{ route('services') }}" class="btn-outline text-base">
             Explore Our Services
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-            </svg>
+            <i class="bi bi-chevron-down text-sm" aria-hidden="true"></i>
           </a>
         </div>
 
@@ -105,31 +100,47 @@
         @forelse($services as $service)
           <div class="service-card {{ $loop->index % 2 === 1 ? 'service-card--blue' : '' }} reveal reveal-delay-{{ ($loop->index % 4) + 1 }}">
             <div class="service-icon-wrap">
-              @if($loop->index % 4 === 0)
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                </svg>
+              @if(Str::contains(strtolower($service->name), 'clean'))
+                <i class="bi bi-sparkles text-xl text-brand-red"></i>
+              @elseif(Str::contains(strtolower($service->name), ['fashion', 'brand', 'print']))
+                <i class="bi bi-handbag-fill text-xl text-brand-blue"></i>
+              @elseif(Str::contains(strtolower($service->name), ['food', 'cater']))
+                <i class="bi bi-cup-hot-fill text-xl text-emerald-600"></i>
+              @elseif(Str::contains(strtolower($service->name), ['transport', 'logistic']))
+                <i class="bi bi-truck text-xl text-amber-600"></i>
+              @elseif(Str::contains(strtolower($service->name), ['gadget', 'electronic', 'phone']))
+                <i class="bi bi-phone-fill text-xl text-purple-600"></i>
+              @elseif($loop->index % 4 === 0)
+                <i class="bi bi-sparkles text-xl text-brand-red"></i>
               @elseif($loop->index % 4 === 1)
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                </svg>
+                <i class="bi bi-lightbulb text-xl text-brand-blue"></i>
               @elseif($loop->index % 4 === 2)
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
-                </svg>
+                <i class="bi bi-truck text-xl text-amber-600"></i>
               @else
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 22V12m0 0C12 7 8 3 3 3c0 5 3 9 9 9zm0 0c0-5 4-9 9-9-2 5-5 9-9 9z"/>
-                </svg>
+                <i class="bi bi-briefcase text-xl text-brand-dark"></i>
               @endif
             </div>
             <h3 class="font-display font-bold text-brand-dark text-base mb-2">{{ $service->name }}</h3>
             <p class="text-gray-500 text-sm leading-relaxed mb-5">{{ Str::limit($service->description, 120) }}</p>
-            <a
-              href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text={{ urlencode($service->whatsapp_cta_text) }}"
-              target="_blank" rel="noopener noreferrer"
-              class="service-enquire-link"
-            >Enquire Now <span class="service-enquire-arrow">→</span></a>
+            @if(Str::contains(strtolower($service->name), 'clean'))
+              <div class="flex flex-col gap-2 mt-auto">
+                <a
+                  href="{{ route('services.cleaning') }}"
+                  class="inline-flex items-center gap-1.5 font-bold text-xs text-brand-red hover:underline"
+                >Explore Cleaning Division <span class="service-enquire-arrow">→</span></a>
+                <a
+                  href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text={{ urlencode($service->whatsapp_cta_text) }}"
+                  target="_blank" rel="noopener noreferrer"
+                  class="service-enquire-link text-xs"
+                >Enquire on WhatsApp <span class="service-enquire-arrow">→</span></a>
+              </div>
+            @else
+              <a
+                href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text={{ urlencode($service->whatsapp_cta_text) }}"
+                target="_blank" rel="noopener noreferrer"
+                class="service-enquire-link"
+              >Enquire Now <span class="service-enquire-arrow">→</span></a>
+            @endif
           </div>
         @empty
           <div class="p-8 text-center col-span-full">No services found in database.</div>
@@ -205,9 +216,7 @@
             <p class="portfolio-card-title">Cleaning &amp;<br/>Fumigation</p>
             <span class="portfolio-card-action">
               Explore Gallery
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-              </svg>
+              <i class="bi bi-chevron-down text-xs"></i>
             </span>
           </div>
         </div>
@@ -221,9 +230,7 @@
             <p class="portfolio-card-title">Branding, Printing<br/>&amp; Fashion</p>
             <span class="portfolio-card-action">
               Explore Gallery
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-              </svg>
+              <i class="bi bi-chevron-down text-xs"></i>
             </span>
           </div>
         </div>
@@ -237,9 +244,7 @@
             <p class="portfolio-card-title">Fast Food &amp;<br/>Catering</p>
             <span class="portfolio-card-action">
               Explore Gallery
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-              </svg>
+              <i class="bi bi-chevron-down text-xs"></i>
             </span>
           </div>
         </div>
@@ -253,9 +258,7 @@
             <p class="portfolio-card-title">Transport &amp;<br/>Logistics</p>
             <span class="portfolio-card-action">
               Explore Gallery
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-              </svg>
+              <i class="bi bi-chevron-down text-xs"></i>
             </span>
           </div>
         </div>
@@ -265,23 +268,32 @@
       <!-- Expandable panels container -->
       <div class="portfolio-panels mt-10 lg:mt-12">
 
-        <!-- Panel 1: Cleaning & Fumigation -->
+        <!-- Panel 1: Cleaning & Facilities -->
         <div class="portfolio-panel" id="panel-cleaning">
           <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-gray-800 pb-6 mb-6">
             <div>
-              <h3 class="portfolio-panel-title">Cleaning &amp; Fumigation Division</h3>
+              <h3 class="portfolio-panel-title">Cleaning, Facility &amp; Environmental Division</h3>
               <p class="portfolio-panel-desc">
-                From corporate headquarters and retail stores to residential estates on Lagos Island, our professional teams deliver cleaning excellence. We utilize advanced industrial cleaning machines, premium detergents, and safe, government-approved, non-toxic fumigation and pest control techniques.
+                From corporate headquarters, retail stores, and residential estates to industrial fumigation, deep carpet extraction, laundry &amp; dry cleaning, and complete compound gardening &amp; landscaping across Lagos and nationwide.
               </p>
             </div>
-            <a
-              href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20enquired%20from%20your%20website%20and%20I%27d%20like%20to%20book%20a%20Cleaning%2FFumigation%20job."
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-whatsapp self-start lg:self-center"
-            >
-              Enquire on WhatsApp
-            </a>
+            <div class="flex flex-wrap gap-3 self-start lg:self-center">
+              <a
+                href="{{ route('services.cleaning') }}"
+                class="btn-primary text-sm inline-flex items-center gap-1.5"
+              >
+                <span>Full Cleaning Page</span>
+                <span>→</span>
+              </a>
+              <a
+                href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20enquired%20from%20your%20website%20and%20I%27d%20like%20to%20book%20a%20Cleaning%2FFumigation%20job."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-whatsapp text-sm"
+              >
+                Enquire on WhatsApp
+              </a>
+            </div>
           </div>
           <div class="portfolio-gallery-grid-uniform grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 mt-8">
             @php
@@ -317,14 +329,23 @@
                 We bring brands to life. From custom apparel, premium headwear (like our signature Jackson 5 caps), and corporate merchandise to bespoke tailoring, custom-made dresses, and sports apparel. Everything is printed and stitched with premium materials to guarantee durability and color vibrancy.
               </p>
             </div>
-            <a
-              href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20enquired%20from%20your%20website%20and%20I%27d%20like%20to%20discuss%20a%20Branding%2FApparel%20project."
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-whatsapp self-start lg:self-center"
-            >
-              Enquire on WhatsApp
-            </a>
+            <div class="flex flex-wrap gap-3 self-start lg:self-center">
+              <a
+                href="{{ route('services.fashion') }}"
+                class="btn-primary text-sm inline-flex items-center gap-1.5"
+              >
+                <span>Full Fashion Page</span>
+                <span>→</span>
+              </a>
+              <a
+                href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20enquired%20from%20your%20website%20and%20I%27d%20like%20to%20discuss%20a%20Branding%2FApparel%20project."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-whatsapp text-sm"
+              >
+                Enquire on WhatsApp
+              </a>
+            </div>
           </div>
           <div class="portfolio-gallery-masonry">
             @php
@@ -358,14 +379,23 @@
                 Delicious, freshly prepared food that leaves a statement. We handle corporate catering, private functions, and event hosting with strict hygiene standards and professional wait staff. Check out our diverse menu options below.
               </p>
             </div>
-            <a
-              href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%2%20enquired%20from%20your%20website%20and%20I%27d%20like%20to%20order%20Catering%2FFast%20Food."
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-whatsapp self-start lg:self-center"
-            >
-              Enquire on WhatsApp
-            </a>
+            <div class="flex flex-wrap gap-3 self-start lg:self-center">
+              <a
+                href="{{ route('services.fastfood') }}"
+                class="btn-primary text-sm inline-flex items-center gap-1.5"
+              >
+                <span>Full Catering Page</span>
+                <span>→</span>
+              </a>
+              <a
+                href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20enquired%20from%20your%20website%20and%20I%27d%20like%20to%20order%20Catering%2FFast%20Food."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-whatsapp text-sm"
+              >
+                Enquire on WhatsApp
+              </a>
+            </div>
           </div>
           <div class="portfolio-gallery-grid-uniform grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 mt-8">
             @php
@@ -398,14 +428,23 @@
                 Moving goods smoothly across states. We offer reliable haulage, local delivery fulfillment, and truck leases. Safe, timely, and fully tracked.
               </p>
             </div>
-            <a
-              href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20enquired%20from%20your%20website%20and%20I%27d%20like%20to%20discuss%20a%20Logistics%2FTransport%20job."
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-whatsapp self-start lg:self-center"
-            >
-              Enquire on WhatsApp
-            </a>
+            <div class="flex flex-wrap gap-3 self-start lg:self-center">
+              <a
+                href="{{ route('services.transport') }}"
+                class="btn-primary text-sm inline-flex items-center gap-1.5"
+              >
+                <span>Full Transport Page</span>
+                <span>→</span>
+              </a>
+              <a
+                href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20enquired%20from%20your%20website%20and%20I%27d%20like%20to%20discuss%20a%20Logistics%2FTransport%20job."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-whatsapp text-sm"
+              >
+                Enquire on WhatsApp
+              </a>
+            </div>
           </div>
           <div class="portfolio-gallery-grid-uniform grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 mt-8">
             @php
@@ -423,8 +462,11 @@
                 </div>
               </div>
             @empty
-              <div class="portfolio-gallery-item"><img src="/Images/transport-freight-cargo.jpg" alt="Freight Cargo Haulage" loading="lazy" /><div class="portfolio-gallery-overlay"><span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Freight Cargo Haulage</span></div></div>
-              <div class="portfolio-gallery-item"><img src="/Images/transport-multimodal-logistics.jpg" alt="Interstate Logistics" loading="lazy" /><div class="portfolio-gallery-overlay"><span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Interstate Logistics</span></div></div>
+              <div class="portfolio-gallery-item"><img src="/Images/Transport/PHOTO-2026-07-15-23-32-10.jpg" alt="Intercity Transport Hub" loading="lazy" /><div class="portfolio-gallery-overlay"><span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Transport Hub &amp; Stations</span></div></div>
+              <div class="portfolio-gallery-item"><img src="/Images/Transport/PHOTO-2026-07-15-23-31-59.jpg" alt="Door-to-Door Transportation" loading="lazy" /><div class="portfolio-gallery-overlay"><span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Door-to-Door Solution</span></div></div>
+              <div class="portfolio-gallery-item"><img src="/Images/Transport/PHOTO-2026-07-15-23-32-08.jpg" alt="Intercity Bus Fleet" loading="lazy" /><div class="portfolio-gallery-overlay"><span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Intercity Bus Fleet</span></div></div>
+              <div class="portfolio-gallery-item"><img src="/Images/Transport/PHOTO-2026-07-15-23-53-09.jpg" alt="Executive Fleet &amp; SUVs" loading="lazy" /><div class="portfolio-gallery-overlay"><span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Executive SUV Fleet</span></div></div>
+              <div class="portfolio-gallery-item"><img src="/Images/Transport/PHOTO-2026-07-15-23-32-06.jpg" alt="Luxury Fleet Interior" loading="lazy" /><div class="portfolio-gallery-overlay"><span class="text-white text-xs font-bold uppercase tracking-wider text-center px-2">Luxury Fleet &amp; Benefits</span></div></div>
             @endforelse
           </div>
         </div>
@@ -434,9 +476,7 @@
       <!-- Lightbox Modal -->
       <div class="portfolio-lightbox" id="portfolio-lightbox">
         <button class="portfolio-lightbox-close" id="lightbox-close" aria-label="Close image preview">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <i class="bi bi-x-lg text-lg"></i>
         </button>
         <div class="portfolio-lightbox-content">
           <img id="lightbox-img" src="" alt="Portfolio Image Preview" class="hidden" />
@@ -465,7 +505,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
         <div class="area-card reveal reveal-delay-1">
-          <div class="area-pin">📍</div>
+          <div class="area-pin"><i class="bi bi-geo-alt-fill text-brand-red"></i></div>
           <div>
             <p class="area-name">Banana Island &amp; Ikoyi</p>
             <p class="area-desc">Premium residential estates &amp; corporate offices, Lagos</p>
@@ -473,7 +513,7 @@
         </div>
 
         <div class="area-card reveal reveal-delay-2">
-          <div class="area-pin">📍</div>
+          <div class="area-pin"><i class="bi bi-geo-alt-fill text-brand-red"></i></div>
           <div>
             <p class="area-name">Lagos Island &amp; Victoria Island</p>
             <p class="area-desc">CBD, Marina, commercial &amp; hospitality zones, Lagos</p>
@@ -481,7 +521,7 @@
         </div>
 
         <div class="area-card reveal reveal-delay-3">
-          <div class="area-pin">📍</div>
+          <div class="area-pin"><i class="bi bi-geo-alt-fill text-brand-red"></i></div>
           <div>
             <p class="area-name">Lagos Mainland &amp; Surulere</p>
             <p class="area-desc">Residential, industrial &amp; business districts, Lagos</p>
@@ -489,7 +529,7 @@
         </div>
 
         <div class="area-card reveal reveal-delay-4">
-          <div class="area-pin">📍</div>
+          <div class="area-pin"><i class="bi bi-geo-alt-fill text-brand-red"></i></div>
           <div>
             <p class="area-name">Lekki &amp; Ajah</p>
             <p class="area-desc">Growing residential &amp; commercial corridors, Lagos</p>
@@ -497,7 +537,7 @@
         </div>
 
         <div class="area-card reveal reveal-delay-5">
-          <div class="area-pin">📍</div>
+          <div class="area-pin"><i class="bi bi-geo-alt-fill text-brand-red"></i></div>
           <div>
             <p class="area-name">Calabar, Cross-River State</p>
             <p class="area-desc">Home operational base, full service coverage</p>
@@ -505,7 +545,7 @@
         </div>
 
         <div class="area-card reveal reveal-delay-6">
-          <div class="area-pin" style="font-size:1.1rem;">🌍</div>
+          <div class="area-pin"><i class="bi bi-globe2 text-brand-blue"></i></div>
           <div>
             <p class="area-name">Nationwide Nigeria</p>
             <p class="area-desc">Transport, haulage, logistics &amp; specialist branding projects delivered nationally</p>
@@ -625,7 +665,7 @@
         <div class="faq-item reveal">
           <button id="faq-1-btn" class="faq-btn" aria-expanded="false" aria-controls="faq-1-answer">
             What areas do you cover in Lagos?
-            <span class="faq-icon" aria-hidden="true">+</span>
+            <span class="faq-icon" aria-hidden="true"><i class="bi bi-plus-lg"></i></span>
           </button>
           <div id="faq-1-answer" class="faq-answer" role="region">
             <div class="faq-answer-inner">
@@ -637,7 +677,7 @@
         <div class="faq-item reveal reveal-delay-1">
           <button id="faq-2-btn" class="faq-btn" aria-expanded="false" aria-controls="faq-2-answer">
             How do I get a quote?
-            <span class="faq-icon" aria-hidden="true">+</span>
+            <span class="faq-icon" aria-hidden="true"><i class="bi bi-plus-lg"></i></span>
           </button>
           <div id="faq-2-answer" class="faq-answer" role="region">
             <div class="faq-answer-inner">
@@ -649,7 +689,7 @@
         <div class="faq-item reveal reveal-delay-2">
           <button id="faq-3-btn" class="faq-btn" aria-expanded="false" aria-controls="faq-3-answer">
             Do you show prices on the website?
-            <span class="faq-icon" aria-hidden="true">+</span>
+            <span class="faq-icon" aria-hidden="true"><i class="bi bi-plus-lg"></i></span>
           </button>
           <div id="faq-3-answer" class="faq-answer" role="region">
             <div class="faq-answer-inner">
@@ -661,7 +701,7 @@
         <div class="faq-item reveal reveal-delay-3">
           <button id="faq-4-btn" class="faq-btn" aria-expanded="false" aria-controls="faq-4-answer">
             Is Asutext Group a registered company?
-            <span class="faq-icon" aria-hidden="true">+</span>
+            <span class="faq-icon" aria-hidden="true"><i class="bi bi-plus-lg"></i></span>
           </button>
           <div id="faq-4-answer" class="faq-answer" role="region">
             <div class="faq-answer-inner">
@@ -673,7 +713,7 @@
         <div class="faq-item reveal reveal-delay-4">
           <button id="faq-5-btn" class="faq-btn" aria-expanded="false" aria-controls="faq-5-answer">
             Can you handle recurring or corporate contracts?
-            <span class="faq-icon" aria-hidden="true">+</span>
+            <span class="faq-icon" aria-hidden="true"><i class="bi bi-plus-lg"></i></span>
           </button>
           <div id="faq-5-answer" class="faq-answer" role="region">
             <div class="faq-answer-inner">
@@ -685,7 +725,7 @@
         <div class="faq-item reveal reveal-delay-5">
           <button id="faq-6-btn" class="faq-btn" aria-expanded="false" aria-controls="faq-6-answer">
             How quickly do you respond to enquiries?
-            <span class="faq-icon" aria-hidden="true">+</span>
+            <span class="faq-icon" aria-hidden="true"><i class="bi bi-plus-lg"></i></span>
           </button>
           <div id="faq-6-answer" class="faq-answer" role="region">
             <div class="faq-answer-inner">

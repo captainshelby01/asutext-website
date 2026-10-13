@@ -39,9 +39,7 @@
           <div class="space-y-6">
             <div class="contact-info-item">
               <div class="contact-info-icon" style="background: #f0f4ff; color: var(--brand-blue);">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                </svg>
+                <i class="bi bi-telephone-fill text-lg"></i>
               </div>
               <div>
                 <p class="text-gray-400 text-xs font-bold uppercase tracking-wider">WhatsApp / Phone</p>
@@ -51,9 +49,7 @@
 
             <div class="contact-info-item">
               <div class="contact-info-icon" style="background: #f0f4ff; color: var(--brand-blue);">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                </svg>
+                <i class="bi bi-envelope-fill text-lg"></i>
               </div>
               <div>
                 <p class="text-gray-400 text-xs font-bold uppercase tracking-wider">Email Address</p>
@@ -63,10 +59,7 @@
 
             <div class="contact-info-item">
               <div class="contact-info-icon" style="background: #f0f4ff; color: var(--brand-blue);">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
+                <i class="bi bi-geo-alt-fill text-lg"></i>
               </div>
               <div>
                 <p class="text-gray-400 text-xs font-bold uppercase tracking-wider">Lagos HQ Office</p>
@@ -76,10 +69,7 @@
 
             <div class="contact-info-item">
               <div class="contact-info-icon" style="background: #f0f4ff; color: var(--brand-blue);">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
+                <i class="bi bi-geo-alt-fill text-lg"></i>
               </div>
               <div>
                 <p class="text-gray-400 text-xs font-bold uppercase tracking-wider">Cross-River Branch Office</p>
@@ -135,10 +125,7 @@
               </div>
 
               <button type="submit" id="submit-inquiry-btn" class="w-full btn-whatsapp justify-center text-sm mt-6">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.843L.057 23.569a.75.75 0 0 0 .974.906l5.878-1.938A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.726 9.726 0 0 1-4.951-1.354l-.355-.212-3.686 1.215 1.165-3.585-.231-.368A9.715 9.715 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/>
-                </svg>
+                <i class="bi bi-whatsapp text-lg flex-shrink-0" aria-hidden="true"></i>
                 Send Inquiry via WhatsApp
               </button>
             </form>
@@ -169,7 +156,9 @@
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 max-w-6xl mx-auto">
 
         <div class="area-card bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-start gap-4 transition-all duration-300 hover:shadow-md">
-          <div class="area-pin text-2xl flex-shrink-0">📍</div>
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-lg flex-shrink-0">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
           <div>
             <p class="area-name font-display font-bold text-brand-dark text-lg mb-1">Banana Island &amp; Ikoyi</p>
             <p class="area-desc text-gray-500 text-sm leading-relaxed">Premium residential estates &amp; corporate offices, Lagos</p>
@@ -177,7 +166,9 @@
         </div>
 
         <div class="area-card bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-start gap-4 transition-all duration-300 hover:shadow-md">
-          <div class="area-pin text-2xl flex-shrink-0">📍</div>
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-lg flex-shrink-0">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
           <div>
             <p class="area-name font-display font-bold text-brand-dark text-lg mb-1">Lagos Island &amp; Victoria Island</p>
             <p class="area-desc text-gray-500 text-sm leading-relaxed">CBD, Marina, commercial &amp; hospitality zones, Lagos</p>
@@ -185,7 +176,9 @@
         </div>
 
         <div class="area-card bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-start gap-4 transition-all duration-300 hover:shadow-md">
-          <div class="area-pin text-2xl flex-shrink-0">📍</div>
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-lg flex-shrink-0">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
           <div>
             <p class="area-name font-display font-bold text-brand-dark text-lg mb-1">Lagos Mainland &amp; Surulere</p>
             <p class="area-desc text-gray-500 text-sm leading-relaxed">Residential, industrial &amp; business districts, Lagos</p>
@@ -193,7 +186,9 @@
         </div>
 
         <div class="area-card bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-start gap-4 transition-all duration-300 hover:shadow-md">
-          <div class="area-pin text-2xl flex-shrink-0">📍</div>
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-lg flex-shrink-0">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
           <div>
             <p class="area-name font-display font-bold text-brand-dark text-lg mb-1">Lekki &amp; Ajah</p>
             <p class="area-desc text-gray-500 text-sm leading-relaxed">Growing residential &amp; commercial corridors, Lagos</p>
@@ -201,7 +196,9 @@
         </div>
 
         <div class="area-card bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-start gap-4 transition-all duration-300 hover:shadow-md">
-          <div class="area-pin text-2xl flex-shrink-0">📍</div>
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-lg flex-shrink-0">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
           <div>
             <p class="area-name font-display font-bold text-brand-dark text-lg mb-1">Calabar, Cross-River State</p>
             <p class="area-desc text-gray-500 text-sm leading-relaxed">Home operational base, full service coverage</p>
@@ -209,7 +206,9 @@
         </div>
 
         <div class="area-card bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-start gap-4 transition-all duration-300 hover:shadow-md">
-          <div class="area-pin text-2xl flex-shrink-0">🌍</div>
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-brand-blue flex items-center justify-center text-lg flex-shrink-0">
+            <i class="bi bi-globe2"></i>
+          </div>
           <div>
             <p class="area-name font-display font-bold text-brand-dark text-lg mb-1">Nationwide Nigeria</p>
             <p class="area-desc text-gray-500 text-sm leading-relaxed">Transport, haulage, logistics &amp; specialist branding projects delivered nationally</p>
@@ -252,9 +251,7 @@
         toast.innerHTML = `
           <div class="premium-toast-content">
             <div class="premium-toast-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
+              <i class="bi bi-check-circle-fill text-base text-emerald-400"></i>
             </div>
             <div class="premium-toast-text">${message}</div>
           </div>

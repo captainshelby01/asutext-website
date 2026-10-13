@@ -54,7 +54,7 @@
                 </p>
                 <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400 font-semibold">
                   <span>Asutext Group Board Member</span>
-                  <span class="text-brand-blue">Verified</span>
+                  <span class="text-brand-blue flex items-center gap-1"><i class="bi bi-patch-check-fill text-xs"></i> Verified</span>
                 </div>
               </div>
             @endif
@@ -81,7 +81,7 @@
               </p>
               <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400 font-semibold">
                 <span>Asutext Group Board Member</span>
-                <span class="text-brand-blue">Verified</span>
+                <span class="text-brand-blue flex items-center gap-1"><i class="bi bi-patch-check-fill text-xs"></i> Verified</span>
               </div>
             </div>
           </div>

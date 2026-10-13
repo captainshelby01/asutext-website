@@ -75,9 +75,7 @@
             Interested in our corporate governance? 
             <a href="#team" class="text-brand-red hover:text-red-700 font-bold inline-flex items-center gap-1 transition-colors group">
               Meet our Executive Board
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 transform group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-              </svg>
+              <i class="bi bi-chevron-down text-xs transform group-hover:translate-y-0.5 transition-transform" aria-hidden="true"></i>
             </a>
           </p>
 
@@ -152,9 +150,7 @@
               <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500 font-medium">
                 <span>Asutext Board Member</span>
                 <span class="text-brand-blue flex items-center gap-1 font-semibold">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                  </svg>
+                  <i class="bi bi-patch-check-fill text-sm"></i>
                   Verified
                 </span>
               </div>
@@ -187,9 +183,7 @@
               <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500 font-medium">
                 <span>Asutext Board Member</span>
                 <span class="text-brand-blue flex items-center gap-1 font-semibold">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                  </svg>
+                  <i class="bi bi-patch-check-fill text-sm"></i>
                   Verified
                 </span>
               </div>
@@ -220,9 +214,7 @@
               <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500 font-medium">
                 <span>Asutext Board Member</span>
                 <span class="text-brand-blue flex items-center gap-1 font-semibold">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                  </svg>
+                  <i class="bi bi-patch-check-fill text-sm"></i>
                   Verified
                 </span>
               </div>
@@ -253,9 +245,7 @@
               <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500 font-medium">
                 <span>Asutext Board Member</span>
                 <span class="text-brand-blue flex items-center gap-1 font-semibold">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                  </svg>
+                  <i class="bi bi-patch-check-fill text-sm"></i>
                   Verified
                 </span>
               </div>

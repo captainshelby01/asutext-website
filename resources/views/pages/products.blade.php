@@ -30,9 +30,7 @@
         <!-- Live Instant Search Bar -->
         <div class="max-w-xl mx-auto relative">
           <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+            <i class="bi bi-search text-base"></i>
           </div>
           <input
             type="text"
@@ -46,9 +44,7 @@
             class="hidden absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-brand-red"
             title="Clear search"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <i class="bi bi-x-lg text-base"></i>
           </button>
         </div>
 
@@ -123,10 +119,7 @@
                   rel="noopener noreferrer"
                   class="btn-whatsapp w-full justify-center text-sm font-bold shadow-md hover:shadow-lg"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.843L.057 23.569a.75.75 0 0 0 .974.906l5.878-1.938A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.726 9.726 0 0 1-4.951-1.354l-.355-.212-3.686 1.215 1.165-3.585-.231-.368A9.715 9.715 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/>
-                  </svg>
+                  <i class="bi bi-whatsapp text-base flex-shrink-0" aria-hidden="true"></i>
                   Order on WhatsApp
                 </a>
               </div>
@@ -138,9 +131,7 @@
         <!-- No Search Results Empty State -->
         <div id="no-search-results" class="hidden text-center py-16 bg-white rounded-3xl border border-gray-200/80 shadow-sm">
           <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-red/10 text-brand-red mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+            <i class="bi bi-search text-2xl"></i>
           </div>
           <h4 class="font-display font-bold text-xl text-brand-dark mb-2">No Matching Products Found</h4>
           <p class="text-gray-500 text-sm max-w-md mx-auto mb-6">We couldn't find any products matching your search term. Try searching for another keyword or browse by category.</p>

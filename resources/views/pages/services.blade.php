@@ -24,10 +24,7 @@
             rel="noopener noreferrer"
             class="btn-whatsapp text-base"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.843L.057 23.569a.75.75 0 0 0 .974.906l5.878-1.938A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.726 9.726 0 0 1-4.951-1.354l-.355-.212-3.686 1.215 1.165-3.585-.231-.368A9.715 9.715 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/>
-            </svg>
+            <i class="bi bi-whatsapp text-lg flex-shrink-0" aria-hidden="true"></i>
             Enquire on WhatsApp
           </a>
           <a href="{{ route('contact') }}" class="btn-outline text-base">
@@ -48,42 +45,58 @@
       <div class="mb-12">
         <p class="section-label section-label--blue mb-3">Professional Services</p>
         <h2 class="font-display text-3xl sm:text-4xl font-black text-brand-dark">
-          Our Eight Operating Divisions
+          Our Core Operating Divisions
         </h2>
         <p class="text-gray-500 mt-2 max-w-xl text-base leading-relaxed">
-          Select any division below to view details and launch a direct inquiry on WhatsApp.
+          Select any division below to explore full capabilities, gallery records, or launch an instant inquiry on WhatsApp.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         @forelse($services as $service)
-          <div class="service-card {{ $loop->index % 2 === 1 ? 'service-card--blue' : '' }} reveal reveal-delay-{{ ($loop->index % 3) + 1 }}">
-            <div class="service-icon-wrap">
-              @if($loop->index % 4 === 0)
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                </svg>
-              @elseif($loop->index % 4 === 1)
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                </svg>
-              @elseif($loop->index % 4 === 2)
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
-                </svg>
-              @else
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 22V12m0 0C12 7 8 3 3 3c0 5 3 9 9 9zm0 0c0-5 4-9 9-9-2 5-5 9-9 9z"/>
-                </svg>
-              @endif
+          <div class="service-card {{ $loop->index % 2 === 1 ? 'service-card--blue' : '' }} reveal reveal-delay-{{ ($loop->index % 3) + 1 }} flex flex-col justify-between">
+            <div>
+              <div class="service-icon-wrap flex items-center justify-center">
+                @if(($service->type ?? '') === 'cleaning')
+                  <!-- Sparkle / Facility Icon -->
+                  <i class="bi bi-sparkles text-2xl text-brand-red"></i>
+                @elseif(($service->type ?? '') === 'fashion')
+                  <!-- Fashion / Apparel Icon -->
+                  <i class="bi bi-handbag-fill text-2xl text-brand-blue"></i>
+                @elseif(($service->type ?? '') === 'transport')
+                  <!-- Truck / Transport Icon -->
+                  <i class="bi bi-truck text-2xl text-amber-600"></i>
+                @elseif(($service->type ?? '') === 'catering')
+                  <!-- Food / Catering Icon -->
+                  <i class="bi bi-cup-hot-fill text-2xl text-emerald-600"></i>
+                @else
+                  <!-- Tech Gadgets Icon -->
+                  <i class="bi bi-phone-fill text-2xl text-purple-600"></i>
+                @endif
+              </div>
+              <h2 class="font-display font-bold text-brand-dark text-xl mb-3">{{ $service->name }}</h2>
+              <p class="text-gray-500 text-sm leading-relaxed mb-6">{{ $service->description }}</p>
             </div>
-            <h2 class="font-display font-bold text-brand-dark text-xl mb-3">{{ $service->name }}</h2>
-            <p class="text-gray-500 text-sm leading-relaxed mb-6">{{ $service->description }}</p>
-            <a
-              href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text={{ urlencode($service->whatsapp_cta_text ?? 'Hi, I would like to enquire about ' . $service->name) }}"
-              target="_blank" rel="noopener noreferrer"
-              class="service-enquire-link font-bold text-sm"
-            >Enquire on WhatsApp <span class="service-enquire-arrow">→</span></a>
+
+            <div class="pt-4 border-t border-gray-100 flex flex-col gap-2.5">
+              @if(!empty($service->route))
+                <a
+                  href="{{ $service->route }}"
+                  class="inline-flex items-center gap-1.5 font-bold text-sm {{ $service->route_color ?? 'text-brand-red' }} hover:underline"
+                >
+                  <span>{{ $service->route_label }}</span>
+                  <span class="service-enquire-arrow">→</span>
+                </a>
+              @endif
+              <a
+                href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text={{ urlencode($service->whatsapp_cta_text ?? 'Hi, I would like to enquire about ' . $service->name) }}"
+                target="_blank" rel="noopener noreferrer"
+                class="service-enquire-link font-bold text-sm"
+              >
+                <span>Enquire on WhatsApp</span>
+                <span class="service-enquire-arrow">→</span>
+              </a>
+            </div>
           </div>
         @empty
           <div class="p-8 bg-white rounded-2xl shadow-sm text-center col-span-full">
@@ -106,7 +119,7 @@
           Simple. Transparent. Reliable.
         </h2>
         <p class="text-gray-500 text-base leading-relaxed">
-          How we ensure hassle-free service delivery across all eight divisions.
+          How we ensure hassle-free service delivery across all our core divisions.
         </p>
       </div>
 
@@ -178,6 +191,7 @@
           rel="noopener noreferrer"
           class="btn-whatsapp text-base flex-shrink-0"
         >
+          <i class="bi bi-whatsapp text-lg flex-shrink-0" aria-hidden="true"></i>
           Get a Fast Quote
         </a>
       </div>
