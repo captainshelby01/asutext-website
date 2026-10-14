@@ -906,6 +906,23 @@
         });
       });
 
+      // Auto-activate tab from URL hash (e.g. #industrial, #specialized, #environmental)
+      function selectTabFromHash() {
+        const hash = window.location.hash.toLowerCase();
+        if (!hash) return;
+        const cleanHash = hash.replace('#', '').replace('division-panel-', '');
+        const targetTab = document.querySelector(`.division-tab-trigger[data-target="division-panel-${cleanHash}"]`);
+        if (targetTab) {
+          targetTab.click();
+          const divisionsSec = document.getElementById('divisions');
+          if (divisionsSec) {
+            divisionsSec.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
+      selectTabFromHash();
+      window.addEventListener('hashchange', selectTabFromHash);
+
       // 2. Video 3-Phase Stepper Filtering
       const phaseBtns = document.querySelectorAll('.phase-filter-btn');
       const videoCards = document.querySelectorAll('.video-card-item');

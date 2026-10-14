@@ -540,7 +540,7 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   overflow: hidden;
   transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-  cursor: default;
+  cursor: pointer;
 }
 .service-card::before {
   content: '';
@@ -584,26 +584,118 @@ a { color: inherit; text-decoration: none; }
   background: var(--brand-red);
   transform: scale(1.05);
 }
-.service-icon-wrap svg {
+.service-icon-wrap svg,
+.service-icon-wrap i {
   color: var(--brand-red);
   transition: color var(--transition);
 }
-.service-card:hover .service-icon-wrap svg {
-  color: #fff;
+.service-card:hover .service-icon-wrap svg,
+.service-card:hover .service-icon-wrap i {
+  color: #fff !important;
 }
 
 /* Blue icon wrap */
 .service-card--blue .service-icon-wrap {
   background: #f0f4ff;
 }
-.service-card--blue .service-icon-wrap svg {
+.service-card--blue .service-icon-wrap svg,
+.service-card--blue .service-icon-wrap i {
   color: var(--brand-blue);
 }
 .service-card--blue:hover .service-icon-wrap {
   background: var(--brand-blue);
 }
-.service-card--blue:hover .service-icon-wrap svg {
-  color: #fff;
+.service-card--blue:hover .service-icon-wrap svg,
+.service-card--blue:hover .service-icon-wrap i {
+  color: #fff !important;
+}
+
+/* Specific icon background helpers */
+.service-icon--blue {
+  background: #f0f4ff;
+}
+.service-icon--green {
+  background: #f0fdf4;
+}
+.service-icon--amber {
+  background: #fffbeb;
+}
+.service-icon--purple {
+  background: #faf5ff;
+}
+
+/* Service Card Action Buttons */
+.service-card-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1.15rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  width: 100%;
+}
+
+.service-btn-explore {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #374151;
+  background: #f3f4f6;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all var(--transition);
+  text-decoration: none;
+}
+.service-btn-explore:hover {
+  background: #e5e7eb;
+  color: #111827;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+.service-btn-explore i {
+  font-size: 0.75rem;
+  transition: transform var(--transition);
+}
+.service-card:hover .service-btn-explore i {
+  transform: translateX(2px);
+}
+
+.service-btn-enquire {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #ffffff !important;
+  background: var(--brand-red);
+  border: 1px solid transparent;
+  box-shadow: 0 1px 2px rgba(204, 0, 0, 0.15);
+  transition: all var(--transition);
+  text-decoration: none;
+}
+.service-btn-enquire:hover {
+  background: var(--brand-red-dk);
+  box-shadow: 0 3px 6px rgba(204, 0, 0, 0.25);
+  transform: translateY(-1px);
+}
+.service-btn-enquire i {
+  font-size: 0.85rem;
+}
+
+/* Blue card buttons */
+.service-card--blue .service-btn-enquire {
+  background: var(--brand-blue);
+  box-shadow: 0 1px 2px rgba(0, 53, 128, 0.15);
+}
+.service-card--blue .service-btn-enquire:hover {
+  background: var(--brand-blue-dk);
+  box-shadow: 0 3px 6px rgba(0, 53, 128, 0.25);
 }
 
 .service-enquire-link {

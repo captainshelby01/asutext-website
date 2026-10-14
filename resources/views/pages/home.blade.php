@@ -98,49 +98,83 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         @forelse($services as $service)
-          <div class="service-card {{ $loop->index % 2 === 1 ? 'service-card--blue' : '' }} reveal reveal-delay-{{ ($loop->index % 4) + 1 }}">
-            <div class="service-icon-wrap">
-              @if(Str::contains(strtolower($service->name), 'clean'))
-                <i class="bi bi-sparkles text-xl text-brand-red"></i>
-              @elseif(Str::contains(strtolower($service->name), ['fashion', 'brand', 'print']))
-                <i class="bi bi-handbag-fill text-xl text-brand-blue"></i>
-              @elseif(Str::contains(strtolower($service->name), ['food', 'cater']))
-                <i class="bi bi-cup-hot-fill text-xl text-emerald-600"></i>
-              @elseif(Str::contains(strtolower($service->name), ['transport', 'logistic']))
-                <i class="bi bi-truck text-xl text-amber-600"></i>
-              @elseif(Str::contains(strtolower($service->name), ['gadget', 'electronic', 'phone']))
-                <i class="bi bi-phone-fill text-xl text-purple-600"></i>
-              @elseif($loop->index % 4 === 0)
-                <i class="bi bi-sparkles text-xl text-brand-red"></i>
-              @elseif($loop->index % 4 === 1)
-                <i class="bi bi-lightbulb text-xl text-brand-blue"></i>
-              @elseif($loop->index % 4 === 2)
-                <i class="bi bi-truck text-xl text-amber-600"></i>
-              @else
-                <i class="bi bi-briefcase text-xl text-brand-dark"></i>
-              @endif
-            </div>
-            <h3 class="font-display font-bold text-brand-dark text-base mb-2">{{ $service->name }}</h3>
-            <p class="text-gray-500 text-sm leading-relaxed mb-5">{{ Str::limit($service->description, 120) }}</p>
-            @if(Str::contains(strtolower($service->name), 'clean'))
-              <div class="flex flex-col gap-2 mt-auto">
-                <a
-                  href="{{ route('services.cleaning') }}"
-                  class="inline-flex items-center gap-1.5 font-bold text-xs text-brand-red hover:underline"
-                >Explore Cleaning Division <span class="service-enquire-arrow">→</span></a>
-                <a
-                  href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text={{ urlencode($service->whatsapp_cta_text) }}"
-                  target="_blank" rel="noopener noreferrer"
-                  class="service-enquire-link text-xs"
-                >Enquire on WhatsApp <span class="service-enquire-arrow">→</span></a>
+          @php
+            $sLower = strtolower($service->name);
+            if (Str::contains($sLower, ['fumigat', 'pest'])) {
+              $iconClass = 'bi bi-shield-check text-brand-blue';
+              $iconBgClass = 'service-icon--blue';
+              $targetUrl = route('services.cleaning') . '#industrial';
+            } elseif (Str::contains($sLower, ['laundry', 'dry clean'])) {
+              $iconClass = 'bi bi-droplet-fill text-brand-red';
+              $iconBgClass = '';
+              $targetUrl = route('services.cleaning') . '#specialized';
+            } elseif (Str::contains($sLower, ['garden', 'landscap'])) {
+              $iconClass = 'bi bi-tree-fill text-emerald-600';
+              $iconBgClass = 'service-icon--green';
+              $targetUrl = route('services.cleaning') . '#environmental';
+            } elseif (Str::contains($sLower, 'clean')) {
+              $iconClass = 'bi bi-stars text-brand-red';
+              $iconBgClass = '';
+              $targetUrl = route('services.cleaning');
+            } elseif (Str::contains($sLower, ['transport', 'logistic'])) {
+              $iconClass = 'bi bi-truck text-amber-600';
+              $iconBgClass = 'service-icon--amber';
+              $targetUrl = route('services.transport');
+            } elseif (Str::contains($sLower, ['food', 'cater'])) {
+              $iconClass = 'bi bi-cup-hot-fill text-brand-red';
+              $iconBgClass = '';
+              $targetUrl = route('services.fastfood');
+            } elseif (Str::contains($sLower, ['brand', 'print', 'fashion'])) {
+              $iconClass = 'bi bi-palette-fill text-brand-blue';
+              $iconBgClass = 'service-icon--blue';
+              $targetUrl = route('services.fashion');
+            } elseif (Str::contains($sLower, ['gadget', 'electronic', 'phone', 'mobile'])) {
+              $iconClass = 'bi bi-phone-fill text-purple-600';
+              $iconBgClass = 'service-icon--purple';
+              $targetUrl = route('services.electronics');
+            } else {
+              $iconClass = 'bi bi-briefcase text-brand-dark';
+              $iconBgClass = '';
+              $targetUrl = route('services');
+            }
+
+            $whatsappUrl = ($globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399') . '?text=' . urlencode($service->whatsapp_cta_text ?? 'Hi, I would like to enquire about ' . $service->name);
+          @endphp
+
+          <div
+            class="service-card {{ $loop->index % 2 === 1 ? 'service-card--blue' : '' }} reveal reveal-delay-{{ ($loop->index % 4) + 1 }} flex flex-col justify-between"
+            onclick="if(!event.target.closest('a')) { window.location.href = '{{ $targetUrl }}'; }"
+            title="Click to explore {{ $service->name }}"
+          >
+            <div>
+              <div class="service-icon-wrap {{ $iconBgClass }}">
+                <i class="{{ $iconClass }} text-xl"></i>
               </div>
-            @else
+              <h3 class="font-display font-bold text-brand-dark text-base mb-2">{{ $service->name }}</h3>
+              <p class="text-gray-500 text-sm leading-relaxed mb-5">{{ Str::limit($service->description, 120) }}</p>
+            </div>
+
+            <div class="service-card-actions">
               <a
-                href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text={{ urlencode($service->whatsapp_cta_text) }}"
-                target="_blank" rel="noopener noreferrer"
-                class="service-enquire-link"
-              >Enquire Now <span class="service-enquire-arrow">→</span></a>
-            @endif
+                href="{{ $targetUrl }}"
+                class="service-btn-explore"
+                title="Explore {{ $service->name }}"
+              >
+                <span>Explore</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+              <a
+                href="{{ $whatsappUrl }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                onclick="event.stopPropagation();"
+                class="service-btn-enquire"
+                title="Enquire on WhatsApp about {{ $service->name }}"
+              >
+                <i class="bi bi-whatsapp"></i>
+                <span>Enquire</span>
+              </a>
+            </div>
           </div>
         @empty
           <div class="p-8 text-center col-span-full">No services found in database.</div>

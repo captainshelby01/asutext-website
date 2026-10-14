@@ -54,12 +54,16 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         @forelse($services as $service)
-          <div class="service-card {{ $loop->index % 2 === 1 ? 'service-card--blue' : '' }} reveal reveal-delay-{{ ($loop->index % 3) + 1 }} flex flex-col justify-between">
+          <div
+            class="service-card {{ $loop->index % 2 === 1 ? 'service-card--blue' : '' }} reveal reveal-delay-{{ ($loop->index % 3) + 1 }} flex flex-col justify-between"
+            onclick="if(!event.target.closest('a')) { window.location.href = '{{ $service->route ?? route('services') }}'; }"
+            title="Click to explore {{ $service->name }}"
+          >
             <div>
               <div class="service-icon-wrap flex items-center justify-center">
                 @if(($service->type ?? '') === 'cleaning')
                   <!-- Sparkle / Facility Icon -->
-                  <i class="bi bi-sparkles text-2xl text-brand-red"></i>
+                  <i class="bi bi-stars text-2xl text-brand-red"></i>
                 @elseif(($service->type ?? '') === 'fashion')
                   <!-- Fashion / Apparel Icon -->
                   <i class="bi bi-handbag-fill text-2xl text-brand-blue"></i>
@@ -78,23 +82,25 @@
               <p class="text-gray-500 text-sm leading-relaxed mb-6">{{ $service->description }}</p>
             </div>
 
-            <div class="pt-4 border-t border-gray-100 flex flex-col gap-2.5">
-              @if(!empty($service->route))
-                <a
-                  href="{{ $service->route }}"
-                  class="inline-flex items-center gap-1.5 font-bold text-sm {{ $service->route_color ?? 'text-brand-red' }} hover:underline"
-                >
-                  <span>{{ $service->route_label }}</span>
-                  <span class="service-enquire-arrow">→</span>
-                </a>
-              @endif
+            <div class="service-card-actions">
+              <a
+                href="{{ $service->route ?? route('services') }}"
+                class="service-btn-explore"
+                title="Explore {{ $service->name }}"
+              >
+                <span>Explore</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
               <a
                 href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text={{ urlencode($service->whatsapp_cta_text ?? 'Hi, I would like to enquire about ' . $service->name) }}"
-                target="_blank" rel="noopener noreferrer"
-                class="service-enquire-link font-bold text-sm"
+                target="_blank"
+                rel="noopener noreferrer"
+                onclick="event.stopPropagation();"
+                class="service-btn-enquire"
+                title="Enquire on WhatsApp about {{ $service->name }}"
               >
-                <span>Enquire on WhatsApp</span>
-                <span class="service-enquire-arrow">→</span>
+                <i class="bi bi-whatsapp"></i>
+                <span>Enquire</span>
               </a>
             </div>
           </div>
