@@ -35,7 +35,7 @@
           </p>
 
           <!-- Trust Badges Bar -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8 max-w-xl">
+          <div class="hero-trust-grid mb-8 max-w-xl">
             <div class="bg-white/5 border border-white/10 rounded-xl p-3 flex items-center gap-3">
               <div class="w-9 h-9 rounded-lg bg-brand-red/20 text-brand-red flex items-center justify-center font-bold text-base flex-shrink-0">
                 <i class="bi bi-shield-check"></i>
@@ -69,13 +69,11 @@
 
           <div class="flex flex-wrap gap-4">
             <a
-              href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20am%20interested%20in%20booking%20your%20Cleaning%20and%20Landscaping%20Services."
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#quote-form"
               class="btn-whatsapp text-base"
             >
               <i class="bi bi-whatsapp text-lg flex-shrink-0" aria-hidden="true"></i>
-              Book on WhatsApp
+              Get a Fast Quote on WhatsApp
             </a>
             <a href="#divisions" class="btn-outline text-base">
               Explore All Divisions <i class="bi bi-arrow-down ml-1"></i>
@@ -181,7 +179,7 @@
       </div>
 
       <!-- Interactive Division Category Switcher Tabs -->
-      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10" id="division-tabs-bar">
+      <div class="mobile-scroll-tabs mb-10" id="division-tabs-bar">
         @foreach($serviceCategories as $idx => $cat)
           <button
             type="button"
@@ -241,21 +239,22 @@
                 </div>
 
                 <!-- Action Button in left panel (Styled cleanly with WhatsApp) -->
-                <div class="pt-4 border-t border-gray-100 flex flex-col sm:flex-row gap-3">
+                <div class="pt-4 border-t border-gray-100 flex items-center gap-3">
                   <a
-                    href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text={{ urlencode('Hi Asutext, I would like to book or enquire about ' . $cat['title'] . '.') }}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn-whatsapp justify-center text-sm font-bold flex-1"
+                    href="#quote-form"
+                    onclick="selectDivisionForQuote('{{ $cat['id'] }}')"
+                    class="btn-whatsapp justify-center text-sm font-bold flex-1 py-3 px-4 shadow-sm hover:shadow whitespace-nowrap"
                   >
-                    <i class="bi bi-whatsapp text-sm flex-shrink-0" aria-hidden="true"></i>
+                    <i class="bi bi-whatsapp text-base flex-shrink-0" aria-hidden="true"></i>
                     <span>Book on WhatsApp</span>
                   </a>
                   <a
                     href="tel:{{ str_replace(' ', '', $globalSettings['phone'] ?? '+2349037666399') }}"
-                    class="btn-outline text-brand-dark border-gray-300 hover:border-brand-red justify-center text-sm font-bold"
+                    class="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-3 rounded-xl border border-slate-200 hover:border-slate-800 bg-white hover:bg-slate-900 text-slate-800 hover:text-white text-sm font-bold shadow-sm hover:shadow transition-all duration-200 whitespace-nowrap flex-shrink-0 group"
+                    title="Call Asutext directly"
                   >
-                    Call Us
+                    <i class="bi bi-telephone-fill text-xs text-brand-red group-hover:text-white transition-colors"></i>
+                    <span>Call Us</span>
                   </a>
                 </div>
               </div>
@@ -336,18 +335,276 @@
               <!-- Refined WhatsApp Action Button -->
               <div class="pt-4 border-t border-gray-100 mt-auto">
                 <a
-                  href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text={{ urlencode('Hi Asutext, I would like to book or enquire about ' . $cat['title'] . '.') }}"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#quote-form"
+                  onclick="selectDivisionForQuote('{{ $cat['id'] }}')"
                   class="btn-whatsapp w-full justify-center text-xs font-bold py-2.5"
                 >
                   <i class="bi bi-whatsapp text-xs flex-shrink-0" aria-hidden="true"></i>
-                  <span>Enquire on WhatsApp</span>
+                  <span>Request {{ $cat['title'] }} Quote</span>
                 </a>
               </div>
             </div>
           @endforeach
         </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!--  INTERACTIVE CLEANING QUOTE & BOOKING FORM (WHATSAPP FUNNEL) -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="quote-form" class="py-16 sm:py-24 bg-white border-t border-b border-gray-200 scroll-mt-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200 mb-3">
+          <i class="bi bi-lightning-charge-fill text-emerald-600"></i>
+          Fast WhatsApp Quote in 60 Seconds
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl font-black text-brand-dark">
+          Tell Us What You Need Cleaned
+        </h2>
+        <p class="text-gray-500 mt-3 text-sm sm:text-base leading-relaxed">
+          Select your service details below. We will format a clear, detailed specification and send it directly to our operations team on WhatsApp for an immediate, transparent quote.
+        </p>
+      </div>
+
+      <!-- Main Form Card -->
+      <div class="bg-brand-light rounded-3xl p-6 sm:p-10 border border-gray-200/90 shadow-xl relative overflow-hidden">
+        <form id="cleaningQuoteForm" onsubmit="handleCleaningFormSubmit(event)" novalidate>
+          
+          <!-- STEP 1: Select Main Division -->
+          <div class="mb-8">
+            <div class="flex items-center justify-between mb-3">
+              <label class="block font-display font-bold text-slate-900 text-sm sm:text-base">
+                1. Select Cleaning Division <span class="text-brand-red">*</span>
+              </label>
+              <span class="text-xs text-gray-400 font-medium">Choose primary category</span>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5" id="form-division-options">
+              @foreach($serviceCategories as $cat)
+                <button
+                  type="button"
+                  class="form-division-btn p-3 rounded-xl border text-left transition-all duration-200 flex flex-col justify-between group cursor-pointer {{ $loop->first ? 'border-brand-red bg-white ring-2 ring-brand-red/20 shadow-sm' : 'border-gray-200 bg-white/70 hover:bg-white hover:border-gray-300' }}"
+                  data-cat-id="{{ $cat['id'] }}"
+                  data-cat-title="{{ $cat['title'] }}"
+                  onclick="setFormDivision('{{ $cat['id'] }}')"
+                >
+                  <div class="flex items-center justify-between w-full mb-1.5">
+                    <span class="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold {{ $cat['badge_color'] }}">
+                      @if($cat['id'] === 'residential') <i class="bi bi-house-door-fill"></i>
+                      @elseif($cat['id'] === 'commercial') <i class="bi bi-building-fill"></i>
+                      @elseif($cat['id'] === 'specialized') <i class="bi bi-stars"></i>
+                      @elseif($cat['id'] === 'industrial') <i class="bi bi-cone-striped"></i>
+                      @elseif($cat['id'] === 'environmental') <i class="bi bi-tree-fill"></i>
+                      @else <i class="bi bi-calendar2-week-fill"></i>
+                      @endif
+                    </span>
+                    <span class="form-division-radio w-4 h-4 rounded-full border border-gray-300 flex items-center justify-center {{ $loop->first ? 'border-brand-red' : '' }}">
+                      <span class="form-division-dot w-2 h-2 rounded-full bg-brand-red {{ $loop->first ? 'block' : 'hidden' }}"></span>
+                    </span>
+                  </div>
+                  <span class="font-display font-bold text-xs sm:text-sm text-slate-800 leading-tight">
+                    {{ $cat['title'] }}
+                  </span>
+                </button>
+              @endforeach
+            </div>
+            <input type="hidden" id="selectedDivisionInput" name="division" value="{{ $serviceCategories[0]['id'] ?? 'residential' }}">
+            <input type="hidden" id="selectedDivisionTitle" value="{{ $serviceCategories[0]['title'] ?? 'Residential Cleaning' }}">
+          </div>
+
+          <!-- STEP 2: Sub-services Dynamic Multi-Select Chips -->
+          <div class="mb-8 p-5 bg-white rounded-2xl border border-gray-200 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3">
+              <label class="block font-display font-bold text-slate-900 text-sm sm:text-base">
+                2. Select Specific Services Needed <span class="text-brand-red">*</span>
+              </label>
+              <span class="text-xs text-brand-red font-semibold">Select all that apply (tap to choose)</span>
+            </div>
+            <p class="text-xs text-gray-500 mb-4">
+              Tap the specific tasks you need done. You can choose multiple options:
+            </p>
+
+            @foreach($serviceCategories as $cat)
+              <div
+                id="subservices-for-{{ $cat['id'] }}"
+                class="form-subservices-group {{ $loop->first ? 'flex' : 'hidden' }} flex-wrap gap-2"
+              >
+                @foreach($cat['services'] as $srv)
+                  <button
+                    type="button"
+                    class="subservice-chip px-3.5 py-2 rounded-xl border border-gray-200 bg-brand-light text-slate-700 text-xs sm:text-sm font-semibold hover:border-brand-red/60 transition-all flex items-center gap-2 cursor-pointer"
+                    data-service-name="{{ $srv['name'] }}"
+                    onclick="toggleSubserviceChip(this)"
+                  >
+                    <span class="chip-check w-4 h-4 rounded-md border border-gray-300 flex items-center justify-center bg-white text-[10px] text-white">
+                      <i class="bi bi-check-lg hidden"></i>
+                    </span>
+                    <span>{{ $srv['name'] }}</span>
+                  </button>
+                @endforeach
+              </div>
+            @endforeach
+            <p id="subservicesError" class="text-brand-red text-xs mt-2 hidden font-medium">
+              Please select at least one specific service needed.
+            </p>
+          </div>
+
+          <!-- STEP 3: Property Type, Location & Preferred Schedule -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+            
+            <!-- Property Type / Size -->
+            <div>
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                3. Property Type / Size <span class="text-brand-red">*</span>
+              </label>
+              <select
+                id="formPropertyType"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-brand-red/30 focus:border-brand-red transition-all cursor-pointer"
+                required
+              >
+                <option value="" disabled selected>Select property size...</option>
+                <option value="1–2 Bedroom Apartment / Flat">1–2 Bedroom Apartment / Flat</option>
+                <option value="3–4 Bedroom Flat / Duplex">3–4 Bedroom Flat / Duplex</option>
+                <option value="5+ Bedroom Mansion / Detached House">5+ Bedroom Mansion / Detached House</option>
+                <option value="Commercial Office / Corporate Suite">Commercial Office / Corporate Suite</option>
+                <option value="Retail Store / Showroom">Retail Store / Showroom</option>
+                <option value="Warehouse / Factory / Plant">Warehouse / Factory / Plant</option>
+                <option value="Compound / Grounds Only">Compound / Grounds Only</option>
+                <option value="Other / Special Facility">Other / Special Facility</option>
+              </select>
+            </div>
+
+            <!-- Location in Lagos / Nigeria -->
+            <div>
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                4. Location / Area <span class="text-brand-red">*</span>
+              </label>
+              <select
+                id="formLocation"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-brand-red/30 focus:border-brand-red transition-all cursor-pointer"
+                required
+              >
+                <option value="" disabled selected>Select area...</option>
+                <option value="Ikoyi / Banana Island (Lagos)">Ikoyi / Banana Island (Lagos)</option>
+                <option value="Victoria Island / Oniru (Lagos)">Victoria Island / Oniru (Lagos)</option>
+                <option value="Lekki Phase 1 / Chevron (Lagos)">Lekki Phase 1 / Chevron (Lagos)</option>
+                <option value="Ajah / Sangotedo / Epe (Lagos)">Ajah / Sangotedo / Epe (Lagos)</option>
+                <option value="Ikeja / GRA / Maryland (Lagos)">Ikeja / GRA / Maryland (Lagos)</option>
+                <option value="Surulere / Yaba / Mainland (Lagos)">Surulere / Yaba / Mainland (Lagos)</option>
+                <option value="Calabar (Cross-River State)">Calabar (Cross-River State)</option>
+                <option value="Abuja (FCT)">Abuja (FCT)</option>
+                <option value="Other Location Nationwide">Other Location Nationwide</option>
+              </select>
+            </div>
+
+            <!-- Preferred Schedule -->
+            <div>
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                5. When Do You Need This?
+              </label>
+              <select
+                id="formSchedule"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-brand-red/30 focus:border-brand-red transition-all cursor-pointer"
+              >
+                <option value="ASAP / Today (Urgent)">ASAP / Today (Urgent)</option>
+                <option value="This Weekend" selected>This Weekend</option>
+                <option value="Within the Next 7 Days">Within the Next 7 Days</option>
+                <option value="Later this Month">Later this Month</option>
+                <option value="Recurring Contract (Weekly/Monthly)">Recurring Contract (Weekly/Monthly)</option>
+                <option value="Just Inquiring / Flexible">Just Inquiring / Flexible</option>
+              </select>
+            </div>
+
+            <!-- Client Name -->
+            <div>
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                6. Your Name <span class="text-brand-red">*</span>
+              </label>
+              <input
+                type="text"
+                id="formName"
+                placeholder="e.g. Babatunde Adeleke"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-brand-red/30 focus:border-brand-red transition-all"
+                required
+              />
+            </div>
+
+          </div>
+
+          <!-- Phone Number and Notes -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+            <div>
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                7. WhatsApp / Phone Number <span class="text-brand-red">*</span>
+              </label>
+              <input
+                type="tel"
+                id="formPhone"
+                placeholder="e.g. 08012345678"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-brand-red/30 focus:border-brand-red transition-all"
+                required
+              />
+            </div>
+
+            <div>
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                8. Specific Notes / Special Instructions <span class="text-gray-400 font-normal">(Optional)</span>
+              </label>
+              <input
+                type="text"
+                id="formNotes"
+                placeholder="e.g. Paint stains on tiles, 2 pets in the home"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-brand-red/30 focus:border-brand-red transition-all"
+              />
+            </div>
+          </div>
+
+          <!-- Submit Button & Guarantee Note -->
+          <div class="pt-4 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-xs text-gray-500 flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xs flex-shrink-0">
+                <i class="bi bi-shield-lock-fill"></i>
+              </span>
+              <span>Your request is securely logged &amp; opened in WhatsApp with zero wait time.</span>
+            </div>
+
+            <button
+              type="submit"
+              id="quoteSubmitBtn"
+              class="group relative w-full sm:w-auto inline-flex items-center justify-between sm:justify-start gap-4 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-gradient-to-r from-[#25D366] via-[#20ba5a] to-[#128C7E] text-white shadow-[0_8px_24px_rgba(37,211,102,0.35)] hover:shadow-[0_12px_32px_rgba(37,211,102,0.5)] border border-emerald-300/40 hover:border-white/40 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 active:translate-y-0 overflow-hidden"
+            >
+              <!-- Gloss reflection overlay -->
+              <span class="absolute inset-0 w-full h-full bg-gradient-to-t from-black/5 to-white/20 pointer-events-none"></span>
+
+              <!-- WhatsApp Icon in frosted circular badge -->
+              <div class="relative w-11 h-11 rounded-xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <i class="bi bi-whatsapp text-2xl text-white"></i>
+              </div>
+
+              <!-- Button Label with Dual-Tier Hierarchy -->
+              <div class="relative text-left flex-1 min-w-[190px]">
+                <p id="quoteSubmitText" class="font-display font-extrabold text-white text-base sm:text-lg leading-tight tracking-wide">
+                  Send Quote Request
+                </p>
+                <p id="quoteSubmitSub" class="text-white/85 text-xs font-medium flex items-center gap-1.5 mt-0.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                  Instant Dispatch to WhatsApp
+                </p>
+              </div>
+
+              <!-- Animated Action Arrow in Circle -->
+              <div class="relative w-8 h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 group-hover:bg-white group-hover:text-emerald-700 transition-all duration-300">
+                <i class="bi bi-arrow-right text-sm group-hover:translate-x-0.5 transition-transform"></i>
+              </div>
+            </button>
+          </div>
+
+        </form>
       </div>
 
     </div>
@@ -591,14 +848,16 @@
 
           <div class="flex items-center gap-4">
             <a
-              href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20Disinfection%20and%20Zoflora%20Sanitizing%20services."
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-primary text-sm"
+              href="tel:{{ str_replace(' ', '', $globalSettings['phone'] ?? '+2349037666399') }}"
+              class="btn-primary text-sm whitespace-nowrap inline-flex items-center gap-1.5 cursor-pointer"
             >
-              Enquire About Sanitization
+              <i class="bi bi-telephone-fill text-xs"></i>
+              <span>Call Cleaning Desk</span>
             </a>
-            <a href="{{ route('contact') }}" class="btn-outline text-brand-dark border-gray-300 hover:border-brand-red text-sm">
+            <a
+              href="{{ route('contact') }}"
+              class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 hover:border-slate-800 bg-white hover:bg-slate-900 text-slate-800 hover:text-white text-sm font-bold shadow-sm hover:shadow transition-all duration-200 whitespace-nowrap"
+            >
               Contact Support
             </a>
           </div>
@@ -727,18 +986,18 @@
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
-          href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20visited%20your%20Cleaning%20page%20and%20I%27d%20like%20to%20get%20a%20quote%20for%20cleaning%20and%20facility%20services."
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-whatsapp text-base"
+          href="#quote-form"
+          class="btn-primary text-base px-8 py-4 inline-flex items-center justify-center gap-2"
         >
-          Chat Directly on WhatsApp
+          <span>Customize Cleaning Plan</span>
+          <i class="bi bi-arrow-up-right text-sm"></i>
         </a>
         <a
           href="tel:{{ str_replace(' ', '', $globalSettings['phone'] ?? '+2349037666399') }}"
-          class="btn-outline text-base"
+          class="btn-outline text-base px-8 py-4 inline-flex items-center justify-center gap-2"
         >
-          Call {{ $globalSettings['phone'] ?? '+234 903 766 6399' }}
+          <i class="bi bi-telephone text-sm"></i>
+          <span>Call Us: {{ $globalSettings['phone'] ?? '+234 903 766 6399' }}</span>
         </a>
       </div>
     </div>
@@ -970,6 +1229,211 @@
           });
         });
       });
+
+      // 4. Interactive Cleaning Quote Form Logic
+      window.setFormDivision = function(catId) {
+        const input = document.getElementById('selectedDivisionInput');
+        const titleInput = document.getElementById('selectedDivisionTitle');
+        if (input) input.value = catId;
+
+        // Update Division Buttons Styling
+        const allBtns = document.querySelectorAll('.form-division-btn');
+        allBtns.forEach(btn => {
+          const isTarget = btn.getAttribute('data-cat-id') === catId;
+          const radio = btn.querySelector('.form-division-radio');
+          const dot = btn.querySelector('.form-division-dot');
+
+          if (isTarget) {
+            btn.classList.add('border-brand-red', 'bg-white', 'ring-2', 'ring-brand-red/20', 'shadow-sm');
+            btn.classList.remove('border-gray-200', 'bg-white/70');
+            if (radio) radio.classList.add('border-brand-red');
+            if (dot) {
+              dot.classList.remove('hidden');
+              dot.classList.add('block');
+            }
+            if (titleInput) titleInput.value = btn.getAttribute('data-cat-title') || catId;
+          } else {
+            btn.classList.remove('border-brand-red', 'bg-white', 'ring-2', 'ring-brand-red/20', 'shadow-sm');
+            btn.classList.add('border-gray-200', 'bg-white/70');
+            if (radio) radio.classList.remove('border-brand-red');
+            if (dot) {
+              dot.classList.add('hidden');
+              dot.classList.remove('block');
+            }
+          }
+        });
+
+        // Toggle Visible Sub-Services Group
+        const allGroups = document.querySelectorAll('.form-subservices-group');
+        allGroups.forEach(grp => {
+          if (grp.id === `subservices-for-${catId}`) {
+            grp.classList.remove('hidden');
+            grp.classList.add('flex');
+          } else {
+            grp.classList.add('hidden');
+            grp.classList.remove('flex');
+          }
+        });
+      };
+
+      window.toggleSubserviceChip = function(chip) {
+        const isSelected = chip.classList.contains('selected');
+        const checkBadge = chip.querySelector('.chip-check');
+        const checkIcon = chip.querySelector('.chip-check i');
+        const errEl = document.getElementById('subservicesError');
+
+        if (!isSelected) {
+          chip.classList.add('selected', 'border-brand-red', 'bg-red-50', 'text-brand-red', 'ring-1', 'ring-brand-red');
+          chip.classList.remove('border-gray-200', 'bg-brand-light', 'text-slate-700');
+          if (checkBadge) {
+            checkBadge.classList.add('bg-brand-red', 'border-brand-red');
+            checkBadge.classList.remove('border-gray-300', 'bg-white');
+          }
+          if (checkIcon) checkIcon.classList.remove('hidden');
+          if (errEl) errEl.classList.add('hidden');
+        } else {
+          chip.classList.remove('selected', 'border-brand-red', 'bg-red-50', 'text-brand-red', 'ring-1', 'ring-brand-red');
+          chip.classList.add('border-gray-200', 'bg-brand-light', 'text-slate-700');
+          if (checkBadge) {
+            checkBadge.classList.remove('bg-brand-red', 'border-brand-red');
+            checkBadge.classList.add('border-gray-300', 'bg-white');
+          }
+          if (checkIcon) checkIcon.classList.add('hidden');
+        }
+      };
+
+      window.selectDivisionForQuote = function(divisionId) {
+        const quoteSection = document.getElementById('quote-form');
+        if (quoteSection) {
+          quoteSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        window.setFormDivision(divisionId);
+
+        // Auto-select the first subservice in that category if none is selected
+        const activeGroup = document.getElementById(`subservices-for-${divisionId}`);
+        if (activeGroup) {
+          const selected = activeGroup.querySelectorAll('.subservice-chip.selected');
+          if (selected.length === 0) {
+            const firstChip = activeGroup.querySelector('.subservice-chip');
+            if (firstChip) window.toggleSubserviceChip(firstChip);
+          }
+        }
+      };
+
+      window.handleCleaningFormSubmit = async function(e) {
+        e.preventDefault();
+
+        const nameEl = document.getElementById('formName');
+        const phoneEl = document.getElementById('formPhone');
+        const propEl = document.getElementById('formPropertyType');
+        const locEl = document.getElementById('formLocation');
+        const scheduleEl = document.getElementById('formSchedule');
+        const notesEl = document.getElementById('formNotes');
+        const divisionTitle = document.getElementById('selectedDivisionTitle')?.value || 'General Cleaning';
+        const divisionId = document.getElementById('selectedDivisionInput')?.value || 'residential';
+
+        const name = nameEl?.value.trim() || '';
+        const phone = phoneEl?.value.trim() || '';
+        const propertyType = propEl?.value || '';
+        const location = locEl?.value || '';
+        const schedule = scheduleEl?.value || 'This Weekend';
+        const notes = notesEl?.value.trim() || '';
+
+        if (!name) {
+          alert('Please enter your full name.');
+          nameEl?.focus();
+          return;
+        }
+        if (!phone) {
+          alert('Please enter your WhatsApp or phone number.');
+          phoneEl?.focus();
+          return;
+        }
+        if (!propertyType) {
+          alert('Please select your property type/size.');
+          propEl?.focus();
+          return;
+        }
+        if (!location) {
+          alert('Please select your location/area.');
+          locEl?.focus();
+          return;
+        }
+
+        // Get selected sub-services
+        const activeGroup = document.getElementById(`subservices-for-${divisionId}`);
+        const selectedChips = activeGroup ? activeGroup.querySelectorAll('.subservice-chip.selected') : [];
+        const selectedServices = Array.from(selectedChips).map(c => c.getAttribute('data-service-name'));
+
+        if (selectedServices.length === 0) {
+          const errEl = document.getElementById('subservicesError');
+          if (errEl) errEl.classList.remove('hidden');
+          if (activeGroup) activeGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        const submitBtn = document.getElementById('quoteSubmitBtn');
+        const submitText = document.getElementById('quoteSubmitText');
+        const submitSub = document.getElementById('quoteSubmitSub');
+        const originalText = submitText?.textContent || 'Send Quote Request';
+        const originalSub = submitSub?.innerHTML || '<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> Instant Dispatch to WhatsApp';
+
+        if (submitBtn) submitBtn.disabled = true;
+        if (submitText) submitText.textContent = 'Preparing WhatsApp Booking...';
+        if (submitSub) submitSub.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span> Connecting to WhatsApp...';
+
+        const serviceListText = selectedServices.map(s => `• ${s}`).join('\n');
+        const fullMessage = 
+`*New Cleaning Inquiry — Asutext Group*
+━━━━━━━━━━━━━━━━━━━━
+👤 *Name:* ${name}
+📞 *Phone:* ${phone}
+📍 *Location:* ${location}
+🏠 *Property Type:* ${propertyType}
+🏢 *Division:* ${divisionTitle}
+✨ *Services Needed:*
+${serviceListText}
+📅 *Preferred Schedule:* ${schedule}
+📝 *Notes:* ${notes ? notes : 'None'}
+━━━━━━━━━━━━━━━━━━━━
+_Sent via asutext.com quote calculator_`;
+
+        // Dual-Action: Save lead to backend database
+        try {
+          await fetch('{{ route("inquiry.store") }}', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-TOKEN': '{{ csrf_token() }}',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              name: name,
+              phone: phone,
+              service: `Cleaning: ${divisionTitle}`,
+              message: fullMessage
+            })
+          });
+        } catch (err) {
+          console.warn('Backend inquiry auto-save bypassed, launching WhatsApp directly', err);
+        }
+
+        // Forward directly to WhatsApp
+        const waBase = '{{ $globalSettings["whatsapp_url"] ?? "https://wa.me/2349037666399" }}'.split('?')[0];
+        const targetUrl = `${waBase}?text=${encodeURIComponent(fullMessage)}`;
+
+        // Open WhatsApp in new tab / app
+        const win = window.open(targetUrl, '_blank');
+        if (!win || win.closed || typeof win.closed === 'undefined') {
+          window.location.href = targetUrl;
+        }
+
+        setTimeout(() => {
+          if (submitBtn) submitBtn.disabled = false;
+          if (submitText) submitText.textContent = originalText;
+          if (submitSub) submitSub.innerHTML = originalSub;
+        }, 2000);
+      };
     });
   </script>
 @endsection

@@ -6,7 +6,7 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
   <!--  HERO BANNER                                               -->
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <section class="py-20 bg-brand-dark text-white relative overflow-hidden">
+  <section class="py-12 sm:py-20 bg-brand-dark text-white relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <p class="section-label section-label--red mb-3">Our History & Team</p>
       <h1 class="font-display text-4xl sm:text-5xl font-black leading-tight">

@@ -36,7 +36,7 @@
           </p>
 
           <!-- Trust Badges Bar -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8 max-w-xl">
+          <div class="hero-trust-grid mb-8 max-w-xl">
             <div class="bg-white/5 border border-white/10 rounded-xl p-3 flex items-center gap-3">
               <div class="w-9 h-9 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-base flex-shrink-0">
                 <i class="bi bi-house-door-fill"></i>
@@ -70,13 +70,11 @@
 
           <div class="flex flex-wrap gap-4">
             <a
-              href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20am%20interested%20in%20booking%20your%20Door-to-Door%20Transportation%20and%20Logistics%20Services."
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#quote-form"
               class="btn-whatsapp text-base"
             >
               <i class="bi bi-whatsapp text-lg flex-shrink-0" aria-hidden="true"></i>
-              Book Ride on WhatsApp
+              Get a Fast Ride Quote on WhatsApp
             </a>
             <a href="#divisions" class="btn-outline text-base">
               Explore Fleet &amp; Scope <i class="bi bi-arrow-down ml-1"></i>
@@ -181,7 +179,7 @@
       </div>
 
       <!-- Interactive Category Switcher Tabs -->
-      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10" id="transport-tabs-bar">
+      <div class="mobile-scroll-tabs mb-10" id="transport-tabs-bar">
         @foreach($categories as $idx => $cat)
           <button
             type="button"
@@ -241,21 +239,22 @@
                 </div>
 
                 <!-- Action Button in left panel -->
-                <div class="pt-4 border-t border-gray-100 flex flex-col sm:flex-row gap-3">
+                <div class="pt-4 border-t border-gray-100 flex items-center gap-3">
                   <a
-                    href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text={{ urlencode('Hi Asutext, I would like to book or enquire about ' . $cat['title'] . '.') }}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn-whatsapp justify-center text-sm font-bold flex-1"
+                    href="#quote-form"
+                    onclick="selectTransportDivisionForQuote('{{ $cat['id'] }}')"
+                    class="btn-whatsapp justify-center text-sm font-bold flex-1 py-3 px-4 shadow-sm hover:shadow whitespace-nowrap"
                   >
-                    <i class="bi bi-whatsapp text-sm flex-shrink-0" aria-hidden="true"></i>
+                    <i class="bi bi-whatsapp text-base flex-shrink-0" aria-hidden="true"></i>
                     <span>Book on WhatsApp</span>
                   </a>
                   <a
                     href="tel:{{ str_replace(' ', '', $globalSettings['phone'] ?? '+2349037666399') }}"
-                    class="btn-outline text-brand-dark border-gray-300 hover:border-brand-red justify-center text-sm font-bold"
+                    class="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-3 rounded-xl border border-slate-200 hover:border-slate-800 bg-white hover:bg-slate-900 text-slate-800 hover:text-white text-sm font-bold shadow-sm hover:shadow transition-all duration-200 whitespace-nowrap flex-shrink-0 group"
+                    title="Call Asutext directly"
                   >
-                    Call Us
+                    <i class="bi bi-telephone-fill text-xs text-amber-600 group-hover:text-white transition-colors"></i>
+                    <span>Call Us</span>
                   </a>
                 </div>
               </div>
@@ -347,18 +346,274 @@
               <!-- Refined WhatsApp Action Button -->
               <div class="pt-4 border-t border-gray-100 mt-auto">
                 <a
-                  href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text={{ urlencode('Hi Asutext, I would like to book or enquire about ' . $cat['title'] . '.') }}"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#quote-form"
+                  onclick="selectTransportDivisionForQuote('{{ $cat['id'] }}')"
                   class="btn-whatsapp w-full justify-center text-xs font-bold py-2.5"
                 >
                   <i class="bi bi-whatsapp text-xs flex-shrink-0" aria-hidden="true"></i>
-                  <span>Enquire on WhatsApp</span>
+                  <span>Request {{ $cat['title'] }} Quote</span>
                 </a>
               </div>
             </div>
           @endforeach
         </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!--  INTERACTIVE TRANSPORT & LOGISTICS QUOTE FORM (WHATSAPP)    -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="quote-form" class="py-16 sm:py-24 bg-white border-t border-b border-gray-200 scroll-mt-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200 mb-3">
+          <i class="bi bi-lightning-charge-fill text-amber-600"></i>
+          Fast Transit Quote in 60 Seconds
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl font-black text-brand-dark">
+          Book Your Ride or Logistics Charter
+        </h2>
+        <p class="text-gray-500 mt-3 text-sm sm:text-base leading-relaxed">
+          Select your travel details below. We will format a clear itinerary specification and send it directly to our dispatch desk on WhatsApp for immediate confirmation.
+        </p>
+      </div>
+
+      <!-- Main Form Card -->
+      <div class="bg-brand-light rounded-3xl p-6 sm:p-10 border border-gray-200/90 shadow-xl relative overflow-hidden">
+        <form id="transportQuoteForm" onsubmit="handleTransportFormSubmit(event)" novalidate>
+          
+          <!-- STEP 1: Select Main Division -->
+          <div class="mb-8">
+            <div class="flex items-center justify-between mb-3">
+              <label class="block font-display font-bold text-slate-900 text-sm sm:text-base">
+                1. Select Transport Division <span class="text-brand-red">*</span>
+              </label>
+              <span class="text-xs text-gray-400 font-medium">Choose travel category</span>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5" id="transport-division-options">
+              @foreach($categories as $cat)
+                <button
+                  type="button"
+                  class="transport-division-btn p-3 rounded-xl border text-left transition-all duration-200 flex flex-col justify-between group cursor-pointer {{ $loop->first ? 'border-amber-500 bg-white ring-2 ring-amber-500/20 shadow-sm' : 'border-gray-200 bg-white/70 hover:bg-white hover:border-gray-300' }}"
+                  data-cat-id="{{ $cat['id'] }}"
+                  data-cat-title="{{ $cat['title'] }}"
+                  onclick="setTransportFormDivision('{{ $cat['id'] }}')"
+                >
+                  <div class="flex items-center justify-between w-full mb-1.5">
+                    <span class="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold {{ $cat['badge_color'] }}">
+                      @if($cat['id'] === 'door-to-door') <i class="bi bi-door-open-fill"></i>
+                      @elseif($cat['id'] === 'airport-transfers') <i class="bi bi-airplane-engines-fill"></i>
+                      @elseif($cat['id'] === 'corporate-logistics') <i class="bi bi-building-fill"></i>
+                      @elseif($cat['id'] === 'group-charters') <i class="bi bi-bus-front-fill"></i>
+                      @elseif($cat['id'] === 'multimodal-haulage') <i class="bi bi-truck-front-fill"></i>
+                      @else <i class="bi bi-sliders2-vertical"></i>
+                      @endif
+                    </span>
+                    <span class="transport-division-radio w-4 h-4 rounded-full border border-gray-300 flex items-center justify-center {{ $loop->first ? 'border-amber-500' : '' }}">
+                      <span class="transport-division-dot w-2 h-2 rounded-full bg-amber-500 {{ $loop->first ? 'block' : 'hidden' }}"></span>
+                    </span>
+                  </div>
+                  <span class="font-display font-bold text-xs sm:text-sm text-slate-800 leading-tight">
+                    {{ $cat['title'] }}
+                  </span>
+                </button>
+              @endforeach
+            </div>
+            <input type="hidden" id="selectedTransportDivisionInput" name="division" value="{{ $categories[0]['id'] ?? 'door-to-door' }}">
+            <input type="hidden" id="selectedTransportDivisionTitle" value="{{ $categories[0]['title'] ?? 'Door-to-Door & Point-to-Point' }}">
+          </div>
+
+          <!-- STEP 2: Sub-services Dynamic Multi-Select Chips -->
+          <div class="mb-8 p-5 bg-white rounded-2xl border border-gray-200 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3">
+              <label class="block font-display font-bold text-slate-900 text-sm sm:text-base">
+                2. Select Specific Trip Features / Options <span class="text-brand-red">*</span>
+              </label>
+              <span class="text-xs text-amber-600 font-semibold">Select all that apply</span>
+            </div>
+            <p class="text-xs text-gray-500 mb-4">
+              Tap the features that match your journey or cargo:
+            </p>
+
+            @foreach($categories as $cat)
+              <div
+                id="transport-subservices-for-{{ $cat['id'] }}"
+                class="transport-subservices-group {{ $loop->first ? 'flex' : 'hidden' }} flex-wrap gap-2"
+              >
+                @foreach($cat['items'] as $item)
+                  <button
+                    type="button"
+                    class="transport-subservice-chip px-3.5 py-2 rounded-xl border border-gray-200 bg-brand-light text-slate-700 text-xs sm:text-sm font-semibold hover:border-amber-500/60 transition-all flex items-center gap-2 cursor-pointer"
+                    data-service-name="{{ $item }}"
+                    onclick="toggleTransportSubserviceChip(this)"
+                  >
+                    <span class="chip-check w-4 h-4 rounded-md border border-gray-300 flex items-center justify-center bg-white text-[10px] text-white">
+                      <i class="bi bi-check-lg hidden"></i>
+                    </span>
+                    <span>{{ $item }}</span>
+                  </button>
+                @endforeach
+              </div>
+            @endforeach
+            <p id="transportSubservicesError" class="text-brand-red text-xs mt-2 hidden font-medium">
+              Please select at least one trip option.
+            </p>
+          </div>
+
+          <!-- STEP 3: Route, Vehicle & Schedule -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+            
+            <!-- Pickup City / Location -->
+            <div>
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                3. Pickup Location / Address <span class="text-brand-red">*</span>
+              </label>
+              <input
+                type="text"
+                id="formTransportPickup"
+                placeholder="e.g. Lekki Phase 1, Lagos (or Calabar)"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500 transition-all"
+                required
+              />
+            </div>
+
+            <!-- Destination City / Location -->
+            <div>
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                4. Destination / Drop-off City <span class="text-brand-red">*</span>
+              </label>
+              <input
+                type="text"
+                id="formTransportDropoff"
+                placeholder="e.g. Abuja FCT, Calabar, or Lagos Airport"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500 transition-all"
+                required
+              />
+            </div>
+
+            <!-- Vehicle Type Preference -->
+            <div>
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                5. Preferred Vehicle Type <span class="text-brand-red">*</span>
+              </label>
+              <select
+                id="formTransportVehicle"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500 transition-all cursor-pointer"
+                required
+              >
+                <option value="" disabled selected>Select vehicle class...</option>
+                <option value="Executive Sedan (1-3 Passengers)">Executive Sedan (1–3 Passengers)</option>
+                <option value="Executive SUV - Prado / Land Cruiser (VIP)">Executive SUV - Prado / Land Cruiser (VIP)</option>
+                <option value="14-Seater Toyota HiAce Van (Group/Staff)">14-Seater Toyota HiAce Van (Group/Staff)</option>
+                <option value="30-Seater Luxury Coaster Bus (Charter/Events)">30-Seater Luxury Coaster Bus (Charter/Events)</option>
+                <option value="Commercial Haulage Truck / Freight">Commercial Haulage Truck / Freight</option>
+                <option value="Flexible / Recommend Best Vehicle">Flexible / Recommend Best Vehicle</option>
+              </select>
+            </div>
+
+            <!-- Travel Date & Urgency -->
+            <div>
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                6. When Do You Need Transit?
+              </label>
+              <select
+                id="formTransportSchedule"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500 transition-all cursor-pointer"
+              >
+                <option value="ASAP / Today (Immediate Trip)">ASAP / Today (Immediate Trip)</option>
+                <option value="Tomorrow" selected>Tomorrow</option>
+                <option value="This Weekend">This Weekend</option>
+                <option value="Within the Next 7 Days">Within the Next 7 Days</option>
+                <option value="Recurring Monthly Contract (Staff/Company)">Recurring Monthly Contract (Staff/Company)</option>
+                <option value="Flexible / Inquiry Only">Flexible / Inquiry Only</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- Contact Info & Cargo Notes -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+            <div>
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                7. Your Name <span class="text-brand-red">*</span>
+              </label>
+              <input
+                type="text"
+                id="formTransportName"
+                placeholder="e.g. Babatunde Adeleke"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500 transition-all"
+                required
+              />
+            </div>
+
+            <div>
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                8. WhatsApp / Phone Number <span class="text-brand-red">*</span>
+              </label>
+              <input
+                type="tel"
+                id="formTransportPhone"
+                placeholder="e.g. 08012345678"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500 transition-all"
+                required
+              />
+            </div>
+
+            <div class="sm:col-span-2">
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                9. Passengers, Luggage or Cargo Notes <span class="text-gray-400 font-normal">(Optional)</span>
+              </label>
+              <input
+                type="text"
+                id="formTransportNotes"
+                placeholder="e.g. 4 passengers with 6 heavy suitcases, need child seat, or 2-ton commercial pallet"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500 transition-all"
+              />
+            </div>
+          </div>
+
+          <!-- Submit Button & Guarantee Note -->
+          <div class="pt-4 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-xs text-gray-500 flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xs flex-shrink-0">
+                <i class="bi bi-shield-lock-fill"></i>
+              </span>
+              <span>Your itinerary is securely recorded &amp; forwarded to fleet dispatch on WhatsApp.</span>
+            </div>
+
+            <button
+              type="submit"
+              id="transportSubmitBtn"
+              class="group relative w-full sm:w-auto inline-flex items-center justify-between sm:justify-start gap-4 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-gradient-to-r from-[#25D366] via-[#20ba5a] to-[#128C7E] text-white shadow-[0_8px_24px_rgba(37,211,102,0.35)] hover:shadow-[0_12px_32px_rgba(37,211,102,0.5)] border border-emerald-300/40 hover:border-white/40 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 active:translate-y-0 overflow-hidden"
+            >
+              <span class="absolute inset-0 w-full h-full bg-gradient-to-t from-black/5 to-white/20 pointer-events-none"></span>
+
+              <div class="relative w-11 h-11 rounded-xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <i class="bi bi-whatsapp text-2xl text-white"></i>
+              </div>
+
+              <div class="relative text-left flex-1 min-w-[190px]">
+                <p id="transportSubmitText" class="font-display font-extrabold text-white text-base sm:text-lg leading-tight tracking-wide">
+                  Send Transit Booking
+                </p>
+                <p id="transportSubmitSub" class="text-white/85 text-xs font-medium flex items-center gap-1.5 mt-0.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                  Instant Dispatch to WhatsApp
+                </p>
+              </div>
+
+              <div class="relative w-8 h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 group-hover:bg-white group-hover:text-emerald-700 transition-all duration-300">
+                <i class="bi bi-arrow-right text-sm group-hover:translate-x-0.5 transition-transform"></i>
+              </div>
+            </button>
+          </div>
+
+        </form>
       </div>
 
     </div>
@@ -543,15 +798,14 @@
 
           <div class="flex items-center gap-4">
             <a
-              href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20Transportation%20and%20Logistics%20services."
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-primary text-sm"
+              href="tel:{{ str_replace(' ', '', $globalSettings['phone'] ?? '+2349037666399') }}"
+              class="btn-primary text-sm inline-flex items-center gap-2 cursor-pointer"
             >
-              Enquire on WhatsApp
+              <i class="bi bi-telephone-fill text-xs"></i>
+              <span>Call Dispatch Desk</span>
             </a>
             <a href="{{ route('contact') }}" class="btn-outline text-brand-dark border-gray-300 hover:border-brand-red text-sm">
-              Contact Logistics Desk
+              Contact Logistics Office
             </a>
           </div>
         </div>
@@ -691,18 +945,18 @@
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
-          href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20visited%20your%20Transport%20page%20and%20I%27d%20like%20to%20get%20a%20quote%20for%20travel%20or%20logistics."
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-whatsapp text-base"
+          href="#quote-form"
+          class="btn-primary text-base px-8 py-4 inline-flex items-center justify-center gap-2"
         >
-          Chat Directly on WhatsApp
+          <span>Book Your Transit Journey</span>
+          <i class="bi bi-arrow-up-right text-sm"></i>
         </a>
         <a
           href="tel:{{ str_replace(' ', '', $globalSettings['phone'] ?? '+2349037666399') }}"
-          class="btn-outline text-base"
+          class="btn-outline text-base px-8 py-4 inline-flex items-center justify-center gap-2"
         >
-          Call {{ $globalSettings['phone'] ?? '+234 903 766 6399' }}
+          <i class="bi bi-telephone text-sm"></i>
+          <span>Call Dispatch: {{ $globalSettings['phone'] ?? '+234 903 766 6399' }}</span>
         </a>
       </div>
     </div>
@@ -849,6 +1103,211 @@
           });
         });
       });
+      // 3. Interactive Transport Quote Form Logic
+      window.setTransportFormDivision = function(catId) {
+        const input = document.getElementById('selectedTransportDivisionInput');
+        const titleInput = document.getElementById('selectedTransportDivisionTitle');
+        if (input) input.value = catId;
+
+        const allBtns = document.querySelectorAll('.transport-division-btn');
+        allBtns.forEach(btn => {
+          const isTarget = btn.getAttribute('data-cat-id') === catId;
+          const radio = btn.querySelector('.transport-division-radio');
+          const dot = btn.querySelector('.transport-division-dot');
+
+          if (isTarget) {
+            btn.classList.add('border-amber-500', 'bg-white', 'ring-2', 'ring-amber-500/20', 'shadow-sm');
+            btn.classList.remove('border-gray-200', 'bg-white/70');
+            if (radio) radio.classList.add('border-amber-500');
+            if (dot) {
+              dot.classList.remove('hidden');
+              dot.classList.add('block');
+            }
+            if (titleInput) titleInput.value = btn.getAttribute('data-cat-title') || catId;
+          } else {
+            btn.classList.remove('border-amber-500', 'bg-white', 'ring-2', 'ring-amber-500/20', 'shadow-sm');
+            btn.classList.add('border-gray-200', 'bg-white/70');
+            if (radio) radio.classList.remove('border-amber-500');
+            if (dot) {
+              dot.classList.add('hidden');
+              dot.classList.remove('block');
+            }
+          }
+        });
+
+        const allGroups = document.querySelectorAll('.transport-subservices-group');
+        allGroups.forEach(grp => {
+          if (grp.id === `transport-subservices-for-${catId}`) {
+            grp.classList.remove('hidden');
+            grp.classList.add('flex');
+          } else {
+            grp.classList.add('hidden');
+            grp.classList.remove('flex');
+          }
+        });
+      };
+
+      window.toggleTransportSubserviceChip = function(chip) {
+        const isSelected = chip.classList.contains('selected');
+        const checkBadge = chip.querySelector('.chip-check');
+        const checkIcon = chip.querySelector('.chip-check i');
+        const errEl = document.getElementById('transportSubservicesError');
+
+        if (!isSelected) {
+          chip.classList.add('selected', 'border-amber-500', 'bg-amber-50', 'text-amber-800', 'ring-1', 'ring-amber-500');
+          chip.classList.remove('border-gray-200', 'bg-brand-light', 'text-slate-700');
+          if (checkBadge) {
+            checkBadge.classList.add('bg-amber-500', 'border-amber-500');
+            checkBadge.classList.remove('border-gray-300', 'bg-white');
+          }
+          if (checkIcon) checkIcon.classList.remove('hidden');
+          if (errEl) errEl.classList.add('hidden');
+        } else {
+          chip.classList.remove('selected', 'border-amber-500', 'bg-amber-50', 'text-amber-800', 'ring-1', 'ring-amber-500');
+          chip.classList.add('border-gray-200', 'bg-brand-light', 'text-slate-700');
+          if (checkBadge) {
+            checkBadge.classList.remove('bg-amber-500', 'border-amber-500');
+            checkBadge.classList.add('border-gray-300', 'bg-white');
+          }
+          if (checkIcon) checkIcon.classList.add('hidden');
+        }
+      };
+
+      window.selectTransportDivisionForQuote = function(divisionId) {
+        const quoteSection = document.getElementById('quote-form');
+        if (quoteSection) {
+          quoteSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        window.setTransportFormDivision(divisionId);
+
+        const activeGroup = document.getElementById(`transport-subservices-for-${divisionId}`);
+        if (activeGroup) {
+          const selected = activeGroup.querySelectorAll('.transport-subservice-chip.selected');
+          if (selected.length === 0) {
+            const firstChip = activeGroup.querySelector('.transport-subservice-chip');
+            if (firstChip) window.toggleTransportSubserviceChip(firstChip);
+          }
+        }
+      };
+
+      window.handleTransportFormSubmit = async function(e) {
+        e.preventDefault();
+
+        const nameEl = document.getElementById('formTransportName');
+        const phoneEl = document.getElementById('formTransportPhone');
+        const pickupEl = document.getElementById('formTransportPickup');
+        const dropoffEl = document.getElementById('formTransportDropoff');
+        const vehicleEl = document.getElementById('formTransportVehicle');
+        const scheduleEl = document.getElementById('formTransportSchedule');
+        const notesEl = document.getElementById('formTransportNotes');
+        const divisionTitle = document.getElementById('selectedTransportDivisionTitle')?.value || 'Transport & Logistics';
+        const divisionId = document.getElementById('selectedTransportDivisionInput')?.value || 'door-to-door';
+
+        const name = nameEl?.value.trim() || '';
+        const phone = phoneEl?.value.trim() || '';
+        const pickup = pickupEl?.value.trim() || '';
+        const dropoff = dropoffEl?.value.trim() || '';
+        const vehicle = vehicleEl?.value || '';
+        const schedule = scheduleEl?.value || 'Tomorrow';
+        const notes = notesEl?.value.trim() || '';
+
+        if (!pickup) {
+          alert('Please enter your pickup location/address.');
+          pickupEl?.focus();
+          return;
+        }
+        if (!dropoff) {
+          alert('Please enter your destination / drop-off location.');
+          dropoffEl?.focus();
+          return;
+        }
+        if (!vehicle) {
+          alert('Please select your preferred vehicle type.');
+          vehicleEl?.focus();
+          return;
+        }
+        if (!name) {
+          alert('Please enter your full name.');
+          nameEl?.focus();
+          return;
+        }
+        if (!phone) {
+          alert('Please enter your WhatsApp or phone number.');
+          phoneEl?.focus();
+          return;
+        }
+
+        const activeGroup = document.getElementById(`transport-subservices-for-${divisionId}`);
+        const selectedChips = activeGroup ? activeGroup.querySelectorAll('.transport-subservice-chip.selected') : [];
+        const selectedServices = Array.from(selectedChips).map(c => c.getAttribute('data-service-name'));
+
+        if (selectedServices.length === 0) {
+          const errEl = document.getElementById('transportSubservicesError');
+          if (errEl) errEl.classList.remove('hidden');
+          if (activeGroup) activeGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        const submitBtn = document.getElementById('transportSubmitBtn');
+        const submitText = document.getElementById('transportSubmitText');
+        const submitSub = document.getElementById('transportSubmitSub');
+        const originalText = submitText?.textContent || 'Send Transit Booking';
+        const originalSub = submitSub?.innerHTML || '<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> Instant Dispatch to WhatsApp';
+
+        if (submitBtn) submitBtn.disabled = true;
+        if (submitText) submitText.textContent = 'Formatting Route Booking...';
+        if (submitSub) submitSub.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span> Connecting to Dispatch...';
+
+        const serviceListText = selectedServices.map(s => `• ${s}`).join('\n');
+        const fullMessage = 
+`*New Transport & Logistics Booking — Asutext Group*
+━━━━━━━━━━━━━━━━━━━━
+👤 *Name:* ${name}
+📞 *Phone:* ${phone}
+📍 *Pickup:* ${pickup}
+🏁 *Destination:* ${dropoff}
+🚗 *Vehicle Class:* ${vehicle}
+🏢 *Division:* ${divisionTitle}
+✨ *Trip Options:*
+${serviceListText}
+📅 *Schedule:* ${schedule}
+📝 *Passengers / Notes:* ${notes ? notes : 'None'}
+━━━━━━━━━━━━━━━━━━━━
+_Sent via asutext.com/services/transport quote calculator_`;
+
+        try {
+          await fetch('{{ route("inquiry.store") }}', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-TOKEN': '{{ csrf_token() }}',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              name: name,
+              phone: phone,
+              service: `Transport: ${divisionTitle}`,
+              message: fullMessage
+            })
+          });
+        } catch (err) {
+          console.warn('Backend inquiry auto-save bypassed, launching WhatsApp directly', err);
+        }
+
+        const waBase = '{{ $globalSettings["whatsapp_url"] ?? "https://wa.me/2349037666399" }}'.split('?')[0];
+        const targetUrl = `${waBase}?text=${encodeURIComponent(fullMessage)}`;
+
+        const win = window.open(targetUrl, '_blank');
+        if (!win || win.closed || typeof win.closed === 'undefined') {
+          window.location.href = targetUrl;
+        }
+
+        setTimeout(() => {
+          if (submitBtn) submitBtn.disabled = false;
+          if (submitText) submitText.textContent = originalText;
+          if (submitSub) submitSub.innerHTML = originalSub;
+        }, 2000);
+      };
     });
   </script>
 @endsection

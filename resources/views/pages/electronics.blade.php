@@ -83,13 +83,11 @@
           <!-- CTAs -->
           <div class="flex flex-wrap gap-4">
             <a
-              href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20am%20interested%20in%20purchasing%20or%20enquiring%20about%20Gadgets%20from%20Asutext."
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#quote-form"
               class="btn-whatsapp text-base"
             >
               <i class="bi bi-whatsapp text-lg flex-shrink-0" aria-hidden="true"></i>
-              <span>Order Gadgets on WhatsApp</span>
+              <span>Order &amp; Tech Price Quote</span>
             </a>
             <a href="#electronics-categories" class="btn-outline text-base">
               Explore Catalogue <i class="bi bi-arrow-down ml-1"></i>
@@ -197,7 +195,7 @@
       </div>
 
       <!-- Filter Buttons -->
-      <div class="flex flex-wrap justify-center gap-2 mb-12">
+      <div class="mobile-scroll-tabs mb-12">
         <button
           type="button"
           class="tech-filter-tab px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border transition-all bg-brand-dark text-white border-brand-dark"
@@ -279,28 +277,289 @@
             </div>
 
             <!-- Card Bottom Action -->
-            <div class="p-6 pt-4 border-t border-gray-100 flex items-center justify-between gap-3 bg-slate-50/50">
+            <div class="p-5 pt-3.5 border-t border-gray-100 flex items-center gap-2.5 bg-slate-50/70">
               <a
-                href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text={{ urlencode('Hi, I am interested in inquiring about or purchasing ' . $cat['title'] . ' from Asutext Tech & Gadgets.') }}"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 text-xs font-bold text-purple-600 hover:text-purple-800 transition-colors"
+                href="#quote-form"
+                onclick="selectTechDivisionForQuote('{{ $cat['id'] }}')"
+                class="btn-card-quote btn-card-quote--purple flex-1"
+                style="background-color: #7e22ce !important; color: #ffffff !important;"
               >
-                <span>Enquire Pricing</span>
-                <span>→</span>
+                <span style="color: #ffffff !important;">Select for Quote</span>
+                <i class="bi bi-arrow-down text-[11px]" style="color: #ffffff !important;"></i>
               </a>
 
               <button
                 type="button"
                 onclick="openTechLightbox('{{ $cat['image'] }}', '{{ addslashes($cat['title']) }}')"
-                class="text-xs text-gray-500 hover:text-brand-dark font-medium underline cursor-pointer"
+                class="btn-card-detail"
+                title="View Photos & Details"
               >
-                View Detail
+                <i class="bi bi-eye"></i>
+                <span>Preview</span>
               </button>
             </div>
 
           </div>
         @endforeach
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!--  INTERACTIVE GADGETS & TECH QUOTE FORM (WHATSAPP)          -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="quote-form" class="py-16 sm:py-24 bg-white border-t border-b border-gray-200 scroll-mt-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-purple-50 text-purple-700 border border-purple-200 mb-3">
+          <i class="bi bi-cpu-fill"></i>
+          Fast Gadget Price Quote in 60 Seconds
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl font-black text-brand-dark">
+          Order Genuine Gadgets or Request Price Quote
+        </h2>
+        <p class="text-gray-500 mt-3 text-sm sm:text-base leading-relaxed">
+          Select your tech division and device models below. We will format a clear spec breakdown and send it directly to our tech sales desk on WhatsApp for pricing and availability.
+        </p>
+      </div>
+
+      <!-- Main Form Card -->
+      <div class="bg-brand-light rounded-3xl p-6 sm:p-10 border border-gray-200/90 shadow-xl relative overflow-hidden">
+        <form id="techQuoteForm" onsubmit="handleTechFormSubmit(event)" novalidate>
+          
+          <!-- STEP 1: Select Main Division -->
+          <div class="mb-8">
+            <div class="flex items-center justify-between mb-3">
+              <label class="block font-display font-bold text-slate-900 text-sm sm:text-base">
+                1. Select Gadget Category <span class="text-brand-red">*</span>
+              </label>
+              <span class="text-xs text-gray-400 font-medium">Choose hardware department</span>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5" id="tech-division-options">
+              @foreach($categories as $cat)
+                <button
+                  type="button"
+                  class="tech-division-btn p-3 rounded-xl border text-left transition-all duration-200 flex flex-col justify-between group cursor-pointer {{ $loop->first ? 'border-purple-600 bg-white ring-2 ring-purple-600/20 shadow-sm' : 'border-gray-200 bg-white/70 hover:bg-white hover:border-gray-300' }}"
+                  data-cat-id="{{ $cat['id'] }}"
+                  data-cat-title="{{ $cat['title'] }}"
+                  onclick="setTechFormDivision('{{ $cat['id'] }}')"
+                >
+                  <div class="flex items-center justify-between w-full mb-1.5">
+                    <span class="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold {{ $cat['badge_color'] }}">
+                      @if($cat['id'] === 'smartphones-tablets') <i class="bi bi-phone-fill"></i>
+                      @elseif($cat['id'] === 'laptops-computing') <i class="bi bi-laptop-fill"></i>
+                      @elseif($cat['id'] === 'audio-wearables') <i class="bi bi-headphones"></i>
+                      @elseif($cat['id'] === 'power-cables') <i class="bi bi-battery-charging"></i>
+                      @elseif($cat['id'] === 'displays-home') <i class="bi bi-tv-fill"></i>
+                      @else <i class="bi bi-tools"></i>
+                      @endif
+                    </span>
+                    <span class="tech-division-radio w-4 h-4 rounded-full border border-gray-300 flex items-center justify-center {{ $loop->first ? 'border-purple-600' : '' }}">
+                      <span class="tech-division-dot w-2 h-2 rounded-full bg-purple-600 {{ $loop->first ? 'block' : 'hidden' }}"></span>
+                    </span>
+                  </div>
+                  <span class="font-display font-bold text-xs sm:text-sm text-slate-800 leading-tight">
+                    {{ $cat['name'] }}
+                  </span>
+                </button>
+              @endforeach
+            </div>
+            <input type="hidden" id="selectedTechDivisionInput" name="category" value="{{ $categories[0]['id'] ?? 'smartphones-tablets' }}">
+            <input type="hidden" id="selectedTechDivisionTitle" value="{{ $categories[0]['name'] ?? 'SMARTPHONES & TABLETS' }}">
+          </div>
+
+          <!-- STEP 2: Sub-services Dynamic Multi-Select Chips -->
+          <div class="mb-8 p-5 bg-white rounded-2xl border border-gray-200 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3">
+              <label class="block font-display font-bold text-slate-900 text-sm sm:text-base">
+                2. Select Specific Gadgets / Models <span class="text-brand-red">*</span>
+              </label>
+              <span class="text-xs text-purple-600 font-semibold">Select all that apply</span>
+            </div>
+            <p class="text-xs text-gray-500 mb-4">
+              Tap the devices, series, or accessories you wish to purchase, trade in, or service:
+            </p>
+
+            @foreach($categories as $cat)
+              <div
+                id="tech-subservices-for-{{ $cat['id'] }}"
+                class="tech-subservices-group {{ $loop->first ? 'flex' : 'hidden' }} flex-wrap gap-2"
+              >
+                @foreach($cat['items'] as $item)
+                  <button
+                    type="button"
+                    class="tech-subservice-chip px-3.5 py-2 rounded-xl border border-gray-200 bg-brand-light text-slate-700 text-xs sm:text-sm font-semibold hover:border-purple-600/60 transition-all flex items-center gap-2 cursor-pointer"
+                    data-service-name="{{ $item }}"
+                    onclick="toggleTechSubserviceChip(this)"
+                  >
+                    <span class="chip-check w-4 h-4 rounded-md border border-gray-300 flex items-center justify-center bg-white text-[10px] text-white">
+                      <i class="bi bi-check-lg hidden"></i>
+                    </span>
+                    <span>{{ $item }}</span>
+                  </button>
+                @endforeach
+              </div>
+            @endforeach
+            <p id="techSubservicesError" class="text-brand-red text-xs mt-2 hidden font-medium">
+              Please select at least one gadget or accessory.
+            </p>
+          </div>
+
+          <!-- STEP 3: Purchase Type, Specs & Delivery -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+            
+            <!-- Transaction / Service Type -->
+            <div>
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                3. Purchase or Service Type <span class="text-brand-red">*</span>
+              </label>
+              <select
+                id="formTechType"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-purple-600/30 focus:border-purple-600 transition-all cursor-pointer"
+                required
+              >
+                <option value="" disabled selected>Select transaction type...</option>
+                <option value="Brand New (Factory Sealed Box)">Brand New (Factory Sealed Box)</option>
+                <option value="Certified Pristine Pre-Owned (UK Used)">Certified Pristine Pre-Owned (UK Used)</option>
+                <option value="Phone / Laptop Swap & Upgrade (Trade-in)">Phone / Laptop Swap &amp; Upgrade (Trade-in)</option>
+                <option value="Corporate / Office Bulk Procurement">Corporate / Office Bulk Procurement</option>
+                <option value="Repair, Screen or Battery Replacement">Repair, Screen or Battery Replacement</option>
+              </select>
+            </div>
+
+            <!-- Storage & Hardware Specs -->
+            <div>
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                4. Storage / Configuration Preference <span class="text-brand-red">*</span>
+              </label>
+              <select
+                id="formTechSpecs"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-purple-600/30 focus:border-purple-600 transition-all cursor-pointer"
+                required
+              >
+                <option value="" disabled selected>Select storage/specs...</option>
+                <option value="Standard Base Storage (128GB / 256GB)">Standard Base Storage (128GB / 256GB)</option>
+                <option value="High Storage (512GB / 1TB)">High Storage (512GB / 1TB)</option>
+                <option value="Max Pro Workstation (16GB - 64GB RAM / 1TB - 2TB SSD)">Max Pro Workstation (16GB – 64GB RAM / 1TB – 2TB SSD)</option>
+                <option value="Accessories / Cables / Display Sizes Only">Accessories / Cables / Display Sizes Only</option>
+                <option value="Recommend Best Spec for My Budget">Recommend Best Spec for My Budget</option>
+              </select>
+            </div>
+
+            <!-- Delivery / Timeline Urgency -->
+            <div>
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                5. When Do You Need It? <span class="text-brand-red">*</span>
+              </label>
+              <select
+                id="formTechSchedule"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-purple-600/30 focus:border-purple-600 transition-all cursor-pointer"
+              >
+                <option value="Immediate Same-Day Dispatch / Pickup">Immediate Same-Day Dispatch / Pickup</option>
+                <option value="Tomorrow" selected>Tomorrow</option>
+                <option value="Within This Week">Within This Week</option>
+                <option value="Inquiry / Price Quotation First">Inquiry / Price Quotation First</option>
+              </select>
+            </div>
+
+            <!-- Delivery Location / Area -->
+            <div>
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                6. Delivery City / Address <span class="text-brand-red">*</span>
+              </label>
+              <input
+                type="text"
+                id="formTechLocation"
+                placeholder="e.g. Lekki Phase 1, Victoria Island, Ikeja, or Calabar"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-purple-600/30 focus:border-purple-600 transition-all"
+                required
+              />
+            </div>
+
+          </div>
+
+          <!-- STEP 4: Contact & Customization Notes -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+            <div>
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                7. Your Name <span class="text-brand-red">*</span>
+              </label>
+              <input
+                type="text"
+                id="formTechName"
+                placeholder="e.g. Babatunde Adeleke"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-purple-600/30 focus:border-purple-600 transition-all"
+                required
+              />
+            </div>
+
+            <div>
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                8. WhatsApp / Phone Number <span class="text-brand-red">*</span>
+              </label>
+              <input
+                type="tel"
+                id="formTechPhone"
+                placeholder="e.g. 08012345678"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-purple-600/30 focus:border-purple-600 transition-all"
+                required
+              />
+            </div>
+
+            <div class="sm:col-span-2">
+              <label class="block font-display font-bold text-slate-900 text-sm mb-2">
+                9. Preferred Colors, Exact Model Specs or Repair Notes <span class="text-gray-400 font-normal">(Optional)</span>
+              </label>
+              <input
+                type="text"
+                id="formTechNotes"
+                placeholder="e.g. iPhone 15 Pro Max Natural Titanium, or MacBook Pro M3 Space Black, or Screen cracked on S23 Ultra"
+                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-purple-600/30 focus:border-purple-600 transition-all"
+              />
+            </div>
+          </div>
+
+          <!-- Submit Button & Guarantee Note -->
+          <div class="pt-4 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-xs text-gray-500 flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xs flex-shrink-0">
+                <i class="bi bi-shield-lock-fill"></i>
+              </span>
+              <span>Your tech request is recorded &amp; forwarded to our electronics sales desk on WhatsApp.</span>
+            </div>
+
+            <button
+              type="submit"
+              id="techSubmitBtn"
+              class="group relative w-full sm:w-auto inline-flex items-center justify-between sm:justify-start gap-4 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-gradient-to-r from-[#25D366] via-[#20ba5a] to-[#128C7E] text-white shadow-[0_8px_24px_rgba(37,211,102,0.35)] hover:shadow-[0_12px_32px_rgba(37,211,102,0.5)] border border-emerald-300/40 hover:border-white/40 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 active:translate-y-0 overflow-hidden"
+            >
+              <span class="absolute inset-0 w-full h-full bg-gradient-to-t from-black/5 to-white/20 pointer-events-none"></span>
+
+              <div class="relative w-11 h-11 rounded-xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <i class="bi bi-whatsapp text-2xl text-white"></i>
+              </div>
+
+              <div class="relative text-left flex-1 min-w-[190px]">
+                <p id="techSubmitText" class="font-display font-extrabold text-white text-base sm:text-lg leading-tight tracking-wide">
+                  Send Gadget Order
+                </p>
+                <p id="techSubmitSub" class="text-white/85 text-xs font-medium flex items-center gap-1.5 mt-0.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                  Instant Dispatch to WhatsApp
+                </p>
+              </div>
+
+              <div class="relative w-8 h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 group-hover:bg-white group-hover:text-emerald-700 transition-all duration-300">
+                <i class="bi bi-arrow-right text-sm group-hover:translate-x-0.5 transition-transform"></i>
+              </div>
+            </button>
+          </div>
+
+        </form>
       </div>
 
     </div>
@@ -372,15 +631,20 @@
 
         <div class="lg:col-span-4 flex flex-col gap-3 justify-center items-start lg:items-end">
           <a
-            href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20would%20like%20to%20request%20a%20Phone%20or%20Laptop%20Swap%20Valuation%20from%20Asutext."
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-whatsapp text-base w-full sm:w-auto text-center justify-center"
+            href="tel:{{ str_replace(' ', '', $globalSettings['phone'] ?? '+2349037666399') }}"
+            class="btn-white inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold shadow-md hover:shadow transition-all w-full sm:w-auto"
+            style="color: #0f172a !important; background-color: #ffffff !important;"
           >
-            <span>Request Swap Valuation</span>
-            <span>→</span>
+            <i class="bi bi-telephone-fill text-purple-600 text-base flex-shrink-0"></i>
+            <span style="color: #0f172a !important;" class="font-extrabold text-slate-900">Speak with Swap Technician</span>
           </a>
-          <p class="text-[11px] text-gray-400">Response usually within 1-2 hours</p>
+          <a
+            href="#quote-form"
+            onclick="selectTechDivisionForQuote('smartphones-tablets')"
+            class="text-xs text-gray-300 hover:text-white underline font-medium"
+          >
+            Or calculate valuation in quote form ↑
+          </a>
         </div>
 
       </div>
@@ -538,12 +802,11 @@
               <p class="font-display font-black text-brand-dark text-lg mt-2">Need a Specific Gadget?</p>
               <p class="text-xs text-gray-500 mt-1 mb-4">Request instant price &amp; availability</p>
               <a
-                href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20am%20looking%20for%20a%20specific%20phone%2Flaptop%20model."
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn-primary text-xs w-full py-2.5 inline-flex justify-center"
+                href="tel:{{ str_replace(' ', '', $globalSettings['phone'] ?? '+2349037666399') }}"
+                class="btn-primary text-xs w-full py-2.5 inline-flex justify-center items-center gap-1.5 cursor-pointer"
               >
-                Chat with Gadget Desk
+                <i class="bi bi-telephone-fill text-[11px]"></i>
+                <span>Call Gadget Desk</span>
               </a>
             </div>
           </div>
@@ -569,16 +832,18 @@
       </p>
       <div class="flex flex-wrap justify-center gap-4">
         <a
-          href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20would%20like%20to%20order%20gadgets%20or%20mobile%20accessories."
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-whatsapp text-base px-8 py-4"
+          href="#quote-form"
+          class="btn-primary text-base px-8 py-4 inline-flex items-center gap-2"
         >
-          <i class="bi bi-whatsapp text-lg flex-shrink-0" aria-hidden="true"></i>
-          <span>Chat on WhatsApp: +234 903 766 6399</span>
+          <span>Explore &amp; Order Hardware</span>
+          <i class="bi bi-arrow-up-right text-sm"></i>
         </a>
-        <a href="{{ route('services') }}" class="btn-outline text-base px-8 py-4">
-          View All Services
+        <a
+          href="tel:{{ str_replace(' ', '', $globalSettings['phone'] ?? '+2349037666399') }}"
+          class="btn-outline text-base px-8 py-4 inline-flex items-center gap-2"
+        >
+          <i class="bi bi-telephone text-sm"></i>
+          <span>Call Sales Desk</span>
         </a>
       </div>
     </div>
@@ -720,6 +985,196 @@
     if (e.target.id === 'tech-lightbox') {
       closeTechLightbox();
     }
+  }
+
+  // Gadgets & Tech Interactive Quote Form Handling
+  function setTechFormDivision(divisionId) {
+    const hiddenInput = document.getElementById('selectedTechDivisionInput');
+    const hiddenTitle = document.getElementById('selectedTechDivisionTitle');
+    const divisionButtons = document.querySelectorAll('.tech-division-btn');
+
+    divisionButtons.forEach(btn => {
+      const catId = btn.getAttribute('data-cat-id');
+      const catTitle = btn.getAttribute('data-cat-title');
+      const radioBox = btn.querySelector('.tech-division-radio');
+      const radioDot = btn.querySelector('.tech-division-dot');
+
+      if (catId === divisionId) {
+        btn.classList.add('border-purple-600', 'bg-white', 'ring-2', 'ring-purple-600/20', 'shadow-sm');
+        btn.classList.remove('border-gray-200', 'bg-white/70');
+        if (radioBox) radioBox.classList.add('border-purple-600');
+        if (radioDot) radioDot.classList.remove('hidden');
+        if (hiddenInput) hiddenInput.value = catId;
+        if (hiddenTitle) hiddenTitle.value = catTitle || btn.innerText.trim();
+      } else {
+        btn.classList.remove('border-purple-600', 'bg-white', 'ring-2', 'ring-purple-600/20', 'shadow-sm');
+        btn.classList.add('border-gray-200', 'bg-white/70');
+        if (radioBox) radioBox.classList.remove('border-purple-600');
+        if (radioDot) radioDot.classList.add('hidden');
+      }
+    });
+
+    const allGroups = document.querySelectorAll('.tech-subservices-group');
+    allGroups.forEach(grp => {
+      grp.classList.remove('flex');
+      grp.classList.add('hidden');
+    });
+
+    const activeGroup = document.getElementById(`tech-subservices-for-${divisionId}`);
+    if (activeGroup) {
+      activeGroup.classList.remove('hidden');
+      activeGroup.classList.add('flex');
+    }
+
+    const errEl = document.getElementById('techSubservicesError');
+    if (errEl) errEl.classList.add('hidden');
+  }
+
+  function selectTechDivisionForQuote(divisionId) {
+    setTechFormDivision(divisionId);
+    const formSection = document.getElementById('quote-form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  function toggleTechSubserviceChip(chip) {
+    chip.classList.toggle('selected');
+    const checkIcon = chip.querySelector('.chip-check i');
+    const checkContainer = chip.querySelector('.chip-check');
+
+    if (chip.classList.contains('selected')) {
+      chip.classList.add('border-purple-600', 'bg-purple-50/80', 'text-purple-700', 'font-bold');
+      chip.classList.remove('border-gray-200', 'bg-brand-light', 'text-slate-700');
+      if (checkContainer) {
+        checkContainer.classList.add('bg-purple-600', 'border-purple-600');
+        checkContainer.classList.remove('bg-white', 'border-gray-300');
+      }
+      if (checkIcon) checkIcon.classList.remove('hidden');
+    } else {
+      chip.classList.remove('border-purple-600', 'bg-purple-50/80', 'text-purple-700', 'font-bold');
+      chip.classList.add('border-gray-200', 'bg-brand-light', 'text-slate-700');
+      if (checkContainer) {
+        checkContainer.classList.remove('bg-purple-600', 'border-purple-600');
+        checkContainer.classList.add('bg-white', 'border-gray-300');
+      }
+      if (checkIcon) checkIcon.classList.add('hidden');
+    }
+
+    const errEl = document.getElementById('techSubservicesError');
+    if (errEl) errEl.classList.add('hidden');
+  }
+
+  async function handleTechFormSubmit(e) {
+    e.preventDefault();
+
+    const divisionId = document.getElementById('selectedTechDivisionInput')?.value || 'smartphones-tablets';
+    const divisionTitle = document.getElementById('selectedTechDivisionTitle')?.value || 'SMARTPHONES & TABLETS';
+
+    const transactionType = document.getElementById('formTechType')?.value;
+    const specs = document.getElementById('formTechSpecs')?.value;
+    const schedule = document.getElementById('formTechSchedule')?.value;
+    const location = document.getElementById('formTechLocation')?.value.trim();
+    const name = document.getElementById('formTechName')?.value.trim();
+    const phone = document.getElementById('formTechPhone')?.value.trim();
+    const notes = document.getElementById('formTechNotes')?.value.trim();
+
+    if (!transactionType) {
+      alert('Please select your purchase or service type.');
+      document.getElementById('formTechType')?.focus();
+      return;
+    }
+    if (!specs) {
+      alert('Please select your preferred storage or hardware specification.');
+      document.getElementById('formTechSpecs')?.focus();
+      return;
+    }
+    if (!location) {
+      alert('Please enter your delivery city or address.');
+      document.getElementById('formTechLocation')?.focus();
+      return;
+    }
+    if (!name) {
+      alert('Please enter your full name.');
+      document.getElementById('formTechName')?.focus();
+      return;
+    }
+    if (!phone) {
+      alert('Please enter your WhatsApp or phone number.');
+      document.getElementById('formTechPhone')?.focus();
+      return;
+    }
+
+    const activeGroup = document.getElementById(`tech-subservices-for-${divisionId}`);
+    const selectedChips = activeGroup ? activeGroup.querySelectorAll('.tech-subservice-chip.selected') : [];
+    const selectedItems = Array.from(selectedChips).map(c => c.getAttribute('data-service-name'));
+
+    if (selectedItems.length === 0) {
+      const errEl = document.getElementById('techSubservicesError');
+      if (errEl) errEl.classList.remove('hidden');
+      if (activeGroup) activeGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const submitBtn = document.getElementById('techSubmitBtn');
+    const submitText = document.getElementById('techSubmitText');
+    const submitSub = document.getElementById('techSubmitSub');
+    const originalText = submitText?.textContent || 'Send Gadget Order';
+    const originalSub = submitSub?.innerHTML || '<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> Instant Dispatch to WhatsApp';
+
+    if (submitBtn) submitBtn.disabled = true;
+    if (submitText) submitText.textContent = 'Formatting Tech Quote...';
+    if (submitSub) submitSub.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span> Connecting to Tech Sales...';
+
+    const itemsListText = selectedItems.map(item => `• ${item}`).join('\n');
+    const fullMessage = 
+`*New Gadget & Electronics Order — Asutext Group*
+━━━━━━━━━━━━━━━━━━━━
+👤 *Customer:* ${name}
+📞 *Phone:* ${phone}
+📱 *Category:* ${divisionTitle}
+💼 *Purchase Type:* ${transactionType}
+💾 *Storage / Specs:* ${specs}
+📅 *Urgency:* ${schedule}
+📍 *Delivery / City:* ${location}
+⚡ *Selected Devices / Models:*
+${itemsListText}
+📝 *Target Model / Notes:* ${notes ? notes : 'None'}
+━━━━━━━━━━━━━━━━━━━━
+_Sent via asutext.com/services/electronics quote funnel_`;
+
+    try {
+      await fetch('{{ route("inquiry.store") }}', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': '{{ csrf_token() }}',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          phone: phone,
+          service: `Electronics: ${divisionTitle}`,
+          message: fullMessage
+        })
+      });
+    } catch (err) {
+      console.warn('Backend inquiry auto-save bypassed, launching WhatsApp directly', err);
+    }
+
+    const waBase = '{{ $globalSettings["whatsapp_url"] ?? "https://wa.me/2349037666399" }}'.split('?')[0];
+    const targetUrl = `${waBase}?text=${encodeURIComponent(fullMessage)}`;
+
+    const win = window.open(targetUrl, '_blank');
+    if (!win || win.closed || typeof win.closed === 'undefined') {
+      window.location.href = targetUrl;
+    }
+
+    setTimeout(() => {
+      if (submitBtn) submitBtn.disabled = false;
+      if (submitText) submitText.textContent = originalText;
+      if (submitSub) submitSub.innerHTML = originalSub;
+    }, 2000);
   }
 </script>
 @endsection

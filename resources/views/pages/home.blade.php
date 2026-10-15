@@ -154,7 +154,7 @@
               <p class="text-gray-500 text-sm leading-relaxed mb-5">{{ Str::limit($service->description, 120) }}</p>
             </div>
 
-            <div class="service-card-actions">
+            <div class="service-card-actions" style="grid-template-columns: 1fr;">
               <a
                 href="{{ $targetUrl }}"
                 class="service-btn-explore"
@@ -162,17 +162,6 @@
               >
                 <span>Explore</span>
                 <i class="bi bi-arrow-right"></i>
-              </a>
-              <a
-                href="{{ $whatsappUrl }}"
-                target="_blank"
-                rel="noopener noreferrer"
-                onclick="event.stopPropagation();"
-                class="service-btn-enquire"
-                title="Enquire on WhatsApp about {{ $service->name }}"
-              >
-                <i class="bi bi-whatsapp"></i>
-                <span>Enquire</span>
               </a>
             </div>
           </div>

@@ -6,7 +6,7 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
   <!--  HERO BANNER                                               -->
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <section class="py-20 lg:py-28 bg-brand-dark text-white relative overflow-hidden">
+  <section class="py-12 sm:py-20 lg:py-28 bg-brand-dark text-white relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="max-w-3xl">
         <p class="section-label section-label--red mb-3">What We Do</p>
@@ -82,7 +82,7 @@
               <p class="text-gray-500 text-sm leading-relaxed mb-6">{{ $service->description }}</p>
             </div>
 
-            <div class="service-card-actions">
+            <div class="service-card-actions" style="grid-template-columns: 1fr;">
               <a
                 href="{{ $service->route ?? route('services') }}"
                 class="service-btn-explore"
@@ -90,17 +90,6 @@
               >
                 <span>Explore</span>
                 <i class="bi bi-arrow-right"></i>
-              </a>
-              <a
-                href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text={{ urlencode($service->whatsapp_cta_text ?? 'Hi, I would like to enquire about ' . $service->name) }}"
-                target="_blank"
-                rel="noopener noreferrer"
-                onclick="event.stopPropagation();"
-                class="service-btn-enquire"
-                title="Enquire on WhatsApp about {{ $service->name }}"
-              >
-                <i class="bi bi-whatsapp"></i>
-                <span>Enquire</span>
               </a>
             </div>
           </div>

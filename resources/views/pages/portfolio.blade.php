@@ -6,7 +6,7 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
   <!--  HERO BANNER                                               -->
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <section class="py-20 bg-brand-dark text-white relative overflow-hidden">
+  <section class="py-12 sm:py-20 bg-brand-dark text-white relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <p class="section-label section-label--red mb-3">Our Work</p>
       <h1 class="font-display text-4xl sm:text-5xl font-black leading-tight">
@@ -26,7 +26,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- Category Filter Tabs -->
-      <div class="flex flex-wrap gap-3 mb-8 sm:mb-12 justify-center reveal">
+      <div class="mobile-scroll-tabs mb-8 sm:mb-12 reveal">
         <button class="portfolio-filter-btn px-6 py-2 rounded-full text-sm font-semibold border border-white/20 text-white bg-brand-red active-filter" data-filter="all">
           All Works
         </button>

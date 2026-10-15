@@ -6,7 +6,7 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
   <!--  HERO BANNER                                               -->
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <section class="py-20 bg-brand-dark text-white relative overflow-hidden">
+  <section class="py-12 sm:py-20 bg-brand-dark text-white relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <p class="section-label section-label--red mb-3">Catalogue</p>
       <h1 class="font-display text-4xl sm:text-5xl font-black leading-tight">
@@ -49,7 +49,7 @@
         </div>
 
         <!-- Category Filter Pills -->
-        <div class="flex flex-wrap items-center justify-center gap-2.5">
+        <div class="mobile-scroll-tabs">
           <a 
             href="{{ route('products') }}" 
             class="px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-200 border {{ empty($selectedCategory) ? 'bg-brand-red text-white border-brand-red shadow-md' : 'bg-white text-gray-700 border-gray-200 hover:border-brand-red hover:text-brand-red' }}"

@@ -103,21 +103,20 @@
           <a href="{{ route('home') }}"      class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
           <a href="{{ route('services') }}"  class="nav-link {{ request()->routeIs('services*') ? 'active' : '' }}">Services</a>
           <a href="{{ route('products') }}"  class="nav-link {{ request()->routeIs('products') ? 'active' : '' }}">Products</a>
-          <a href="{{ route('about') }}"     class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}">About Us</a>
           <a href="{{ route('portfolio') }}" class="nav-link {{ request()->routeIs('portfolio') ? 'active' : '' }}">Gallery</a>
+          <a href="{{ route('about') }}"     class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}">About Us</a>
           <a href="{{ route('contact') }}"   class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
         </nav>
 
-        <!-- Desktop WhatsApp CTA -->
+        <!-- Desktop Quote CTA -->
         <a
-          href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20visited%20your%20website%20and%20I%27d%20like%20to%20enquire%20about%20your%20services."
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hidden lg:inline-flex btn-whatsapp text-sm items-center gap-2"
-          id="nav-wa-btn"
+          href="{{ route('services') }}"
+          onclick="if(document.getElementById('quote-form')) { document.getElementById('quote-form').scrollIntoView({behavior: 'smooth'}); return false; }"
+          class="hidden lg:inline-flex btn-primary text-sm items-center gap-2"
+          id="nav-cta-btn"
         >
-          <i class="bi bi-whatsapp text-base"></i>
-          <span>Chat with Us</span>
+          <span>Get a Quote</span>
+          <i class="bi bi-arrow-right text-xs"></i>
         </a>
 
         <!-- Mobile Hamburger -->
@@ -142,17 +141,16 @@
         <a href="{{ route('home') }}"      class="nav-link text-brand-dark py-1.5 text-base {{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
         <a href="{{ route('services') }}"  class="nav-link text-brand-dark py-1.5 text-base {{ request()->routeIs('services*') ? 'active' : '' }}">Services</a>
         <a href="{{ route('products') }}"  class="nav-link text-brand-dark py-1.5 text-base {{ request()->routeIs('products') ? 'active' : '' }}">Products</a>
-        <a href="{{ route('about') }}"             class="nav-link text-brand-dark py-1.5 text-base {{ request()->routeIs('about') ? 'active' : '' }}">About Us</a>
-        <a href="{{ route('portfolio') }}"         class="nav-link text-brand-dark py-1.5 text-base {{ request()->routeIs('portfolio') ? 'active' : '' }}">Gallery</a>
-        <a href="{{ route('contact') }}"           class="nav-link text-brand-dark py-1.5 text-base {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
+        <a href="{{ route('portfolio') }}" class="nav-link text-brand-dark py-1.5 text-base {{ request()->routeIs('portfolio') ? 'active' : '' }}">Gallery</a>
+        <a href="{{ route('about') }}"     class="nav-link text-brand-dark py-1.5 text-base {{ request()->routeIs('about') ? 'active' : '' }}">About Us</a>
+        <a href="{{ route('contact') }}"   class="nav-link text-brand-dark py-1.5 text-base {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
         <a
-          href="{{ $globalSettings['whatsapp_url'] ?? 'https://wa.me/2349037666399' }}?text=Hi%2C%20I%20visited%20your%20website%20and%20I%27d%20like%20to%20enquire%20about%20your%20services."
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-whatsapp justify-center text-sm mt-2 items-center gap-2"
+          href="{{ route('services') }}"
+          onclick="if(document.getElementById('quote-form')) { document.getElementById('quote-form').scrollIntoView({behavior: 'smooth'}); const m = document.getElementById('mobile-menu'); if(m) m.classList.remove('open'); return false; }"
+          class="btn-primary justify-center text-sm mt-2 items-center gap-2 flex"
         >
-          <i class="bi bi-whatsapp text-base"></i>
-          <span>Chat with Us on WhatsApp</span>
+          <span>Get a Quote</span>
+          <i class="bi bi-arrow-right text-xs"></i>
         </a>
       </div>
     </div>

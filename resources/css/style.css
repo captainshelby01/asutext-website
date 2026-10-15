@@ -206,6 +206,101 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(-2px);
 }
 
+.btn-white {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+.btn-white:hover {
+  background: #f8fafc !important;
+  color: #0f172a !important;
+  border-color: #f8fafc;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+.btn-white span {
+  color: #0f172a !important;
+}
+
+/* Card action buttons */
+.btn-card-quote {
+  background: var(--brand-red) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--brand-red);
+  border-radius: 0.75rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  box-shadow: 0 2px 8px rgba(204, 0, 0, 0.22);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+.btn-card-quote:hover {
+  background: var(--brand-red-dk) !important;
+  color: #ffffff !important;
+  border-color: var(--brand-red-dk);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(204, 0, 0, 0.35);
+}
+.btn-card-quote span,
+.btn-card-quote i {
+  color: #ffffff !important;
+}
+
+.btn-card-quote--purple {
+  background: #7e22ce !important;
+  border-color: #7e22ce;
+  box-shadow: 0 2px 8px rgba(126, 34, 206, 0.25);
+}
+.btn-card-quote--purple:hover {
+  background: #6b21a8 !important;
+  border-color: #6b21a8;
+  box-shadow: 0 4px 14px rgba(126, 34, 206, 0.35);
+}
+
+.btn-card-detail {
+  background: #ffffff !important;
+  color: #334155 !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 0.75rem;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+.btn-card-detail:hover {
+  background: #f8fafc !important;
+  color: #0f172a !important;
+  border-color: #94a3b8 !important;
+  transform: translateY(-1px);
+}
+.btn-card-detail span {
+  color: #334155 !important;
+}
+.btn-card-detail:hover span {
+  color: #0f172a !important;
+}
+.btn-card-detail i {
+  color: #64748b !important;
+}
+.btn-card-detail:hover i {
+  color: #0f172a !important;
+}
+
 /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    NAVBAR
    â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -1471,10 +1566,15 @@ a { color: inherit; text-decoration: none; }
     padding-right: 0 !important;
   }
   .about-badge {
-    position: static;
+    position: absolute;
+    bottom: 24px;
+    left: 8px;
+    z-index: 2;
     transform: none;
-    margin-top: 1rem;
-    box-shadow: none;
+    margin-top: 0;
+    padding: 0.65rem 0.95rem;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
   }
   .contact-info-item {
     flex-direction: column;
@@ -1610,10 +1710,15 @@ a { color: inherit; text-decoration: none; }
     padding-right: 0 !important;
   }
   .about-badge {
-    position: static;
+    position: absolute;
+    bottom: 24px;
+    left: 8px;
+    z-index: 2;
     transform: none;
-    margin-top: 1rem;
-    box-shadow: none;
+    margin-top: 0;
+    padding: 0.65rem 0.95rem;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
   }
   .contact-info-item {
     flex-direction: column;
@@ -1634,7 +1739,9 @@ a { color: inherit; text-decoration: none; }
 
 @media (max-width: 620px) {
   #navbar .flex-shrink-0 img {
-    height: 3.75rem;
+    height: 2.6rem !important;
+    max-height: 42px !important;
+    width: auto !important;
   }
   .hero-section {
     padding-top: 1rem;
@@ -1674,13 +1781,43 @@ a { color: inherit; text-decoration: none; }
   }
 }
 
-/* Fix header WhatsApp button on mobile/tablet */
+/* Fix header CTA button on mobile/tablet */
+#nav-cta-btn,
 #nav-wa-btn {
   display: none !important;
 }
 @media (min-width: 1024px) {
+  #nav-cta-btn,
   #nav-wa-btn {
     display: inline-flex !important;
+    width: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-card-quote {
+    padding: 0.55rem 0.75rem;
+    font-size: 0.72rem;
+  }
+  .btn-card-detail {
+    padding: 0.55rem 0.65rem;
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .fab-whatsapp span {
+    display: none;
+  }
+  .fab-whatsapp {
+    width: 3.25rem;
+    height: 3.25rem;
+    padding: 0;
+    justify-content: center;
+    border-radius: 9999px;
+  }
+  .fab-whatsapp i {
+    font-size: 1.35rem;
   }
 }
 
@@ -1812,5 +1949,114 @@ a { color: inherit; text-decoration: none; }
 .footer-link-blue:hover .footer-link-arrow {
   color: #6FA8DC;
 }
+
+/* ============================================================
+   GLOBAL MOBILE RESPONSIVENESS SUITE (Cross-Device Polish)
+   ============================================================ */
+
+/* 1. Prevent iOS Safari auto-zoom on form inputs */
+@media (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="search"],
+  input[type="password"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* 2. Fluid Horizontal Scrolling Filter / Division Tab Bars */
+.mobile-scroll-tabs {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 0.5rem;
+  padding-top: 0.25rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+.mobile-scroll-tabs::-webkit-scrollbar {
+  display: none;
+}
+.mobile-scroll-tabs > * {
+  flex-shrink: 0;
+}
+@media (min-width: 640px) {
+  .mobile-scroll-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: visible;
+    padding-bottom: 0;
+  }
+}
+
+/* 3. Hero Trust Grid (Responsive 3-column micro-badge row on mobile) */
+.hero-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+  margin-bottom: 2rem;
+  max-width: 36rem;
+}
+@media (max-width: 540px) {
+  .hero-trust-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-trust-grid > div {
+    flex-direction: column !important;
+    text-align: center !important;
+    padding: 0.55rem 0.35rem !important;
+    gap: 0.35rem !important;
+    border-radius: 0.75rem !important;
+  }
+  .hero-trust-grid > div > div:first-child {
+    width: 1.85rem !important;
+    height: 1.85rem !important;
+    font-size: 0.85rem !important;
+    margin: 0 auto;
+    border-radius: 0.5rem !important;
+  }
+  .hero-trust-grid > div p:first-child {
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    line-height: 1.15 !important;
+  }
+  .hero-trust-grid > div p:last-child {
+    display: none !important;
+  }
+}
+
+/* 4. Safe Area Insets for Mobile Fixed Elements */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .fab-whatsapp {
+    bottom: calc(1rem + env(safe-area-inset-bottom));
+    right: calc(1rem + env(safe-area-inset-right));
+  }
+}
+
+/* 5. Mobile Typography & Touch Padding Refinements */
+@media (max-width: 639px) {
+  h1 {
+    word-break: break-word;
+  }
+  .hero-badge {
+    font-size: 0.7rem;
+    padding: 0.35rem 0.75rem;
+  }
+  .modal-overlay,
+  .portfolio-lightbox {
+    padding: 0.75rem;
+  }
+}
+
 
 
