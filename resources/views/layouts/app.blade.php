@@ -125,7 +125,8 @@
           aria-label="Open navigation menu"
           aria-expanded="false"
           aria-controls="mobile-menu"
-          class="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-red"
+          onclick="if(window.toggleMobileMenu){window.toggleMobileMenu();}else{const m=document.getElementById('mobile-menu');if(m){const o=m.classList.toggle('open');this.classList.toggle('open',o);this.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}}"
+          class="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-red cursor-pointer"
         >
           <span class="bar"></span>
           <span class="bar"></span>

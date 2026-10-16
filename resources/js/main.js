@@ -3,26 +3,36 @@
    ============================================================ */
 
 // ─── Mobile menu toggle ───────────────────────────────────────
-const menuBtn    = document.getElementById('menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-
-if (menuBtn && mobileMenu) {
-  menuBtn.addEventListener('click', () => {
+window.toggleMobileMenu = function() {
+  const menuBtn    = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (menuBtn && mobileMenu) {
     const isOpen = mobileMenu.classList.toggle('open');
     menuBtn.classList.toggle('open', isOpen);
     menuBtn.setAttribute('aria-expanded', isOpen);
     document.body.style.overflow = isOpen ? 'hidden' : '';
-  });
+  }
+};
 
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      menuBtn.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+function initApp() {
+  const menuBtn    = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.onclick = (e) => {
+      e.preventDefault();
+      window.toggleMobileMenu();
+    };
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        menuBtn.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
     });
-  });
-}
+  }
 
 // ─── Sticky navbar shadow + active link ───────────────────────
 const navbar = document.getElementById('navbar');
@@ -285,22 +295,29 @@ if (scrollTopBtn) {
 }
 
 // ─── Video Gallery Lazy Player ───────────────────────────────
-document.querySelectorAll('.video-card').forEach(card => {
-  const video = card.querySelector('video');
-  const overlay = card.querySelector('.play-overlay');
+  document.querySelectorAll('.video-card').forEach(card => {
+    const video = card.querySelector('video');
+    const overlay = card.querySelector('.play-overlay');
 
-  if (video && overlay) {
-    card.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (video.paused) {
-        video.setAttribute('controls', 'true');
-        video.play();
-        overlay.classList.add('hidden');
-      } else {
-        video.pause();
-        video.removeAttribute('controls');
-        overlay.classList.remove('hidden');
-      }
-    });
-  }
-});
+    if (video && overlay) {
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (video.paused) {
+          video.setAttribute('controls', 'true');
+          video.play();
+          overlay.classList.add('hidden');
+        } else {
+          video.pause();
+          video.removeAttribute('controls');
+          overlay.classList.remove('hidden');
+        }
+      });
+    }
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}

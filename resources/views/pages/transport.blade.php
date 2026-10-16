@@ -314,7 +314,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           @foreach($categories as $cat)
-            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between group">
+            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between group h-full">
               <div>
                 <div class="flex items-center justify-between mb-3">
                   <span class="text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full {{ $cat['badge_color'] }}">
@@ -348,10 +348,10 @@
                 <a
                   href="#quote-form"
                   onclick="selectTransportDivisionForQuote('{{ $cat['id'] }}')"
-                  class="btn-whatsapp w-full justify-center text-xs font-bold py-2.5"
+                  class="btn-division-quote"
                 >
-                  <i class="bi bi-whatsapp text-xs flex-shrink-0" aria-hidden="true"></i>
-                  <span>Request {{ $cat['title'] }} Quote</span>
+                  <i class="bi bi-whatsapp text-sm flex-shrink-0" aria-hidden="true"></i>
+                  <span>Request Quote</span>
                 </a>
               </div>
             </div>
@@ -579,7 +579,7 @@
 
           <!-- Submit Button & Guarantee Note -->
           <div class="pt-4 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="text-xs text-gray-500 flex items-center gap-2">
+            <div class="text-xs text-gray-500 flex items-center gap-2 max-w-sm flex-1">
               <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xs flex-shrink-0">
                 <i class="bi bi-shield-lock-fill"></i>
               </span>
@@ -589,26 +589,26 @@
             <button
               type="submit"
               id="transportSubmitBtn"
-              class="group relative w-full sm:w-auto inline-flex items-center justify-between sm:justify-start gap-4 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-gradient-to-r from-[#25D366] via-[#20ba5a] to-[#128C7E] text-white shadow-[0_8px_24px_rgba(37,211,102,0.35)] hover:shadow-[0_12px_32px_rgba(37,211,102,0.5)] border border-emerald-300/40 hover:border-white/40 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 active:translate-y-0 overflow-hidden"
+              class="group relative w-full sm:w-auto inline-flex items-center justify-between sm:justify-start gap-3 sm:gap-4 px-5 sm:px-6 py-3.5 sm:py-4 rounded-2xl bg-gradient-to-r from-[#25D366] via-[#20ba5a] to-[#128C7E] text-white shadow-[0_8px_24px_rgba(37,211,102,0.35)] hover:shadow-[0_12px_32px_rgba(37,211,102,0.5)] border border-emerald-300/40 hover:border-white/40 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 active:translate-y-0 flex-shrink-0"
             >
-              <span class="absolute inset-0 w-full h-full bg-gradient-to-t from-black/5 to-white/20 pointer-events-none"></span>
+              <span class="absolute inset-0 w-full h-full rounded-2xl bg-gradient-to-t from-black/5 to-white/20 pointer-events-none"></span>
 
-              <div class="relative w-11 h-11 rounded-xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <i class="bi bi-whatsapp text-2xl text-white"></i>
+              <div class="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <i class="bi bi-whatsapp text-xl sm:text-2xl text-white"></i>
               </div>
 
-              <div class="relative text-left flex-1 min-w-[190px]">
-                <p id="transportSubmitText" class="font-display font-extrabold text-white text-base sm:text-lg leading-tight tracking-wide">
-                  Send Transit Booking
+              <div class="relative text-left flex-1 sm:flex-initial whitespace-nowrap">
+                <p id="transportSubmitText" class="font-display font-extrabold text-white text-sm sm:text-base lg:text-lg leading-tight tracking-wide">
+                  Send Quote Request
                 </p>
-                <p id="transportSubmitSub" class="text-white/85 text-xs font-medium flex items-center gap-1.5 mt-0.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
-                  Instant Dispatch to WhatsApp
+                <p id="transportSubmitSub" class="text-white/85 text-[11px] sm:text-xs font-medium flex items-center gap-1.5 mt-0.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse flex-shrink-0"></span>
+                  <span>Instant Dispatch to WhatsApp</span>
                 </p>
               </div>
 
-              <div class="relative w-8 h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 group-hover:bg-white group-hover:text-emerald-700 transition-all duration-300">
-                <i class="bi bi-arrow-right text-sm group-hover:translate-x-0.5 transition-transform"></i>
+              <div class="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 group-hover:bg-white group-hover:text-emerald-700 transition-all duration-300">
+                <i class="bi bi-arrow-right text-xs sm:text-sm group-hover:translate-x-0.5 transition-transform"></i>
               </div>
             </button>
           </div>
@@ -1251,7 +1251,7 @@
         const submitBtn = document.getElementById('transportSubmitBtn');
         const submitText = document.getElementById('transportSubmitText');
         const submitSub = document.getElementById('transportSubmitSub');
-        const originalText = submitText?.textContent || 'Send Transit Booking';
+        const originalText = submitText?.textContent || 'Send Quote Request';
         const originalSub = submitSub?.innerHTML || '<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> Instant Dispatch to WhatsApp';
 
         if (submitBtn) submitBtn.disabled = true;
